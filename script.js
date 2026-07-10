@@ -38,7 +38,7 @@ if(stickyCta && heroEl){
 }
 
 // ---------- LEAD CAPTURE FORMS (dual CTA: consult -> WhatsApp, order -> thank-you page) ----------
-const WHATSAPP_NUMBER = '07047093487';
+const WHATSAPP_NUMBER = '2347047093487';
 
 function isValidEmail(value){
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
