@@ -1,0 +1,28 @@
+<svg width="520" height="140" viewBox="0 0 520 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="markGradientFull" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5A623"/>
+      <stop offset="100%" stop-color="#D98A0C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- icon mark -->
+  <rect x="8" y="14" width="112" height="112" rx="26" fill="url(#markGradientFull)"/>
+  <g transform="translate(64,70)">
+    <g stroke="#FFF7E8" stroke-width="5" stroke-linecap="round">
+      <line x1="0" y1="-40" x2="0" y2="-30"/>
+      <line x1="0" y1="30" x2="0" y2="40"/>
+      <line x1="-40" y1="0" x2="-30" y2="0"/>
+      <line x1="30" y1="0" x2="40" y2="0"/>
+      <line x1="-28" y1="-28" x2="-21" y2="-21"/>
+      <line x1="21" y1="21" x2="28" y2="28"/>
+      <line x1="-28" y1="28" x2="-21" y2="21"/>
+      <line x1="21" y1="-21" x2="28" y2="-28"/>
+    </g>
+    <circle r="19" fill="#FFF7E8"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="146" y="66" font-family="'Space Mono', monospace" font-weight="700" font-size="30" letter-spacing="0.5" fill="#161B22">LET IT SHINE</text>
+  <text x="146" y="94" font-family="'Space Mono', monospace" font-weight="700" font-size="16" letter-spacing="3" fill="#8A93A0">ENERGY HUB</text>
+</svg>
