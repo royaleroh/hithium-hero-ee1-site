@@ -219,7 +219,7 @@
   .cta-option .btn{width:100%; justify-content:center; cursor:pointer; border:none;}
   .dual-cta-final .btn-cta-primary{padding:19px 16px; font-size:14.5px; box-shadow:0 16px 34px rgba(37,211,102,0.4);}
   .dual-cta-final .btn-cta-primary:hover{box-shadow:0 20px 40px rgba(37,211,102,0.48);}
-  .dual-cta-final .btn-cta-secondary{padding:15px 14px; font-size:12.5px; box-shadow:0 8px 18px rgba(217,138,12,0.22);}
+  .dual-cta-final .btn-cta-secondary{padding:19px 16px; font-size:14.5px; box-shadow:0 16px 34px rgba(217,138,12,0.22);}
   .dual-cta-final .btn-cta-secondary:hover{box-shadow:0 12px 24px rgba(217,138,12,0.3);}
   .cta-helper{margin-top:12px; font-size:12px; line-height:1.55; color:var(--muted); max-width:230px;}
   .cta-helper b{color:var(--ink); font-weight:700;}
