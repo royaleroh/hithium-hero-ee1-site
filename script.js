@@ -114,7 +114,8 @@ document.querySelectorAll('[data-lead-card]').forEach(card => {
       saveLead(data.name, data.email, 'order');
 
       const params = new URLSearchParams({ name: data.name, email: data.email });
-      window.location.href = `thank-you.html?${params.toString()}`;
+      window.location.href = `https://paystack.shop/pay/letitshine`;
+      // window.location.href = `thank-you.html?${params.toString()}`;
     });
   }
 });
