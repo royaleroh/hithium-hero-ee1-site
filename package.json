@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/recommend.test.js",
+    "test:old": "node --test tests/calculate.test.js",
+    "test:all": "node --test tests/recommend.test.js tests/calculate.test.js"
+  }
+}

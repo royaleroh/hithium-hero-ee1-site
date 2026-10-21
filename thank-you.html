@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-NG">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order confirmed — Let It Shine</title>
+  <meta name="robots" content="noindex" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body style="min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--space-8) var(--content-pad);">
+
+  <div style="max-width:520px;text-align:center;">
+    <div style="font-size:4rem;margin-bottom:var(--space-6);" aria-hidden="true">✅</div>
+    <h1 id="thankyou-heading" style="margin-bottom:var(--space-4);">Order received!</h1>
+    <p id="thankyou-sub" style="font-size:var(--text-lg);color:var(--color-ink-muted);margin-bottom:var(--space-6);">
+      Thank you for your order. We will contact you shortly on the phone number you provided to confirm delivery details.
+    </p>
+
+    <div id="order-detail" style="background:var(--color-accent-bg);border:1px solid var(--color-accent-light);border-radius:var(--radius-lg);padding:var(--space-6);margin-bottom:var(--space-8);text-align:left;">
+      <!-- Filled by script below -->
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);justify-content:center;">
+      <a href="index.html" class="btn btn--outline">Back to home</a>
+      <a id="wa-confirm" href="#" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.124 1.533 5.856L0 24l6.335-1.508A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.172-1.418l-.371-.218-3.752.893.947-3.65-.242-.382A9.98 9.98 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+        Message us on WhatsApp
+      </a>
+    </div>
+  </div>
+
+<script type="module">
+  import { WHATSAPP_NUMBER } from './config.js';
+  import { formatNaira }     from './js/format.js';
+
+  const order = JSON.parse(sessionStorage.getItem('order') || '{}');
+  const detail = document.getElementById('order-detail');
+
+  if (order.name) {
+    document.getElementById('thankyou-heading').textContent = `Thank you, ${order.name.split(' ')[0]}!`;
+  }
+
+  if (order.demo) {
+    const banner = document.createElement('p');
+    banner.textContent = '⚠️ This was a demo order — no payment was taken.';
+    banner.style.cssText = 'background:#FFF3CD;padding:var(--space-3) var(--space-4);border-radius:var(--radius-sm);font-size:var(--text-sm);font-weight:600;margin-bottom:var(--space-4);text-align:center;color:#856404;';
+    document.querySelector('.btn--outline').before(banner);
+  }
+
+  if (detail) {
+    const rows = [
+      order.name    && `<tr><th style="text-align:left;padding:6px 8px;color:var(--color-ink-muted);font-weight:500;">Name</th><td style="padding:6px 8px;">${order.name}</td></tr>`,
+      order.state   && `<tr><th style="text-align:left;padding:6px 8px;color:var(--color-ink-muted);font-weight:500;">Delivery state</th><td style="padding:6px 8px;">${order.state}</td></tr>`,
+      order.total   && `<tr><th style="text-align:left;padding:6px 8px;color:var(--color-ink-muted);font-weight:500;">Total paid</th><td style="padding:6px 8px;font-weight:700;">${formatNaira(order.total)}</td></tr>`,
+      order.reference && `<tr><th style="text-align:left;padding:6px 8px;color:var(--color-ink-muted);font-weight:500;">Reference</th><td style="padding:6px 8px;font-family:monospace;">${order.reference}</td></tr>`,
+    ].filter(Boolean).join('');
+
+    detail.innerHTML = rows
+      ? `<table style="width:100%;border-collapse:collapse;">${rows}</table>`
+      : '<p style="color:var(--color-ink-muted);">Your order details will be confirmed via WhatsApp.</p>';
+  }
+
+  // WhatsApp confirmation link
+  const waLink = document.getElementById('wa-confirm');
+  if (waLink && WHATSAPP_NUMBER) {
+    const msg = order.reference
+      ? `Hello! I just placed an order. Reference: ${order.reference}. Please confirm.`
+      : `Hello! I just completed an order for the Hithium Power Station. Please confirm.`;
+    waLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  }
+</script>
+
+</body>
+</html>

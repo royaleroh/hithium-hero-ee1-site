@@ -1,0 +1,666 @@
+{
+  "products": [
+    {
+      "id": "itel-power-go-iess-320t",
+      "brand": "itel Energy",
+      "name": "Power Go",
+      "model": "IESS-320T",
+      "slug": "itel-power-go",
+      "category": "Portable Power Station",
+      "available": true,
+      "price": null,
+      "usableWh": 320,
+      "maxOutputW": 130,
+      "peakOutputW": 260,
+      "warranty": "12 months",
+      "plainEnglishCapacity": "Charges a phone 15–20 times or keeps a Wi-Fi router running 18–25 hours on a single charge.",
+      "description": "Compact 320Wh LiFePO4 portable power station focused on USB/DC output. Ideal for phones, laptops, routers, DC fans and lights. No AC socket.",
+      "images": [
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/01/itel-130W-Portable-Power-Station-%E2%80%93-320Wh-Smart-Backup-Power-Solution-IESS-320T.webp?fit=580%2C580&ssl=1",
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/02/itel-130W-Portable-Power-Station-%E2%80%93-320Wh-Smart-Backup-Power-Go-Solution-IESS-320T.jpg?fit=580%2C580&ssl=1",
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/02/itel-130W-Portable-Power-Station-%E2%80%93-320Wh-Smart-Backup-Power-Go-Solution-IESS-320T-2.jpg?fit=580%2C580&ssl=1",
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/02/itel-130W-Portable-Power-Station-%E2%80%93-320Wh-Smart-Backup-Power-Go-Solution-IESS-320T-3.jpg?fit=580%2C580&ssl=1"
+      ],
+      "photos": [
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/01/itel-130W-Portable-Power-Station-%E2%80%93-320Wh-Smart-Backup-Power-Solution-IESS-320T.webp?fit=580%2C580&ssl=1"
+      ],
+      "inTheBox": [
+        "Power Go unit (IESS-320T)",
+        "65W USB-C charger",
+        "Type-C to DC5521 cable",
+        "DC5521 to DC5521 cable",
+        "User manual"
+      ],
+      "rechargeOptions": [
+        { "method": "USB-C", "detail": "Up to 100W USB-C input", "time": "~3.5–4 hours" },
+        { "method": "Solar / DC", "detail": "11–24V / 5A or 100W max solar/adapter", "time": "~3.5–4 hours" }
+      ],
+      "specs": [
+        { "label": "Capacity", "value": "320 Wh (100,000 mAh)" },
+        { "label": "Battery type", "value": "LiFePO4 (A-grade)" },
+        { "label": "Cycle life", "value": "3,000+" },
+        { "label": "Total output", "value": "130 W max" },
+        { "label": "AC output", "value": "None" },
+        { "label": "USB-C output", "value": "65 W PD max" },
+        { "label": "USB-A ports", "value": "4 × up to 20 W each" },
+        { "label": "DC outputs", "value": "2 × 12 V / 2 A (DC5521)" },
+        { "label": "Weight", "value": "3.2–3.5 kg" },
+        { "label": "Dimensions", "value": "190 × 65 × 190 mm" }
+      ],
+      "key_specs": {
+        "battery_capacity": "320Wh (100,000mAh)",
+        "battery_type": "LiFePO4 (A-grade)",
+        "cycle_life": "3,000+",
+        "total_output_power": "130W max",
+        "ac_output": "None",
+        "usb_c_output": "65W max (PD)",
+        "usb_a_ports": "4 × up to 20W each",
+        "dc_outputs": "2 × 12V/2A (DC5521)",
+        "inputs": {
+          "usb_c": "100W max",
+          "dc_solar": "11-24V / 5A or 100W max"
+        },
+        "recharge_time": "~3.5–4 hours (100W)",
+        "weight": "3.2–3.5 kg",
+        "dimensions": "190 × 65 × 190 mm",
+        "features": ["Built-in 2W LED light + SOS", "Smart display", "Carrying strap"],
+        "operating_temp": "Charging 0–55°C, Discharging 0–55°C"
+      }
+    },
+    {
+      "id": "itel-power-go-pro-iess-320act",
+      "brand": "itel Energy",
+      "name": "Power Go Pro",
+      "model": "IESS-320ACT",
+      "slug": "itel-power-go-pro",
+      "category": "Portable Power Station",
+      "available": true,
+      "price": null,
+      "usableWh": 320,
+      "maxOutputW": 200,
+      "peakOutputW": 200,
+      "warranty": "12 months",
+      "plainEnglishCapacity": "Runs a 65 W laptop for ~5 hours, a 15 W TV for ~20 hours, or keeps lights + router going overnight.",
+      "description": "320Wh LiFePO4 portable power station with 200W pure sine wave AC outlet plus multi-port USB/DC. Compact and highly portable for home backup, travel and outdoor use.",
+      "images": [
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/08/power-go-pro.webp?fit=580%2C725&ssl=1",
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/08/Power-Go-Pro-Multi-Output-200W.jpeg?fit=580%2C580&ssl=1",
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/08/Power-Go-Pro-Multi-Output-200W-4.jpeg?fit=580%2C580&ssl=1",
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/08/itel-Power-Go-Pro-320Wh-Portable-Power-Station-IESS-320ACT-200W-AC-Output-LiFePO4-Battery-100W-Solar-Charging.jpg?fit=482%2C544&ssl=1",
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/08/power-go-pro-detail.jpg?fit=580%2C416&ssl=1"
+      ],
+      "photos": [
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/08/power-go-pro.webp?fit=580%2C725&ssl=1"
+      ],
+      "inTheBox": [
+        "Power Go Pro unit (IESS-320ACT)",
+        "100W charger / AC adapter",
+        "5521 Male to 5521 Male cable",
+        "5525 Male to PV cable",
+        "User manual"
+      ],
+      "rechargeOptions": [
+        { "method": "USB-C", "detail": "Up to 100W USB-C input", "time": "~4 hours" },
+        { "method": "Solar / AC adapter", "detail": "DC5525 up to 100W (solar or wall adapter)", "time": "~4 hours" }
+      ],
+      "specs": [
+        { "label": "Capacity", "value": "320 Wh (100,000 mAh)" },
+        { "label": "Battery type", "value": "LiFePO4" },
+        { "label": "Cycle life", "value": "6,000+" },
+        { "label": "AC output", "value": "200 W pure sine wave (220/230/240 V 50 Hz)" },
+        { "label": "USB-C output", "value": "65 W PD max" },
+        { "label": "USB-A ports", "value": "3 × total 20 W max" },
+        { "label": "DC outputs", "value": "4 × DC5521 (12 V / 4 A total)" },
+        { "label": "Weight", "value": "3.2 kg" },
+        { "label": "Dimensions", "value": "190 × 65 × 225 mm" }
+      ],
+      "key_specs": {
+        "battery_capacity": "320Wh (100,000mAh)",
+        "battery_type": "LiFePO4",
+        "cycle_life": "6,000+",
+        "ac_output": "200W pure sine wave (220/230/240V 50Hz)",
+        "usb_c_output": "65W max (PD)",
+        "usb_a_ports": "3 × total 20W max",
+        "dc_outputs": "4 × DC5521 (12V/4A total)",
+        "inputs": {
+          "usb_c": "100W max",
+          "dc_solar": "DC5525 100W max (AC adapter + solar)"
+        },
+        "recharge_time": "~4 hours (100W)",
+        "weight": "3.2 kg",
+        "dimensions": "190 × 65 × 225 mm",
+        "features": ["3-level LED light + SOS", "Quiet operation (~30dB)", "German Design Award 2026"],
+        "operating_temp": "Charging 0–55°C, Discharging -10–55°C"
+      }
+    },
+    {
+      "id": "itel-power-tank-iess-05k10n",
+      "brand": "itel Energy",
+      "name": "Power Tank",
+      "model": "IESS-05K10N",
+      "slug": "itel-power-tank",
+      "category": "All-in-One Solar Generator / Home ESS",
+      "available": true,
+      "price": 285000,
+      "usableWh": 1000,
+      "maxOutputW": 500,
+      "peakOutputW": 1000,
+      "warranty": "12–24 months",
+      "plainEnglishCapacity": "Runs four lights, a fan and your Wi-Fi all night — about 8 hours — on a single charge.",
+      "description": "3-in-1 all-in-one system: 500W pure sine wave inverter + 1kWh LiFePO4 battery + 400W MPPT. Plug-and-play home backup for lights, fans, TVs, routers and small appliances.",
+      "images": [
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/08/power-tank-image-1.png?w=660&ssl=1",
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/08/power-tank-mobile-image-1.png?w=660&ssl=1",
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/08/power-tank-mobile-image-2.png?w=660&ssl=1",
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/08/power-tank-mobile-image-3.png?w=660&ssl=1"
+      ],
+      "photos": [
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/08/power-tank-image-1.png?w=660&ssl=1"
+      ],
+      "inTheBox": [
+        "Power Tank unit (IESS-05K10N)",
+        "AC charging cable",
+        "Solar panel cable / PV connector",
+        "User manual",
+        "Warranty card",
+        "Mounting accessories / wall bracket (where supplied)"
+      ],
+      "rechargeOptions": [
+        { "method": "Mains socket", "detail": "Plug into any standard wall socket (90–280 V)", "time": "About 2 hours (combined with solar)" },
+        { "method": "Solar panel", "detail": "Up to 400 W PV input (panel sold separately)", "time": "Typically 2–4 hours in good sunlight" },
+        { "method": "Dual (solar + grid)", "detail": "Simultaneous charging for fastest refill", "time": "~2 hours" }
+      ],
+      "specs": [
+        { "label": "Capacity", "value": "1 000 Wh (1 kWh)" },
+        { "label": "AC output", "value": "500 W continuous / 600–1 000 W peak" },
+        { "label": "Battery type", "value": "LiFePO4 (lithium iron phosphate)" },
+        { "label": "Cycle life", "value": "6 000+ cycles" },
+        { "label": "PV input", "value": "Max 400 W, 11–60 V MPPT" },
+        { "label": "Switch time", "value": "≤ 20 ms (UPS-class)" },
+        { "label": "Recharge (mains + solar)", "value": "About 2 hours (0 to 100 %)" },
+        { "label": "Weight", "value": "Approx. 10–15 kg" },
+        { "label": "Dimensions", "value": "225 × 139 × 288 mm" },
+        { "label": "Noise", "value": "< 45–47 dB" }
+      ],
+      "key_specs": {
+        "battery_capacity": "1000Wh (1kWh)",
+        "battery_type": "LiFePO4",
+        "rated_capacity": "314Ah",
+        "cycle_life": "6,000+",
+        "ac_output": "500W continuous / 600VA max (pure sine wave, 230V 50Hz)",
+        "surge_power": "600VA",
+        "switch_time": "≤20ms (UPS-class)",
+        "pv_input": "Max 400W, 11–60V MPPT, 1 tracker, 99% efficiency",
+        "ac_input": "90–280Vac (handles up to 380V phase)",
+        "max_ac_input_power": "1000W (bypass + charge)",
+        "recharge_time": "~2 hours (combined solar + grid)",
+        "noise": "<45–47 dB",
+        "dimensions": "225 × 139 × 288 mm",
+        "weight": "Approx. 10–15 kg",
+        "protections": ["Over-voltage", "Overload", "Short-circuit", "Over-temperature", "PV OVP", "Battery fuse"],
+        "features": ["USB-A + AC outputs", "Intelligent fan cooling", "LED SOC display"]
+      }
+    },
+    {
+      "id": "itel-power-tank-1000-iess-1k20n",
+      "brand": "itel Energy",
+      "name": "Power Tank 1000",
+      "model": "IESS-1K20N",
+      "slug": "itel-power-tank-1000",
+      "category": "All-in-One Solar Generator / Home ESS",
+      "available": true,
+      "price": null,
+      "usableWh": 2000,
+      "maxOutputW": 1000,
+      "peakOutputW": 1200,
+      "warranty": "12 months",
+      "plainEnglishCapacity": "Runs lights, fans, TV, Wi-Fi and a laptop for a full night or more — roughly double the runtime of the standard Power Tank.",
+      "description": "Larger 3-in-1 system: 1000W pure sine wave hybrid inverter + 2000Wh LiFePO4 battery + 1200W MPPT. Suitable for more appliances and longer runtimes in homes and small businesses.",
+      "images": [
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/07/power-tank-1000-with-2000wh-lithium-battery-and-1000w-ac-output-can-draw-upto-to-1200w-PV-input.webp?fit=580%2C580&ssl=1",
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/10/itel-power-tank-1000w-with-2000wh.jpg?fit=580%2C580&ssl=1"
+      ],
+      "photos": [
+        "https://i0.wp.com/itelsolar.com/wp-content/uploads/2026/07/power-tank-1000-with-2000wh-lithium-battery-and-1000w-ac-output-can-draw-upto-to-1200w-PV-input.webp?fit=580%2C580&ssl=1"
+      ],
+      "inTheBox": [
+        "Power Tank 1000 unit (IESS-1K20N)",
+        "AC charging cable",
+        "User manual",
+        "Warranty card"
+      ],
+      "rechargeOptions": [
+        { "method": "Mains socket", "detail": "90–280 V AC input", "time": "~2–2.5 hours (with solar)" },
+        { "method": "Solar panel", "detail": "Up to 1 200 W PV input", "time": "Typically 2–3 hours in good sunlight" },
+        { "method": "Dual (solar + grid)", "detail": "Simultaneous charging", "time": "~2 hours" }
+      ],
+      "specs": [
+        { "label": "Capacity", "value": "2 000 Wh (2 kWh)" },
+        { "label": "AC output", "value": "1 000 W continuous / 1 200 VA peak" },
+        { "label": "Battery type", "value": "LiFePO4 (Class-A)" },
+        { "label": "Cycle life", "value": "6 000–8 000+" },
+        { "label": "PV input", "value": "Max 1 200 W, 11–60 V MPPT" },
+        { "label": "Switch time", "value": "< 20 ms" },
+        { "label": "Weight", "value": "~19 kg" },
+        { "label": "Dimensions", "value": "300 × 300 × 180 mm" }
+      ],
+      "key_specs": {
+        "battery_capacity": "2000Wh (2kWh)",
+        "battery_type": "LiFePO4 (Class-A)",
+        "cycle_life": "6,000–8,000+",
+        "ac_output": "1000W continuous / 1200VA max (pure sine wave, 230V 50/60Hz)",
+        "switch_time": "<20ms",
+        "pv_input": "Max 1200W, 11–60V MPPT, max 30A, 99% efficiency",
+        "ac_input": "90–280Vac (withstands 380V phase)",
+        "max_ac_input_power": "1000W (bypass)",
+        "dc_outputs": ["USB-C", "USB-A (multiple)", "DC5525 12V/4A"],
+        "recharge_time": "~2–2.5 hours (dual PV + grid)",
+        "noise": "<45 dB (silent) / <50 dB (performance)",
+        "dimensions": "300 × 300 × 180 mm",
+        "weight": "~19 kg",
+        "protections": ["OVP", "PV OVP", "Overload", "Short-circuit", "Over-temperature", "AC Type II surge"],
+        "features": ["Intelligent fan cooling", "Plug-and-play 3-in-1 design"]
+      }
+    },
+    {
+      "id": "hithium-arkvolt-l16",
+      "brand": "Hithium (ARKVOLT)",
+      "name": "ARKVOLT L16",
+      "model": "HPB-16LV",
+      "slug": "hithium-arkvolt-l16",
+      "category": "Residential Low-Voltage Battery",
+      "available": true,
+      "price": null,
+      "usableWh": 16076,
+      "maxOutputW": null,
+      "peakOutputW": null,
+      "warranty": "10 years / 8 000 cycles",
+      "plainEnglishCapacity": "16 kWh modular home battery — enough for a full day’s essential loads when paired with a compatible inverter.",
+      "description": "16kWh low-voltage (51.2V) modular home battery. Highly compatible with mainstream inverters, IP65, long cycle life.",
+      "images": [
+        "https://hithium-arkvolt.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F04-01.2wv4_x5s_gbhd.webp&w=3840&q=75",
+        "https://hithium-arkvolt.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F04-01.363p9716a14z8.webp&w=3840&q=75"
+      ],
+      "photos": [
+        "https://hithium-arkvolt.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F04-01.2wv4_x5s_gbhd.webp&w=3840&q=75"
+      ],
+      "inTheBox": [],
+      "rechargeOptions": [],
+      "specs": [
+        { "label": "Capacity", "value": "16 076.8 Wh (16.07 kWh)" },
+        { "label": "Rated voltage", "value": "51.2 VDC" },
+        { "label": "Max charge/discharge current", "value": "200 A / 200 A" },
+        { "label": "Cycle life", "value": "≥ 8 000 – 11 000" },
+        { "label": "IP rating", "value": "IP65" },
+        { "label": "Weight", "value": "123 kg" },
+        { "label": "Dimensions", "value": "468.2 × 265 × 900 mm" }
+      ],
+      "key_specs": {
+        "battery_energy": "16,076.8 Wh (16.07 kWh)",
+        "cell_capacity": "314Ah",
+        "rated_voltage": "51.2 VDC",
+        "voltage_range": "44.8–57.6 VDC",
+        "max_charge_discharge_current": "200A / 200A",
+        "cycle_life": "≥11,000 (or ≥8,000 @ standard conditions)",
+        "chemistry": "LiFePO4 (LFP)",
+        "weight": "123 kg",
+        "dimensions": "468.2 × 265 × 900 mm",
+        "ip_rating": "IP65",
+        "operating_temp": "Charge/Discharge -20°C to 55°C",
+        "scalability": "Up to 32 units in parallel (up to ~512 kWh)",
+        "communication": "CAN / RS485",
+        "features": ["Split modular design for easy handling", "Optional heating"]
+      }
+    },
+    {
+      "id": "hithium-arkvolt-l16s",
+      "brand": "Hithium (ARKVOLT)",
+      "name": "ARKVOLT L16S",
+      "model": "HPB-16LV-S",
+      "slug": "hithium-arkvolt-l16s",
+      "category": "Residential Low-Voltage Battery",
+      "available": true,
+      "price": null,
+      "usableWh": 16070,
+      "maxOutputW": null,
+      "peakOutputW": null,
+      "warranty": "10 years / 8 000 cycles",
+      "plainEnglishCapacity": "Split-design 16 kWh battery for easier indoor handling and installation.",
+      "description": "Split-design 16kWh low-voltage battery optimized for easier transport and installation. High current capability.",
+      "images": [],
+      "photos": [],
+      "inTheBox": [],
+      "rechargeOptions": [],
+      "specs": [
+        { "label": "Capacity", "value": "16.07 kWh" },
+        { "label": "Rated voltage", "value": "51.2 V" },
+        { "label": "Max current", "value": "200 A" },
+        { "label": "IP rating", "value": "IP65" },
+        { "label": "Weight", "value": "137.5 kg" }
+      ],
+      "key_specs": {
+        "battery_energy": "16.07 kWh",
+        "cell_capacity": "314Ah",
+        "rated_voltage": "51.2 V",
+        "voltage_range": "44.8–57.6 V",
+        "max_charge_discharge_current": "200A",
+        "recommend_current": "≤157A",
+        "cycle_life": "≥8,000",
+        "chemistry": "LiFePO4",
+        "weight": "137.5 kg",
+        "dimensions": "480 × 278 × 1025 mm",
+        "ip_rating": "IP65",
+        "operating_temp": "Charge/Discharge -20°C to 55°C",
+        "scalability": "Up to 32 units in parallel",
+        "communication": "RS485 / CAN"
+      }
+    },
+    {
+      "id": "hithium-arkvolt-f8s",
+      "brand": "Hithium (ARKVOLT)",
+      "name": "ARKVOLT F8S",
+      "model": "HiTHIUM DC-Boost HV Series",
+      "slug": "hithium-arkvolt-f8s",
+      "category": "Residential High-Voltage Modular Battery",
+      "available": true,
+      "price": null,
+      "usableWh": 8000,
+      "maxOutputW": 4000,
+      "peakOutputW": null,
+      "warranty": null,
+      "plainEnglishCapacity": "8 kWh high-voltage modular pack with built-in DC optimizer — expand to 32 kWh per stack.",
+      "description": "8kWh high-voltage modular battery with built-in DC optimizer. Supports mixing old/new modules and flexible expansion.",
+      "images": [],
+      "photos": [],
+      "inTheBox": [],
+      "rechargeOptions": [],
+      "specs": [
+        { "label": "Module capacity", "value": "8 kWh" },
+        { "label": "Nominal voltage", "value": "576 V" },
+        { "label": "Rated power", "value": "4 000 W" },
+        { "label": "IP rating", "value": "IP65" },
+        { "label": "Weight", "value": "~98 kg per module" }
+      ],
+      "key_specs": {
+        "battery_module_capacity": "8 kWh",
+        "usable_capacity": "8 kWh",
+        "nominal_voltage": "576 V",
+        "operating_voltage_range": "482–657 V",
+        "rated_output_power": "4000 W",
+        "cycle_life": "≥8,000",
+        "chemistry": "LiFePO4",
+        "weight": "~98 kg (per module)",
+        "dimensions": "597 × 263 × 677 mm",
+        "ip_rating": "IP65",
+        "operating_temp": "Charge 0–55°C, Discharge -20–55°C",
+        "scalability": "1–4 modules per stack (8–32 kWh), parallel up to 256 kWh",
+        "features": ["Built-in DC optimizer / DC-BOOST", "Mix-batch compatible", "Optional heating"]
+      }
+    },
+    {
+      "id": "hithium-arkvolt-r30",
+      "brand": "Hithium (ARKVOLT)",
+      "name": "ARKVOLT R30",
+      "model": "HPC-30LV-22U",
+      "slug": "hithium-arkvolt-r30",
+      "category": "Residential All-in-One High-Capacity Battery Cabinet",
+      "available": true,
+      "price": null,
+      "usableWh": 30054,
+      "maxOutputW": null,
+      "peakOutputW": null,
+      "warranty": null,
+      "plainEnglishCapacity": "30 kWh all-in-one cabinet using large 587 Ah cells — high density for energy-intensive homes.",
+      "description": "30kWh all-in-one low-voltage cabinet using large 587Ah cells. High energy density, simplified wiring, suitable for energy-intensive homes.",
+      "images": [],
+      "photos": [],
+      "inTheBox": [],
+      "rechargeOptions": [],
+      "specs": [
+        { "label": "Capacity", "value": "30 054 Wh (30.05 kWh)" },
+        { "label": "Cell capacity", "value": "587 Ah" },
+        { "label": "Max current", "value": "300 A" },
+        { "label": "IP rating", "value": "IP20 (indoor)" },
+        { "label": "Weight", "value": "~350 kg" }
+      ],
+      "key_specs": {
+        "battery_energy": "30,054.4 Wh (30.05 kWh)",
+        "cell_capacity": "587Ah",
+        "rated_voltage": "51.2 VDC",
+        "max_charge_discharge_current": "300A",
+        "cycle_life": "≥8,000",
+        "chemistry": "LiFePO4",
+        "weight": "~350 kg",
+        "dimensions": "600 × 630 × 1000 mm",
+        "ip_rating": "IP20 (indoor)",
+        "operating_temp": "Charge 0–55°C, Discharge -20–55°C",
+        "scalability": "Up to 32 units in parallel (up to ~960 kWh)",
+        "communication": "CAN / RS485 / WIFI",
+        "features": ["Slide-in quick-plug modules", "Built-in distribution box", "Optional heating", "LED display"]
+      }
+    },
+    {
+      "id": "hithium-cell-314ah",
+      "brand": "Hithium",
+      "name": "ESS Cell 314Ah",
+      "model": "LFP71173207 / 314Ah",
+      "slug": "hithium-cell-314ah",
+      "category": "Battery Cell",
+      "available": true,
+      "price": null,
+      "usableWh": null,
+      "maxOutputW": null,
+      "peakOutputW": null,
+      "warranty": null,
+      "plainEnglishCapacity": null,
+      "description": "High-performance prismatic LFP cell widely used in residential and commercial ESS.",
+      "images": [],
+      "photos": [],
+      "inTheBox": [],
+      "rechargeOptions": [],
+      "specs": [
+        { "label": "Nominal capacity", "value": "314 Ah" },
+        { "label": "Chemistry", "value": "LiFePO4 (LFP)" },
+        { "label": "Cycle life", "value": "≥ 13 000" },
+        { "label": "Gravimetric ED", "value": "≥ 173.2 Wh/kg" }
+      ],
+      "key_specs": {
+        "nominal_capacity": "314 Ah",
+        "chemistry": "LiFePO4 (LFP)",
+        "cycle_life": "≥13,000",
+        "gravimetric_ed": "≥173.2 Wh/kg",
+        "volumetric_ed": "≥382.6 Wh/L",
+        "features": ["No fire/explosion in nail penetration & crush tests", "Ultra-wide operating temperature", "Certifications: IEC 62619, UL 9540A, UL 1973, UN 38.3"]
+      }
+    },
+    {
+      "id": "hithium-cell-587ah",
+      "brand": "Hithium",
+      "name": "∞Cell 587Ah",
+      "model": "587Ah",
+      "slug": "hithium-cell-587ah",
+      "category": "Battery Cell",
+      "available": true,
+      "price": null,
+      "usableWh": null,
+      "maxOutputW": null,
+      "peakOutputW": null,
+      "warranty": null,
+      "plainEnglishCapacity": null,
+      "description": "Large-format LFP cell used in ARKVOLT R30 and utility systems.",
+      "images": [],
+      "photos": [],
+      "inTheBox": [],
+      "rechargeOptions": [],
+      "specs": [
+        { "label": "Nominal capacity", "value": "587 Ah" },
+        { "label": "Chemistry", "value": "LiFePO4 (LFP)" },
+        { "label": "Cycle life", "value": "≥ 11 000" }
+      ],
+      "key_specs": {
+        "nominal_capacity": "587 Ah",
+        "chemistry": "LiFePO4 (LFP)",
+        "cycle_life": "≥11,000",
+        "gravimetric_ed": "~185 Wh/kg",
+        "volumetric_ed": "~413 Wh/L",
+        "dimensions": "286 × 73.50 × 216.3 mm",
+        "certifications": ["IEC 62619", "UL 9540A", "UL 1973", "GB/T 36276", "UN 38.3"]
+      }
+    },
+    {
+      "id": "hithium-cell-1175ah",
+      "brand": "Hithium",
+      "name": "∞Cell 1175Ah",
+      "model": "1175Ah",
+      "slug": "hithium-cell-1175ah",
+      "category": "Battery Cell",
+      "available": true,
+      "price": null,
+      "usableWh": null,
+      "maxOutputW": null,
+      "peakOutputW": null,
+      "warranty": null,
+      "plainEnglishCapacity": null,
+      "description": "Ultra-large LFP cell designed specifically for long-duration energy storage (4-hour systems).",
+      "images": [],
+      "photos": [],
+      "inTheBox": [],
+      "rechargeOptions": [],
+      "specs": [
+        { "label": "Nominal capacity", "value": "1 175 Ah" },
+        { "label": "Chemistry", "value": "LiFePO4 (LFP)" },
+        { "label": "Cycle life", "value": "≥ 11 000" }
+      ],
+      "key_specs": {
+        "nominal_capacity": "1175 Ah",
+        "chemistry": "LiFePO4 (LFP)",
+        "cycle_life": "≥11,000",
+        "gravimetric_ed": "≥180 Wh/kg",
+        "volumetric_ed": "≥400 Wh/L",
+        "dimensions": "580.22 × 75.22 × 216.31 mm",
+        "certifications": ["IEC 62619", "UL 9540A", "UL 1973", "UN 38.3"]
+      }
+    },
+    {
+      "id": "hithium-cell-1300ah",
+      "brand": "Hithium",
+      "name": "∞Cell 1300Ah",
+      "model": "1300Ah",
+      "slug": "hithium-cell-1300ah",
+      "category": "Battery Cell",
+      "available": true,
+      "price": null,
+      "usableWh": null,
+      "maxOutputW": null,
+      "peakOutputW": null,
+      "warranty": null,
+      "plainEnglishCapacity": null,
+      "description": "Highest-capacity LFP cell for 8-hour long-duration energy storage applications.",
+      "images": [],
+      "photos": [],
+      "inTheBox": [],
+      "rechargeOptions": [],
+      "specs": [
+        { "label": "Nominal capacity", "value": "1 300 Ah" },
+        { "label": "Chemistry", "value": "LiFePO4 (LFP)" },
+        { "label": "Cycle life", "value": "≥ 10 000" }
+      ],
+      "key_specs": {
+        "nominal_capacity": "1300 Ah",
+        "chemistry": "LiFePO4 (LFP)",
+        "cycle_life": "≥10,000",
+        "gravimetric_ed": "≥190 Wh/kg",
+        "volumetric_ed": "≥406 Wh/L",
+        "dimensions": "580.2 × 75.2 × 234.3 mm",
+        "features": ["Temperature rise ≤5°C", "Designed lifespan >25 years"]
+      }
+    },
+    {
+      "id": "hithium-cell-n162ah",
+      "brand": "Hithium",
+      "name": "∞Cell N162Ah",
+      "model": "N162Ah",
+      "slug": "hithium-cell-n162ah",
+      "category": "Battery Cell (Sodium-ion)",
+      "available": true,
+      "price": null,
+      "usableWh": null,
+      "maxOutputW": null,
+      "peakOutputW": null,
+      "warranty": null,
+      "plainEnglishCapacity": null,
+      "description": "Sodium-ion (NFPP) cell for utility-scale energy storage with ultra-wide temperature range and very long cycle life.",
+      "images": [],
+      "photos": [],
+      "inTheBox": [],
+      "rechargeOptions": [],
+      "specs": [
+        { "label": "Nominal capacity", "value": "162 Ah" },
+        { "label": "Chemistry", "value": "NFPP / HC (Sodium-ion)" },
+        { "label": "Cycle life", "value": "≥ 20 000" }
+      ],
+      "key_specs": {
+        "nominal_capacity": "162 Ah",
+        "chemistry": "NFPP / HC (Sodium-ion)",
+        "cycle_life": "≥20,000",
+        "gravimetric_ed": "≥95.2 Wh/kg",
+        "volumetric_ed": "≥173 Wh/L",
+        "operating_temp": "–40°C to 60°C",
+        "features": ["High energy efficiency ≥94% @1P", "High thermal stability"]
+      }
+    }
+  ],
+  "deliveryFeeByState": [
+    { "state": "Lagos", "fee": 3000 },
+    { "state": "Abuja (FCT)", "fee": 5000 },
+    { "state": "Rivers", "fee": 6000 },
+    { "state": "Kano", "fee": 7000 },
+    { "state": "Oyo", "fee": 5500 },
+    { "state": "Delta", "fee": 6500 },
+    { "state": "Anambra", "fee": 6000 },
+    { "state": "Enugu", "fee": 6500 },
+    { "state": "Kaduna", "fee": 7000 },
+    { "state": "Ondo", "fee": 6000 },
+    { "state": "Other states", "fee": 8000 }
+  ],
+  "powerSpectrum": [
+    {
+      "id": "power-bank",
+      "label": "Power bank",
+      "priceRange": "₦5 000 – ₦30 000",
+      "canRun": "Phone charging, maybe a small light",
+      "duration": "6 to 12 hours of phone use",
+      "limitation": "Cannot run a fan, TV or laptop for long",
+      "highlight": false
+    },
+    {
+      "id": "power-station",
+      "label": "Power station",
+      "priceRange": "₦150 000 – ₦350 000",
+      "canRun": "Lights, fan, TV, Wi-Fi, laptop — everything typical for a home or office",
+      "duration": "1 to 2 nights on a single charge",
+      "highlight": true,
+      "callout": "This is the one most people miss"
+    },
+    {
+      "id": "inverter-system",
+      "label": "Inverter + batteries",
+      "priceRange": "₦600 000 – ₦2 000 000+",
+      "canRun": "Whole home, including fridge and air conditioner",
+      "duration": "Depends on battery bank size",
+      "limitation": "High upfront cost, fixed installation, requires maintenance",
+      "highlight": false
+    }
+  ],
+  "DEFAULT_MONTHLY_POWER_SPEND": 30000,
+  "DEFAULT_DAILY_OUTAGE_HOURS": 8,
+  "meta": {
+    "generated": "2026-10-20",
+    "notes": [
+      "All 'available' flags set to true — update manually as needed.",
+      "Price on Power Tank (IESS-05K10N) set to 285000 as per your template; others left null for you to fill.",
+      "deliveryFeeByState, powerSpectrum and defaults are top-level so they can be shared across the site.",
+      "Image links are direct from official sources. Some Hithium entries still have empty photo arrays."
+    ]
+  }
+}

@@ -1,0 +1,110 @@
+/* css/tokens.css
+   ─────────────────────────────────────────────────────────────────────────────
+   All design tokens as CSS custom properties.
+   Change the look of the entire site by editing this file only.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Colours ─────────────────────────────────────────────────────────────── */
+  --color-bg:          #F8F7F4;
+  --color-surface:     #FFFFFF;
+  --color-ink:         #111217;
+  --color-ink-muted:   #4A4D54;
+  --color-ink-faint:   #8B8F99;
+  --color-border:      rgba(17,18,23,0.10);  /* hairline — low contrast */
+
+  /* Accent — warm amber, tuned for AA contrast on white */
+  --color-accent:      #C97D0A;   /* main accent — passes AA on white */
+  --color-accent-light:#FEF3DC;   /* tint for backgrounds */
+  --color-accent-bg:   #FFF8ED;
+  --color-accent-glow: rgba(201,125,10,0.18);
+
+  /* Dark sections (compare, footer) */
+  --color-dark-bg:     #111217;
+  --color-dark-surface:#1A1C23;
+  --color-dark-border: rgba(255,255,255,0.09);
+  --color-dark-ink:    #F3F3EE;
+  --color-dark-muted:  #8D909A;
+
+  /* Semantic */
+  --color-success:     #1A7A4A;
+  --color-warning:     #B45309;
+  --color-error:       #C0392B;
+
+  /* ── Radii — mixed per brief ─────────────────────────────────────────────── */
+  /* Images / large frames: 28–32px */
+  --radius-img:    30px;
+  /* Cards: 16–18px */
+  --radius-card:   16px;
+  /* Controls (inputs, small buttons): 10–12px */
+  --radius-control:10px;
+  /* Pill buttons */
+  --radius-pill:   999px;
+  /* Chips / badges: 6px */
+  --radius-chip:   6px;
+
+  /* ── Shadows — hairline-first philosophy ─────────────────────────────────── */
+  --shadow-card: 0 0 0 1px var(--color-border), 0 2px 12px rgba(17,18,23,0.04);
+  --shadow-float:0 4px 24px rgba(17,18,23,0.10), 0 0 0 1px rgba(255,255,255,0.20);
+  --shadow-btn:  0 2px 12px rgba(201,125,10,0.30);
+
+  /* ── Spacing scale ───────────────────────────────────────────────────────── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32: 128px;
+
+  /* ── Type scale (fluid with clamp) ──────────────────────────────────────── */
+  /* Primary grotesk — Inter */
+  --font-sans:   'Inter', system-ui, -apple-system, sans-serif;
+  /* Serif for single emphasised word in big headings — DM Serif Display italic */
+  --font-serif:  'DM Serif Display', Georgia, serif;
+  /* Fallback alias */
+  --font-family: var(--font-sans);
+
+  --text-xs:   clamp(11px, 2.5vw, 12px);
+  --text-sm:   clamp(13px, 3vw,   14px);
+  --text-base: clamp(15px, 3.5vw, 16px);
+  --text-lg:   clamp(17px, 4vw,   18px);
+  --text-xl:   clamp(19px, 4.5vw, 22px);
+  --text-2xl:  clamp(22px, 5vw,   28px);
+  --text-3xl:  clamp(28px, 6vw,   36px);
+  --text-4xl:  clamp(34px, 7vw,   48px);
+  --text-5xl:  clamp(42px, 8vw,   68px);
+
+  --line-tight:  1.12;
+  --line-snug:   1.3;
+  --line-normal: 1.58;
+  --line-loose:  1.72;
+
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-extrabold: 800;
+
+  /* ── Layout ──────────────────────────────────────────────────────────────── */
+  --max-width:     1200px;
+  --content-pad:   clamp(20px, 5vw, 56px);
+  --section-gap:   clamp(72px, 11vw, 128px);
+
+  /* ── Transitions ─────────────────────────────────────────────────────────── */
+  --ease-out:  cubic-bezier(0.22, 1, 0.36, 1);
+  --duration:  240ms;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration: 0ms;
+  }
+}
