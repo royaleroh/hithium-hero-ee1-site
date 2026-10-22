@@ -25,6 +25,7 @@ function initialise() {
   const summary = byId('order-summary');
   summary.innerHTML = `${productPhoto(product, {className: 'checkout-product-photo'})}
     <p class="result-label">Your chosen unit</p><h2>${escapeHTML(product.name)}</h2>
+    <p class="order-model" data-level="technical">Brand: ${escapeHTML(product.brand)}. Model: ${escapeHTML(product.model)}.</p>
     ${productPlainContent(product)}${technicalDetails(productTechnicalContent(product))}<ul id="summary-appliances" class="summary-appliances"></ul>
     <dl class="order-totals"><div><dt>Unit price</dt><dd>${formatNaira(product.price)}</dd></div>
       <div><dt>Delivery to your state</dt><dd id="delivery-fee">Select state</dd></div>

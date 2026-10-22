@@ -15,6 +15,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { hithiumProducts } from './hithium.js';
+import { solutionProducts } from './solution-products.js';
 import { applyProductControls, loadProductControls } from './product-controls.js';
 
 const baseCatalogue = {
@@ -800,7 +801,7 @@ const baseCatalogue = {
 };
 
 const loaded = await loadProductControls();
-const resolved = applyProductControls([...baseCatalogue.products, ...hithiumProducts], loaded.controls);
+const resolved = applyProductControls([...baseCatalogue.products, ...hithiumProducts, ...solutionProducts], loaded.controls);
 export const productControlErrors = [...(loaded.error ? [loaded.error] : []), ...resolved.errors];
 export const catalogue = { ...baseCatalogue, products: resolved.products };
 

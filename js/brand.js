@@ -17,4 +17,4 @@ document.querySelectorAll('[data-brand-label]').forEach(el => {
 });
 document.title = `${document.querySelector('title').dataset.pageTitle} | ${SITE_NAME}`;
 const ogTitle = document.querySelector('meta[property="og:title"]');
-if (ogTitle) ogTitle.content = `${SITE_NAME}: Steady light isn't expensive.`;
+if (ogTitle) ogTitle.content = `${SITE_NAME}: Power for your kind of day.`;

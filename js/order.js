@@ -1,7 +1,7 @@
 import { deliveryFeeByState } from '../data/catalogue.js';
 
 export function canCheckout(product) {
-  return Boolean(product?.calculatorEligible && product.tier === 'portable' &&
+  return Boolean(((product?.calculatorEligible && product.tier === 'portable') || (product?.tier==='power-bank' && product.specStatus==='verified')) &&
     product.available && Number.isFinite(product.price) && product.price > 0);
 }
 export function computeOrderTotal(product, stateName) {
