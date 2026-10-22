@@ -93,6 +93,13 @@ Appliance wattages, surge assumptions, delivery fees and supplier details still 
 
 ## Calculation and actions
 
+The final consultation form validates the visitor's name and email before opening
+WhatsApp with those details. It uses `WHATSAPP_NUMBER` and sends an optional lead
+through the shared `sendLead()` function. Set a real number before using it with
+customers. The adjacent Power Tank order button uses the resolved catalogue's
+name, price and availability; it never uses a separate promotional price.
+Unpriced or unavailable products cannot enter checkout from this section.
+
 Situation presets and the live calculator both call `estimateSetup()` in `js/estimate.js`, which calls `recommend()` in `js/recommend.js`.
 
 Energy is `1.2 * sum(watts * qty * min(hours, outageHours))`. Candidates must pass AC socket, running output, peak output and capacity checks. Runtime at simultaneous full load includes the same loss allowance. This is an estimate, not a promised appliance schedule.

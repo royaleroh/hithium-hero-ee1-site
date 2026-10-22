@@ -92,7 +92,8 @@ function buildProductSection() {
       availability: `https://schema.org/${mainProduct.available ? 'InStock' : 'OutOfStock'}` } } : {}),
   });
 
-  document.querySelector('.product-img-wrap').innerHTML = productPhoto(mainProduct);
+  const imageFrame = document.querySelector('.product-img-wrap');
+  if (imageFrame) imageFrame.innerHTML = productPhoto(mainProduct);
 
   // Plain-English capacity
   const capacityEl = document.getElementById('product-capacity');
