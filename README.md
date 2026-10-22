@@ -80,7 +80,7 @@ All public settings live in `config.js`:
 | Setting | Current purpose |
 |---|---|
 | `SITE_NAME` | Brand text, page titles and accessible home-link names; confirm the chosen name |
-| `WHATSAPP_NUMBER` | Country code and number without a plus sign; currently a placeholder |
+| `WHATSAPP_NUMBER` | Consultation and enquiry number, including country code without a plus sign or spaces |
 | `PAYSTACK_PUBLIC_KEY` | Empty means demo mode; never use a secret key |
 | `LEAD_ENDPOINT` | Empty disables sending; set to a JSON POST endpoint |
 | `CURRENCY`, `CURRENCY_SYMBOL` | Naira display configuration |
@@ -92,6 +92,13 @@ All public settings live in `config.js`:
 Appliance wattages, surge assumptions, delivery fees and supplier details still need confirmation where marked TODO. Blank calculator inputs use the exported 8-hour outage and 30000-naira example spend. Default spend is explicitly labelled as an example, never as the visitor's own spending.
 
 ## Calculation and actions
+
+The final consultation form validates the visitor's name and email before opening
+WhatsApp with those details. It uses `WHATSAPP_NUMBER` and sends an optional lead
+through the shared `sendLead()` function. Set a real number before using it with
+customers. The adjacent Power Tank order button uses the resolved catalogue's
+name, price and availability; it never uses a separate promotional price.
+Unpriced or unavailable products cannot enter checkout from this section.
 
 Situation presets and the live calculator both call `estimateSetup()` in `js/estimate.js`, which calls `recommend()` in `js/recommend.js`.
 

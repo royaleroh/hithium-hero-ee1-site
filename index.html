@@ -33,6 +33,7 @@
 <link rel="stylesheet" href="css/stage-b.css">
 <link rel="stylesheet" href="css/plain.css">
 <link rel="stylesheet" href="css/product-results.css">
+<link rel="stylesheet" href="css/consultation.css">
 </head>
 <body>
 
@@ -210,16 +211,17 @@
     <p class="section-label">The product</p>
     <h2 class="section-heading" id="product-h2">The itel Power Tank.</h2>
 
-        <div class="dual-cta dual-cta-final" data-lead-fields>
-          <div class="cta-option cta-option-primary">
-            <button type="button" class="btn btn-whatsapp btn-cta-primary" data-action="consult">💬 Get My Free Consultation</button>
-            <p class="cta-helper"><b>Not sure what size you need?</b> Chat with an energy expert for a free recommendation based on your devices and daily power usage.</p>
-          </div>
-          <div class="cta-option cta-option-secondary">
-            <button type="button" class="btn btn-primary btn-cta-secondary" data-action="order">Secure Yours <span class="btn-prices"><span class="price-old">₦350,000</span><span class="price-new">₦300,000</span></span></button>
-            <p class="cta-helper"><b>Already decided?</b> View the current price and continue securely to checkout.</p>
-          </div>
-        </div>
+    <div class="product-grid">
+      <!-- Image -->
+      <div class="product-img-wrap reveal">
+        <img
+          src="assets/products/itel-power-tank/product.webp"
+          alt="Power Tank"
+          width="1600"
+          height="1718"
+          loading="lazy"
+        />
+      </div>
 
       <!-- Details -->
       <div class="reveal reveal--delay-1">
@@ -344,32 +346,67 @@
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="final-cta" id="final-consult">
-  <div class="eyebrow center" style="justify-content:center;"><span class="power-bars lit"><span></span><span></span><span></span><span></span></span> FREE POWER CONSULTATION</div>
-  <h2 class="h-section center">Ready to Protect Your Work From the Next Blackout?</h2>
-  <p class="lede center">Whether you're still comparing options or you're ready to buy, we'll help you take the next step. Choose the option that fits you best.</p>
-
-  <div class="lead-card" data-lead-card>
-    <div class="field" data-field="name">
-      <label>Full name</label>
-      <input type="text" data-input="name" placeholder="e.g. Chisom Okafor" autocomplete="name">
-      <span class="field-error">Please enter your name.</span>
-    </div>
-
-    <div class="field" data-field="email">
-      <label>Email address</label>
-      <input type="email" data-input="email" placeholder="you@example.com" autocomplete="email">
-      <span class="field-error">Please enter a valid email address.</span>
-    </div>
-    <div class="dual-cta dual-cta-final" data-lead-fields>
-      <div class="cta-option cta-option-primary">
-        <button type="button" class="btn btn-whatsapp btn-cta-primary" data-action="consult">💬 Get My Free Consultation</button>
-        <p class="cta-helper"><b>Not sure what size you need?</b> Chat with an energy expert for a free recommendation based on your devices and daily power usage.</p>
+<!-- ══════════════════════════════════════════════════════════════════════════
+     10. FOOTER
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="section consultation-section" id="final-consult" aria-labelledby="consultation-heading">
+  <div class="container">
+    <p class="section-label">Free power consultation</p>
+    <h2 class="section-heading" id="consultation-heading">Ready to protect your work from the next blackout?</h2>
+    <p class="consultation-intro">Still comparing options? Tell us a little about yourself and we will help you choose.</p>
+    <div class="consultation-options">
+      <form id="consultation-form" class="consultation-card">
+        <h3>Get help choosing</h3>
+        <p>We will open WhatsApp with your details. Tell us what you want to run.</p>
+        <div class="consultation-field">
+          <label for="consultation-name">Full name</label>
+          <input id="consultation-name" name="name" type="text" autocomplete="name" placeholder="e.g. Chisom Okafor" required maxlength="120">
+        </div>
+        <div class="consultation-field">
+          <label for="consultation-email">Email address</label>
+          <input id="consultation-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254">
+        </div>
+        <button type="submit" class="btn btn--primary">Get my free consultation</button>
+      </form>
+      <div class="consultation-card consultation-order">
+        <p class="section-label">Already chosen?</p>
+        <h3 id="consultation-product-name">Your power box</h3>
+        <p>Check your appliances before you order, or continue with this unit.</p>
+        <p id="consultation-product-price" class="consultation-price"></p>
+        <button type="button" id="consultation-checkout" class="btn btn--outline" hidden>Checkout</button>
+        <a href="#calculator" class="consultation-calculator">Check what I need</a>
       </div>
-      <div class="cta-option cta-option-secondary">
-        <button type="button" class="btn btn-primary btn-cta-secondary" data-action="order">Secure Yours <span class="btn-prices"><span class="price-old">₦350,000</span><span class="price-new">₦300,000</span></span></button>
-        <p class="cta-helper"><b>Already decided?</b> View the current price and continue securely to checkout.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:var(--space-3);">
+          <div class="nav-logo-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <circle cx="9" cy="9" r="4" fill="white"/>
+              <path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.22 3.22l1.41 1.41M13.36 13.36l1.41 1.41M3.22 14.78l1.41-1.41M13.36 4.64l1.41-1.41" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span data-site-name>Site name</span>
+        </div>
+        <p>Power boxes for homes and shops. Find the one that runs what you need.</p>
+        <a
+          id="footer-whatsapp"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--outline"
+          style="margin-top:var(--space-5);border-color:var(--color-dark-border);color:var(--color-dark-ink);"
+          aria-label="Chat with us on WhatsApp"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.124 1.533 5.856L0 24l6.335-1.508A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.172-1.418l-.371-.218-3.752.893.947-3.65-.242-.382A9.98 9.98 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+          Chat on WhatsApp
+        </a>
       </div>
 
       <!-- Links -->
@@ -422,6 +459,7 @@
 
 </script>
 
+<script type="module" src="js/consultation.js"></script>
 <script type="module" src="js/brand.js"></script>
 </body>
 </html>

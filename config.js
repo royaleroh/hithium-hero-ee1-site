@@ -8,7 +8,7 @@
 // TODO: replace with your actual business name before going live
 export const SITE_NAME = 'Let It Shine'; // TODO: confirm
 
-export const WHATSAPP_NUMBER = '2348000000000'; // TODO: confirm - include country code, no + or spaces
+export const WHATSAPP_NUMBER = '2348076229301'; // Country code and number, without + or spaces.
 
 export const PAYSTACK_PUBLIC_KEY = ''; // TODO: add your Paystack public key (starts with pk_live_ or pk_test_)
 

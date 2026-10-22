@@ -136,6 +136,53 @@ before(async()=>{
   assert.deepEqual(errors,[]);
 }, {timeout:60000});
 after(async()=>{await browser?.close();await new Promise(resolve=>server?server.close(resolve):resolve());});
+
+test('homepage renders products, delivery and a complete footer without script errors', async()=>{
+  const page=await browser.newPage();
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto(`http://127.0.0.1:${server.address().port}`);
+  await page.locator('#trust-facts article').first().waitFor();
+  assert.equal(await page.locator('#trust-facts article').count(),portableProducts.length);
+  assert.ok(await page.locator('#delivery-table-body tr').count()>0);
+  assert.equal(await page.locator('footer.site-footer .footer-bottom').count(),1);
+  assert.equal(await page.locator('.product-img-wrap img').count(),1);
+  assert.equal(await page.locator('.field-error').count(),0);
+  // An optional photograph frame must never prevent unrelated sections rendering.
+  await page.route('**/index.html',async route=>{
+    const html=await readFile(path.join(root,'index.html'),'utf8');
+    await route.fulfill({contentType:'text/html',body:html.replace('class="product-img-wrap reveal"','class="missing-photo-frame"')});
+  });
+  await page.goto(`http://127.0.0.1:${server.address().port}/index.html`);
+  await page.locator('#trust-facts article').first().waitFor();
+  assert.ok(await page.locator('#delivery-table-body tr').count()>0);
+  assert.deepEqual(errors,[]);await page.close();
+});
+
+test('consultation validates details, builds WhatsApp and uses catalogue checkout pricing', async()=>{
+  const page=await browser.newPage();
+  await page.goto(`http://127.0.0.1:${server.address().port}`);
+  await page.locator('#consultation-checkout').waitFor();
+  await page.evaluate(()=>{window.openedUrls=[];window.open=url=>{window.openedUrls.push(url);return null;};});
+  await page.locator('#consultation-form button').click();
+  assert.deepEqual(await page.evaluate(()=>window.openedUrls),[]);
+  await page.locator('#consultation-name').fill('   ');
+  await page.locator('#consultation-email').fill('visitor@example.com');
+  await page.locator('#consultation-form button').click();
+  assert.deepEqual(await page.evaluate(()=>window.openedUrls),[]);
+  await page.locator('#consultation-name').fill('Test Visitor');
+  await page.locator('#consultation-form button').click();
+  const urls=await page.evaluate(()=>window.openedUrls);
+  assert.equal(urls.length,1);
+  assert.match(new URL(urls[0]).searchParams.get('text'),/Test Visitor.*free power consultation/s);
+  assert.match(new URL(urls[0]).searchParams.get('text'),/visitor@example.com/);
+  assert.equal(await page.locator('#consultation-product-price').innerText(),`₦${new Intl.NumberFormat('en-NG').format(tank.price)}`);
+  await page.locator('#consultation-checkout').click();await page.waitForURL('**/checkout.html');
+  await page.locator('#order-summary h2').waitFor();
+  assert.equal(await page.locator('#order-summary h2').innerText(),tank.name);
+  await page.locator('#delivery-state').selectOption('Lagos');
+  assert.equal(await page.locator('#order-total').innerText(),`₦${new Intl.NumberFormat('en-NG').format(tank.price+3000)}`);
+  await page.close();
+});
 test('jargon lint: HTML and rendered plain-copy strings exclude every banned term',()=>{
   const failures=copy.flatMap(({source,text})=>jargon(text).map(m=>`${source}: ${m[0]} in ${text}`));
   console.log(`Jargon lint: ${copy.length} plain-copy samples; ${failures.length} banned terms. Technical disclosures excluded.`);
