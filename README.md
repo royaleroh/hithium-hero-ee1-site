@@ -80,7 +80,7 @@ All public settings live in `config.js`:
 | Setting | Current purpose |
 |---|---|
 | `SITE_NAME` | Brand text, page titles and accessible home-link names; confirm the chosen name |
-| `WHATSAPP_NUMBER` | Country code and number without a plus sign; currently a placeholder |
+| `WHATSAPP_NUMBER` | Consultation and enquiry number, including country code without a plus sign or spaces |
 | `PAYSTACK_PUBLIC_KEY` | Empty means demo mode; never use a secret key |
 | `LEAD_ENDPOINT` | Empty disables sending; set to a JSON POST endpoint |
 | `CURRENCY`, `CURRENCY_SYMBOL` | Naira display configuration |
