@@ -1,21 +1,23 @@
 // data/catalogue.js
 // ─────────────────────────────────────────────────────────────────────────────
-// Single source of truth for all product data.
-// Imported as an ES module — no fetch() needed.
+// Technical catalogue. Commercial controls are loaded from ../products.json.
 //
 // TODO: confirm we have permission to use these images (see README).
 //
 // tier:
-//   "portable"     — portable power stations, shown in calculator and range section
-//   "home-battery" — large home batteries needing installer + inverter
-//   "cell"         — industrial components, never rendered to visitors
+//   "portable"     - portable power stations, shown in calculator and range section
+//   "home-battery" - large home batteries needing installer + inverter
+//   "cell"         - industrial components, never rendered to visitors
 //
 // calculatorEligible:
-//   true  — considered by the recommender
-//   false — never fed to the recommender
+//   true  - considered by the recommender
+//   false - never fed to the recommender
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const catalogue = {
+import { hithiumProducts } from './hithium.js';
+import { applyProductControls, loadProductControls } from './product-controls.js';
+
+const baseCatalogue = {
 
   products: [
 
@@ -30,7 +32,7 @@ export const catalogue = {
       category: 'Portable Power Station',
       tier: 'portable',
       calculatorEligible: true,
-      acOutput: false,  // No AC socket — USB and DC only
+      acOutput: false,  // No AC socket - USB and DC only
       available: true,
       price: null,      // Show "Price on request"
       usableWh: 320,    // Treated as the usable figure; 20 % loss added in maths
@@ -43,10 +45,10 @@ export const catalogue = {
         'Compact 320 Wh LiFePO4 portable power station focused on USB and DC output. Ideal for phones, laptops, routers, DC fans and lights. No AC socket.',
       images: [
         // TODO: confirm we have permission to use these images
-        'assets/products/itel-power-go/hero.webp',
+        'assets/products/itel-power-go/product.webp',
       ],
       photos: [
-        'assets/products/itel-power-go/hero.webp',
+        'assets/products/itel-power-go/product.webp',
       ],
       imageWidth: 580,
       imageHeight: 580,
@@ -116,13 +118,13 @@ export const catalogue = {
         '320 Wh LiFePO4 portable power station with 200 W pure sine wave AC outlet plus multi-port USB and DC. Compact and highly portable for home backup, travel and outdoor use.',
       images: [
         // TODO: confirm we have permission to use these images
-        'assets/products/itel-power-go-pro/hero.webp',
+        'assets/products/itel-power-go-pro/product.webp',
       ],
       photos: [
-        'assets/products/itel-power-go-pro/hero.webp',
+        'assets/products/itel-power-go-pro/product.webp',
       ],
-      imageWidth: 580,
-      imageHeight: 725,
+      imageWidth: 482,
+      imageHeight: 544,
       inTheBox: [
         'Power Go Pro unit (IESS-320ACT)',
         '100 W charger / AC adapter',
@@ -179,10 +181,10 @@ export const catalogue = {
       price: 285000,
       usableWh: 1000,   // Treated as the usable figure
       maxOutputW: 500,
-      // TODO: confirm with supplier — key_specs says surge 600VA but peakOutputW was 1000.
+      // TODO: confirm with supplier - key_specs says surge 600VA but peakOutputW was 1000.
       // Using 600 (the lower, more conservative figure) until confirmed.
       peakOutputW: 600,
-      // TODO: confirm — warranty sheet reads "12 to 24 months". Showing 12 months until confirmed.
+      // TODO: confirm - warranty sheet reads "12 to 24 months". Showing 12 months until confirmed.
       warranty: '12 months',
       // En/em dashes replaced with plain text (brief §1.3)
       plainEnglishCapacity: 'Runs four lights, a fan and your Wi-Fi all night, about 8 hours, on one charge.',
@@ -190,14 +192,14 @@ export const catalogue = {
         '3-in-1 all-in-one system: 500 W pure sine wave inverter plus 1 kWh LiFePO4 battery plus 400 W MPPT. Plug-and-play home backup for lights, fans, TVs, routers and small appliances.',
       images: [
         // TODO: confirm we have permission to use these images
-        // Note: hero.png downloaded; convert to WebP when tooling is available
-        'assets/products/itel-power-tank/hero.png',
+        // Converted from the supplied PNG to local WebP.
+        'assets/products/itel-power-tank/product.webp',
       ],
       photos: [
-        'assets/products/itel-power-tank/hero.png',
+        'assets/products/itel-power-tank/product.webp',
       ],
-      imageWidth: 660,
-      imageHeight: 660,
+      imageWidth: 1600,
+      imageHeight: 1718,
       inTheBox: [
         'Power Tank unit (IESS-05K10N)',
         'AC charging cable',
@@ -228,7 +230,7 @@ export const catalogue = {
         battery_type: 'LiFePO4',
         rated_capacity: '314 Ah',
         cycle_life: '6,000+',
-        // TODO: confirm with supplier — peakOutputW set to 600 (from surge_power field),
+        // TODO: confirm with supplier - peakOutputW set to 600 (from surge_power field),
         // not 1000 as originally listed in peakOutputW. See above.
         ac_output: '500 W continuous / 600 VA max (pure sine wave, 230 V 50 Hz)',
         surge_power: '600 VA',
@@ -267,10 +269,10 @@ export const catalogue = {
         'Larger 3-in-1 system: 1,000 W pure sine wave hybrid inverter plus 2,000 Wh LiFePO4 battery plus 1,200 W MPPT. Suitable for more appliances and longer runtimes in homes and small businesses.',
       images: [
         // TODO: confirm we have permission to use these images
-        'assets/products/itel-power-tank-1000/hero.webp',
+        'assets/products/itel-power-tank-1000/product.webp',
       ],
       photos: [
-        'assets/products/itel-power-tank-1000/hero.webp',
+        'assets/products/itel-power-tank-1000/product.webp',
       ],
       imageWidth: 580,
       imageHeight: 580,
@@ -520,7 +522,7 @@ export const catalogue = {
       },
     },
 
-    // ── Battery cells (industrial components — never rendered to visitors) ────
+    // ── Battery cells (industrial components - never rendered to visitors) ────
 
     {
       id: 'hithium-cell-314ah',
@@ -755,8 +757,9 @@ export const catalogue = {
   powerSpectrum: [
     {
       id: 'power-bank',
+      confirmed: false,
       label: 'Power bank',
-      // Approximate market price range for context — not our product
+      // Approximate market price range for context - not our product
       priceRange: '5,000 to 30,000',
       canRun: 'Phone charging, maybe a small light',
       duration: '6 to 12 hours of phone use',
@@ -765,6 +768,7 @@ export const catalogue = {
     },
     {
       id: 'power-station',
+      confirmed: false,
       label: 'Power station',
       // Derived from real product prices: only Power Tank confirmed at 285,000.
       // Other units are price-on-request. Range shown as "from 285,000" until all prices confirmed.
@@ -772,12 +776,13 @@ export const catalogue = {
       priceRange: 'from 285,000',
       priceRangePlaceholder: true, // flag: this is a partial range, not a full range
       canRun: 'Lights, fan, TV, Wi-Fi, laptop. Everything typical for a home or office.',
-      duration: '1 to 2 nights on a single charge',
+      duration: 'About 8 hours of four lights, a fan and Wi-Fi with the Power Tank',
       highlight: true,
       callout: 'This is the one most people miss',
     },
     {
       id: 'inverter-system',
+      confirmed: false,
       label: 'Inverter and batteries',
       priceRange: '600,000 to 2,000,000+',
       canRun: 'Whole home, including fridge and air conditioner',
@@ -789,7 +794,16 @@ export const catalogue = {
 
   // ── Site defaults ─────────────────────────────────────────────────────────
 
-  DEFAULT_MONTHLY_POWER_SPEND: 30000,   // naira — TODO: confirm a reasonable average for target audience
-  DEFAULT_DAILY_OUTAGE_HOURS: 8,        // hours — TODO: confirm typical figure for target audience
+  DEFAULT_MONTHLY_POWER_SPEND: 30000,   // naira - TODO: confirm a reasonable average for target audience
+  DEFAULT_DAILY_OUTAGE_HOURS: 8,        // hours - TODO: confirm typical figure for target audience
 
 };
+
+const loaded = await loadProductControls();
+const resolved = applyProductControls([...baseCatalogue.products, ...hithiumProducts], loaded.controls);
+export const productControlErrors = [...(loaded.error ? [loaded.error] : []), ...resolved.errors];
+export const catalogue = { ...baseCatalogue, products: resolved.products };
+
+// Every consumer receives the same resolved names, prices and availability.
+export const { deliveryFeeByState, powerSpectrum, DEFAULT_MONTHLY_POWER_SPEND, DEFAULT_DAILY_OUTAGE_HOURS } = catalogue;
+export const portableProducts = catalogue.products.filter(p => p.calculatorEligible && p.tier === "portable");

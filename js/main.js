@@ -7,10 +7,16 @@
 const nav       = document.getElementById('site-nav');
 const burger    = document.getElementById('nav-burger');
 const mobileNav = document.getElementById('nav-mobile');
+// Match the spacer and anchor offset to the real header, including text zoom.
+if (nav) {
+  const syncNavHeight = () => document.documentElement.style.setProperty('--site-nav-height', `${nav.getBoundingClientRect().height}px`);
+  syncNavHeight();
+  new ResizeObserver(syncNavHeight).observe(nav);
+}
 
 // Add scrolled class for shadow / border
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('is-scrolled', window.scrollY > 8);
+  nav?.classList.toggle('is-scrolled', window.scrollY > 8);
 }, { passive: true });
 
 // Mobile menu toggle
@@ -54,7 +60,7 @@ function initReveal() {
     { threshold: 0.12 },
   );
 
-  elements.forEach(el => observer.observe(el));
+  elements.forEach(el => { el.classList.add('reveal-pending'); observer.observe(el); });
 }
 
 initReveal();

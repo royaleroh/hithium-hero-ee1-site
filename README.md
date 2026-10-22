@@ -1,233 +1,176 @@
-# Let It Shine — Power Station Landing Page
+# Portable power station site
 
-A static landing page for selling itel portable power stations and Hithium home battery systems to Nigerian home and small business customers.
+Plain HTML, CSS and vanilla JavaScript ES modules. No framework, bundler, site dependencies or build step. The folder can be deployed as static files to Vercel.
 
-Built with plain HTML, CSS (custom properties) and vanilla JavaScript (ES modules). No framework, no bundler, no build step. Deploys directly to Vercel.
+## Run locally
 
-> **TODO: confirm we have permission to use the product images downloaded from itelsolar.com before going live.**
+Run `node server.js`, then open http://127.0.0.1:3000/. ES module imports need an HTTP server; do not open the HTML using file URLs.
 
----
+## Tests
 
-## Running locally
+Run `node --test` or `npm test`. Tests import the real catalogue. Browser QA uses external development tooling, not a site dependency. Local screenshots and QA records are ignored under `.screenshots/`.
 
-ES modules require a local server — they will not work when opened directly from `file://`.
+## Payment warning
 
-**Option 1 — npx serve (no install needed):**
-```bash
-npx serve .
-```
+**Do not enable production payments yet. Payment verification is not implemented.** The current Paystack callback is client-side and does not prove that a transaction has been verified. Orders are stored only in browser session storage, not a persistent order database.
 
-**Option 2 — VS Code Live Server extension:**
-Right-click `index.html` → "Open with Live Server".
+The marked TODO in `js/checkout.js` is where a future request to `/api/verify` must go. That server endpoint must verify reference, amount, currency and selected product using a secret key held only on the server. It is deliberately outside Stage A.
 
-**Option 3 — Python:**
-```bash
-python -m http.server 8080
-```
+An empty `PAYSTACK_PUBLIC_KEY` enables demo checkout. It takes no payment and labels the confirmation as a demo. A configured public key loads Paystack Inline. Never put a secret key in this repository.
 
-Then open `http://localhost:3000` (or whichever port the server reports).
+## Product controls and one resolved catalogue
 
----
+Edit root `products.json` for everyday administration. Each stable slug has only
+three editable fields, for example:
 
-## Running tests
-
-Tests use Node's built-in test runner. No npm dependencies are needed beyond Node 18+.
-
-```bash
-# Main test suite (recommender — 46 tests)
-node --test tests/recommend.test.js
-
-# Or via npm:
-npm test
-```
-
-The tests cover all six scenarios from the spec:
-
-| # | Scenario | Expected best fit | State |
-|---|---|---|---|
-| 1 | Student, all DC-friendly | Power Go | fit |
-| 2 | Shop with near miss | Power Tank 1000 | near-miss (trim fan by 2 h) |
-| 3 | Surge excludes Power Go Pro | Power Tank | fit |
-| 4 | Too big, whole home system | — | none |
-| 5 | Zero appliances | — | empty |
-| 6 | Null price, no payback | Power Go | fit, payback null |
-
-Plus edge cases for `runtimeLabel` and outage-hours capping.
-
----
-
-## Deploying to Vercel
-
-Point Vercel at this folder. No configuration is needed — it is a static site.
-
-1. Push the folder to a GitHub repository.
-2. Import the repository in Vercel.
-3. Leave the build command and output directory blank (or set output to `/`).
-4. Deploy.
-
----
-
-## Configuration (`config.js`)
-
-All environment-style values live in `config.js`. Edit this file before going live.
-
-| Value | Description |
-|---|---|
-| `SITE_NAME` | Replace `PLACEHOLDER_SITE_NAME` with your actual business name |
-| `WHATSAPP_NUMBER` | Your WhatsApp number with country code, no `+` or spaces. Example: `2348012345678` |
-| `PAYSTACK_PUBLIC_KEY` | Your Paystack public key. Starts with `pk_live_` (production) or `pk_test_` (test). Never use the secret key here. |
-| `LEAD_ENDPOINT` | A URL that accepts a `POST` request with a JSON body. Works with Google Apps Script web apps or Formspree. Leave blank to disable lead capture silently. |
-| `SHOW_TRUST_STATS` | Set to `true` when you have real verified figures (units delivered, states served, etc.). Currently `false`. |
-| `SHOW_TESTIMONIALS` | Set to `true` when you have real customer quotes with permission to publish. Currently `false`. |
-| `PAYBACK_MONTH_CAP` | Hide payback figures beyond this many months (default: 60). |
-| `TIGHT_FIT_THRESHOLD` | Battery usage percentage above which the "tight fit" badge shows (default: 0.85 = 85 %). |
-| `NEAR_MISS_THRESHOLD` | How far over capacity counts as a near miss (default: 0.15 = 15 %). |
-
-**Important:** Public keys (Paystack) are safe in the browser. Never put `sk_live_` or `sk_test_` (secret keys) in any file in this repository.
-
----
-
-## Adding a product
-
-1. Open `data/catalogue.js`.
-2. Add a new object to the `products` array. Follow the existing pattern exactly.
-3. Set the correct `tier`:
-   - `"portable"` — portable power stations. Appears in the range section and calculator.
-   - `"home-battery"` — large home batteries. Appears only in the "whole home system" strip.
-   - `"cell"` — industrial cells. Never shown to visitors.
-4. Set `calculatorEligible: true` only for portable power stations.
-5. Set `acOutput: true` if the unit has an AC (mains) socket.
-6. Download the product image to `assets/products/<slug>/hero.webp` (WebP preferred).
-7. Set `imageWidth` and `imageHeight` to the actual pixel dimensions.
-8. Run `npm test` to confirm nothing broke.
-
----
-
-## Setting a price
-
-1. Find the product in `data/catalogue.js` by its `slug`.
-2. Change `price: null` to `price: 285000` (naira, no currency symbol, no commas).
-3. Update `powerSpectrum[1].priceRange` and remove the `priceRangePlaceholder: true` flag once all portable prices are confirmed.
-4. The calculator will automatically show the price, payback estimate, and checkout button.
-
----
-
-## Adding product photos
-
-1. Save the photo to `assets/products/<slug>/` as a `.webp` file (use Squoosh or cwebp to convert).
-2. Add the relative path to the `images` array in the product's entry in `data/catalogue.js`.
-3. Set `imageWidth` and `imageHeight` to the actual pixel dimensions of the image you saved.
-4. Add `// TODO: confirm we have permission to use these images` above any image from a third-party site.
-
----
-
-## Appliances (`data/appliances.js`)
-
-Each appliance has:
-
-| Field | Type | Notes |
-|---|---|---|
-| `id` | string | Unique key. Used in presets and test fixtures. |
-| `label` | string | Shown in the calculator UI. |
-| `watts` | number | Typical running wattage. All values flagged `// TODO: confirm`. |
-| `surgeMultiplier` | number | Peak draw = `watts * surgeMultiplier`. |
-| `acRequired` | boolean | `true` = needs a mains AC socket. Excludes the Power Go. |
-| `note` | string or null | Optional guidance shown below the appliance label. |
-
----
-
-## Product tiers and what appears where
-
-| Tier | Where it appears |
-|---|---|
-| `portable` | Range section, calculator, "Who it's for" cards |
-| `home-battery` | "Need a whole home system?" strip at the end of the range section |
-| `cell` | Nowhere (filtered out at every view) |
-
----
-
-## Recommender logic (`js/recommend.js`)
-
-The recommender is pure functions only (no DOM access). Import it in Node tests and in browser modules alike.
-
-**Key formulas:**
-```
-energyNeedWh = 1.2 × sum( watts × qty × min(hours, outageHours) )
-runningW     = sum( watts × qty )
-peakW        = sum( watts × qty × surgeMultiplier )
-needsAC      = any ticked appliance has acRequired = true
-```
-
-**A unit passes if all four pass:**
-1. `needsAC` is false, or `product.acOutput` is true
-2. `runningW <= product.maxOutputW`
-3. `peakW <= (product.peakOutputW ?? product.maxOutputW)`
-4. `energyNeedWh <= product.usableWh`
-
----
-
-## Image assets
-
-| Location | Used for |
-|---|---|
-| `assets/images/hero-bg.webp` | Hero section background |
-| `assets/images/hithium-front.webp` | Legacy product photo (will be replaced) |
-| `assets/images/og-image.webp` | Open Graph / social share image |
-| `assets/products/itel-power-go/hero.webp` | Power Go product image |
-| `assets/products/itel-power-go-pro/hero.webp` | Power Go Pro product image |
-| `assets/products/itel-power-tank/hero.png` | Power Tank product image (convert to WebP) |
-| `assets/products/itel-power-tank-1000/hero.webp` | Power Tank 1000 product image |
-
-> **TODO: confirm we have permission to use the itel product images before going live.**
-
-Use WebP format with explicit `width` and `height` attributes on `<img>` tags for best performance.
-
----
-
-## Payment verification (future)
-
-The checkout page redirects to `thank-you.html` after a successful Paystack callback. For a fully secure payment confirmation, you would need a serverless function that calls the Paystack Verify Transaction API using your **secret key** server-side.
-
-When you are ready to add this:
-
-1. Create `/api/verify.js` (for Vercel):
-```js
-export default async function handler(req, res) {
-  const { reference } = req.body;
-  const response = await fetch(
-    `https://api.paystack.co/transaction/verify/${reference}`,
-    { headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}` } }
-  );
-  const data = await response.json();
-  res.json({ status: data.data.status });
+```json
+"hithium-heroee-1": {
+  "name": "Hithium HeroEE 1",
+  "price": 270000,
+  "available": true
 }
 ```
-2. In `checkout.js`, in the `callback` function, replace the direct redirect with a `fetch('/api/verify', ...)` call, then redirect only on a `"success"` response.
-3. Set `PAYSTACK_SECRET_KEY` as an environment variable in Vercel (never in code).
 
----
+Use a positive number in naira without commas or a currency symbol. Use `null`
+for a price on request. Use `false` to stop recommending and selling a unit;
+its range card stays visible with an unavailable label. Keep the slug keys and
+JSON punctuation. Names can change without breaking saved product selections.
+The example above is one entry inside the file's outer object.
 
-## Lead capture setup
+The resolved catalogue applies these values to the range, calculator, budget,
+WhatsApp, payback and checkout. Missing or invalid entries become unavailable
+and unpriced, with a visitor notice and console diagnostics. Unknown slug keys
+are reported. Commercial controls cannot change technical ratings, tiers or
+calculator eligibility. Cells remain hidden even if their availability is true.
 
-### Google Apps Script (Google Sheets)
-1. Create a Google Sheet.
-2. Open Extensions → Apps Script.
-3. Paste the following, then deploy as a web app (access: "Anyone"):
-```js
-function doPost(e) {
-  const data = JSON.parse(e.postData.contents);
-  SpreadsheetApp.getActiveSpreadsheet()
-    .getActiveSheet()
-    .appendRow([
-      new Date(),
-      data.source, data.product, data.price,
-      data.appliances, data.outageHours
-    ]);
-  return ContentService.createTextOutput('ok');
-}
-```
-4. Copy the web app URL into `LEAD_ENDPOINT` in `config.js`.
+Refresh the page after saving locally; deploy the updated file for a hosted site.
+This is public static configuration, so do not put secrets or private costs in it.
+The browser loads it using native fetch before the catalogue is exported; Node
+tests read the same file. No framework or build tool is needed.
 
-### Formspree
-1. Create a form at [formspree.io](https://formspree.io).
-2. Copy the form endpoint URL into `LEAD_ENDPOINT`.
+`data/catalogue.js` exports `catalogue`, `portableProducts`, `deliveryFeeByState`, `powerSpectrum`, `DEFAULT_MONTHLY_POWER_SPEND` and `DEFAULT_DAILY_OUTAGE_HOURS`.
+
+To add a product, add a technical object to `baseCatalogue.products` in
+`data/catalogue.js`, or the Hithium records in `data/hithium.js`, preserving the
+existing fields. Also add its stable slug to root `products.json`. Only available
+portable products with `calculatorEligible: true` reach the calculator. Cells
+are never rendered. The range now includes four itel and three Hithium stations.
+
+To set a price, edit the matching root `products.json` entry. Technical-record
+prices are not the selling-price controller. Null prices use WhatsApp, have no
+payback and cannot enter checkout. The power scale uses available, priced units;
+unconfirmed outer ranges stay hidden while their `confirmed` flag is false.
+
+`HITHIUM_RESEARCH.md` records specifications, Nigerian starter-price sources and
+supplier conflicts. Unknown Hithium surge ratings use rated-output limits in
+the calculator until confirmed. Replace researched starter prices with yours.
+
+## Photos
+
+Save local WebP photos under `assets/products/<slug>/`. Update the product's `images`, `photos`, `imageWidth` and `imageHeight`. Set the dimensions to the actual image dimensions. Active product images are local. Power Tank is 1600 by 1718 pixels. The supplier hero photo is 1600 by 1600 pixels.
+
+// TODO: confirm we have permission to use these images before going live.
+
+The Power Tank supplier image is a collage. The shared product-photo component uses a CSS crop to show only its top product photograph. Product features and logos are never generated. Image sources are recorded in assets/products/PHOTO_SOURCES.md. Reference images are not shipped in page content.
+
+## Configuration
+
+All public settings live in `config.js`:
+
+| Setting | Current purpose |
+|---|---|
+| `SITE_NAME` | Brand text, page titles and accessible home-link names; confirm the chosen name |
+| `WHATSAPP_NUMBER` | Country code and number without a plus sign; currently a placeholder |
+| `PAYSTACK_PUBLIC_KEY` | Empty means demo mode; never use a secret key |
+| `LEAD_ENDPOINT` | Empty disables sending; set to a JSON POST endpoint |
+| `CURRENCY`, `CURRENCY_SYMBOL` | Naira display configuration |
+| `SHOW_TRUST_STATS`, `SHOW_TESTIMONIALS` | Reserved false flags; there are no invented stats or testimonial renderers |
+| `PAYBACK_MONTH_CAP` | Suppress estimates over 60 months |
+| `NEAR_MISS_THRESHOLD` | Energy overshoot allowance of 15 percent |
+| `TIGHT_FIT_THRESHOLD` | Close-to-limit threshold of 85 percent |
+
+Appliance wattages, surge assumptions, delivery fees and supplier details still need confirmation where marked TODO. Blank calculator inputs use the exported 8-hour outage and 30000-naira example spend. Default spend is explicitly labelled as an example, never as the visitor's own spending.
+
+## Calculation and actions
+
+Situation presets and the live calculator both call `estimateSetup()` in `js/estimate.js`, which calls `recommend()` in `js/recommend.js`.
+
+Energy is `1.2 * sum(watts * qty * min(hours, outageHours))`. Candidates must pass AC socket, running output, peak output and capacity checks. Runtime at simultaneous full load includes the same loss allowance. This is an estimate, not a promised appliance schedule.
+
+The UI renders empty, fit, tight, near-miss and none states. WhatsApp uses `buildWhatsAppMessage()`. Checkout saves the selected slug, selections, outage hours and load figures in session storage. Checkout refuses missing, unknown, unavailable or unpriced products. `computeOrderTotal()` uses the shared delivery table and falls back to 'Other states'.
+
+`sendLead()` POSTs JSON with a timestamp when configured. Network errors do not block actions. WhatsApp and checkout-start records include selections and outage/load figures. Checkout-pay includes contact and delivery details. Configure an endpoint with appropriate CORS support; no lead service is currently connected.
+
+## Stage A scope
+
+`REFERENCE_NOTES.md` records the visual study. The calculator, audience product frame, checkout and confirmation borrow spacing, hierarchy and framing from the references. Hero/gap/range/footer redesign, whole-home strip and server payment verification remain separate stages. Stage A changes only the required copy/data behaviour in those existing sections.
+
+
+## Stage B, Part 1
+
+The calculator opens with the Families preset. Six situation buttons include Custom. Desktop has a five-by-two appliance grid and a compact result. Phones use Who, What and Your unit steps. Selected mobile tiles show a quantity/hours summary; Edit reveals that tile's two steppers, one tile at a time, so all controls keep 44 pixel targets without a scrolling panel. Appliance hours range from 1 to 24 in whole-hour steps.
+
+Monthly spend starts empty and does not calculate an example payback. A priced result asks for spend; a supplied spend produces the existing engine's estimate. The old audience accordion and separate comparison section are removed. WhatsApp, saved checkout data and checkout behaviour are unchanged.
+
+The warm tokens and Plus Jakarta Sans are shared across pages. Product photography and result presentation have since been updated. Other homepage compositions remain outside that stage. Screenshots, reference comparisons, measured heights and browser QA are under `.screenshots/stage-b/`.
+# Stage C language layer
+
+`data/plain-language.js` holds the everyday labels, glossary and copy. `js/plain.js`
+derives examples from the existing product and appliance figures. Examples are
+separate uses of a full charge, not a promise that all listed appliances run together.
+The first four supported examples appear in the requested order. `goodFor()` checks
+full presets with the existing recommender; it does not assign audience tags by hand.
+
+`technicalDetails()` creates the shared, closed-by-default disclosure. Keep model
+codes and specifications inside it. `PHONE_CHARGE_WH` in `config.js` defaults to 15
+and still needs confirmation. The quiet-office noise comparison also needs confirmation.
+The catalogue does not confirm a wall-only two-hour refill, so the page asks visitors
+to check that time with us.
+
+Run `node --test` for the complete suite. The copy lint also renders the site with
+Playwright as a development tool. Install Playwright outside the shipped site, or
+set `PLAYWRIGHT_MODULE_PATH` to its module path. The tests can also locate the Codex
+bundled development runtime. They use Chromium or installed Microsoft Edge, start
+an ephemeral local server, and do not make a real payment or send a lead.
+
+## Budget input
+
+The optional calculator budget is for the unit, with delivery charged separately.
+`recommend({ selections, budget })` first keeps the existing power requirements.
+It chooses the smallest suitable product with a confirmed price within budget.
+When none has a confirmed affordable price, it retains the power-safe result and
+reports either the shortfall or the need for a price quote. A missing price is
+never treated as zero. A blank budget preserves the original recommendation.
+Budget is retained when choosing a different preset and removed by Clear all.
+It is also included in the WhatsApp enquiry and checkout estimate.
+
+## Product photos and calculator result
+
+The hero and product frames now use supplier photos from the original product
+file. `js/product-photo.js` supplies the same local image and framing in the
+calculator, product section, scrolling options and checkout. Keep those shared
+frames in sync when replacing a photograph. See `assets/products/PHOTO_SOURCES.md`
+for sources and permission notes. Full-resolution originals were used where available.
+
+`js/result-view.js` turns the existing calculation into a short coverage statement,
+the remaining charge (rounded down), a price and any budget warning. Coverage uses
+the appliance hours the visitor selected. The full simultaneous runtime and maths
+remain inside Technical details. A near-miss button applies the actual suggested
+hours change, removing an appliance if no hours remain, and recalculates normally.
+The calculation rules, product prices and delivery fees are unchanged by this pass.
+
+## Range cards and navigation
+
+`js/product-card.js` shows three derived facts, a photo and the price or a direct
+WhatsApp quote link. Longer examples, suitability, exclusions, warranty details
+and specifications remain inside the Technical details disclosure. The mini-fridge
+limitation stays visible for units with a wall socket that cannot run that example.
+
+The header has distinct links for the range, delivery and questions. Find my unit
+is the single calculator action in that navigation. Repeated calculator links and
+the footer's direct checkout shortcut have been removed.
+
+`js/range-scroll.js` handles previous/next controls, a visible position count,
+Arrow keys and Home/End on the product row. Touch swiping and native scrolling
+remain available. Controls follow the scroll position, disable at each end, and
+hide when scrolling is unnecessary. Reduced-motion preferences are respected.

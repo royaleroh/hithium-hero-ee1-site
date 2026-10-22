@@ -6,46 +6,53 @@
 
 :root {
   /* ── Colours ─────────────────────────────────────────────────────────────── */
-  --color-bg:          #F8F7F4;
+  --color-bg:          #FBF8F3;
   --color-surface:     #FFFFFF;
-  --color-ink:         #111217;
-  --color-ink-muted:   #4A4D54;
-  --color-ink-faint:   #8B8F99;
-  --color-border:      rgba(17,18,23,0.10);  /* hairline — low contrast */
+  --color-inset:       #F4EEE6;
+  --radius-container: 32px;
+  --color-ink:         #2A1A0E;
+  --color-ink-muted:   #665447;
+  --color-ink-faint:   #756354;
+  --color-border:      rgba(42,26,14,0.10);  /* hairline - low contrast */
 
-  /* Accent — warm amber, tuned for AA contrast on white */
-  --color-accent:      #C97D0A;   /* main accent — passes AA on white */
+  /* Accent - warm amber, tuned for AA contrast on white */
+  --color-accent:      #8A5200;
+  --color-accent-fill: #E5A530;
+  --color-accent-on-dark: #E5A530;   /* main accent - passes AA on white */
   --color-accent-light:#FEF3DC;   /* tint for backgrounds */
   --color-accent-bg:   #FFF8ED;
   --color-accent-glow: rgba(201,125,10,0.18);
 
   /* Dark sections (compare, footer) */
-  --color-dark-bg:     #111217;
-  --color-dark-surface:#1A1C23;
+  --color-dark-bg:     #2A1A0E;
+  --color-dark-surface:#3C2819;
   --color-dark-border: rgba(255,255,255,0.09);
-  --color-dark-ink:    #F3F3EE;
-  --color-dark-muted:  #8D909A;
+  --color-dark-ink:    #FBF8F3;
+  --color-dark-muted:  #C8B9A8;
 
   /* Semantic */
   --color-success:     #1A7A4A;
   --color-warning:     #B45309;
   --color-error:       #C0392B;
 
-  /* ── Radii — mixed per brief ─────────────────────────────────────────────── */
-  /* Images / large frames: 28–32px */
-  --radius-img:    30px;
-  /* Cards: 16–18px */
-  --radius-card:   16px;
-  /* Controls (inputs, small buttons): 10–12px */
-  --radius-control:10px;
+  /* ── Radii - mixed per brief ─────────────────────────────────────────────── */
+  /* Images / large frames: 28 to 32px */
+  --radius-img:    28px;
+  /* Cards: 16 to 18px */
+  --radius-card:   24px;
+  /* Controls (inputs, small buttons): 10 to 12px */
+  --radius-control:12px;
   /* Pill buttons */
   --radius-pill:   999px;
   /* Chips / badges: 6px */
   --radius-chip:   6px;
+  --radius-sm: 12px;
+  --radius-md: 24px;
+  --radius-lg: 32px;
 
-  /* ── Shadows — hairline-first philosophy ─────────────────────────────────── */
-  --shadow-card: 0 0 0 1px var(--color-border), 0 2px 12px rgba(17,18,23,0.04);
-  --shadow-float:0 4px 24px rgba(17,18,23,0.10), 0 0 0 1px rgba(255,255,255,0.20);
+  /* ── Shadows - hairline-first philosophy ─────────────────────────────────── */
+  --shadow-card: 0 0 0 1px var(--color-border), 0 2px 12px rgba(42,26,14,0.04);
+  --shadow-float:0 4px 24px rgba(42,26,14,0.10), 0 0 0 1px rgba(255,255,255,0.20);
   --shadow-btn:  0 2px 12px rgba(201,125,10,0.30);
 
   /* ── Spacing scale ───────────────────────────────────────────────────────── */
@@ -64,10 +71,8 @@
   --space-32: 128px;
 
   /* ── Type scale (fluid with clamp) ──────────────────────────────────────── */
-  /* Primary grotesk — Inter */
-  --font-sans:   'Inter', system-ui, -apple-system, sans-serif;
-  /* Serif for single emphasised word in big headings — DM Serif Display italic */
-  --font-serif:  'DM Serif Display', Georgia, serif;
+  /* Primary geometric sans - Plus Jakarta Sans */
+  --font-sans:   'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   /* Fallback alias */
   --font-family: var(--font-sans);
 
@@ -88,14 +93,14 @@
 
   --weight-regular:   400;
   --weight-medium:    500;
-  --weight-semibold:  600;
-  --weight-bold:      700;
-  --weight-extrabold: 800;
+  --weight-semibold:  500;
+  --weight-bold:      500;
+  --weight-extrabold: 500;
 
   /* ── Layout ──────────────────────────────────────────────────────────────── */
   --max-width:     1200px;
   --content-pad:   clamp(20px, 5vw, 56px);
-  --section-gap:   clamp(72px, 11vw, 128px);
+  --section-gap:   clamp(64px, 8vw, 112px);
 
   /* ── Transitions ─────────────────────────────────────────────────────────── */
   --ease-out:  cubic-bezier(0.22, 1, 0.36, 1);

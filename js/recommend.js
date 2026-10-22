@@ -6,12 +6,13 @@
 // then returns the smallest suitable unit from the catalogue, and says why.
 //
 // Terminology used throughout:
-//   energyNeedWh   — Wh needed during the outage window, with 20 % loss allowance
-//   runningW       — sum of all selected watts running simultaneously (no surge)
-//   peakW          — worst-case simultaneous peak (with surge multipliers)
-//   needsAC        — true if any selected appliance has acRequired: true
+//   energyNeedWh   - Wh needed during the outage window, with 20 % loss allowance
+//   runningW       - sum of all selected watts running simultaneously (no surge)
+//   peakW          - worst-case simultaneous peak (with surge multipliers)
+//   needsAC        - true if any selected appliance has acRequired: true
 // ─────────────────────────────────────────────────────────────────────────────
 
+import { DEFAULT_MONTHLY_POWER_SPEND, DEFAULT_DAILY_OUTAGE_HOURS, portableProducts } from '../data/catalogue.js';
 import { PAYBACK_MONTH_CAP, NEAR_MISS_THRESHOLD, TIGHT_FIT_THRESHOLD } from '../config.js';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -55,7 +56,7 @@ export function formatNaira(n) {
  * Compute load numbers from the visitor's selections.
  *
  * @param {Array<{watts:number, qty:number, hours:number, surgeMultiplier:number, acRequired:boolean}>} selections
- * @param {number} outageHours  — hours per day the grid is off
+ * @param {number} outageHours  - hours per day the grid is off
  * @returns {{ energyNeedWh:number, runningW:number, peakW:number, needsAC:boolean }}
  */
 export function deriveLoad(selections, outageHours) {
@@ -131,6 +132,7 @@ export function checkProduct(product, load) {
 export function findNearMissTrim(product, selections, outageHours) {
   // Find the appliance with the highest energy contribution
   const active = selections
+    .map((s, index) => ({ ...s, index }))
     .filter(s => s.qty > 0 && s.hours > 0)
     .map(s => ({
       ...s,
@@ -141,8 +143,8 @@ export function findNearMissTrim(product, selections, outageHours) {
   for (const target of active) {
     // Try reducing hours one at a time
     for (let cut = 1; cut <= target.hours; cut++) {
-      const trimmed = selections.map(s =>
-        s === target || (s.id && s.id === target.id)
+      const trimmed = selections.map((s, index) =>
+        index === target.index
           ? { ...s, hours: s.hours - cut }
           : s,
       );
@@ -167,7 +169,7 @@ export function findNearMissTrim(product, selections, outageHours) {
  * @returns {{ months:number|null, label:string }}
  */
 export function computePayback(price, monthlySpend) {
-  if (price === null || price <= 0) {
+  if (!Number.isFinite(price) || price <= 0) {
     return {
       months: null,
       label: null,  // Caller should show "Price on request" instead
@@ -190,7 +192,7 @@ export function computePayback(price, monthlySpend) {
     };
   }
 
-  const months = Math.round(raw);
+  const months = Math.max(1, Math.round(raw));
   const label =
     months <= 3
       ? `You could recover the cost in as little as ${months} month${months === 1 ? '' : 's'} compared to your current spend.`
@@ -220,6 +222,7 @@ export function buildWhatsAppMessage({
   selections,
   outageHours,
   wholeHomeSystem = false,
+  availabilityEnquiry = false,
 }) {
   const priceStr = price !== null ? formatNaira(price) : 'price on request';
 
@@ -228,7 +231,7 @@ export function buildWhatsAppMessage({
     .map(s => `  - ${s.label} x${s.qty}, ${s.hours} h/day`)
     .join('\n');
 
-  const intro = wholeHomeSystem
+  const intro = availabilityEnquiry ? 'Hello, please help me find an available unit for this setup.' : wholeHomeSystem
     ? `Hello, I think I need a whole home system. The calculator suggested my load is too large for a portable unit.`
     : `Hello, I am interested in the ${productName} (${productModel}) at ${priceStr}.`;
 
@@ -246,31 +249,46 @@ export function buildWhatsAppMessage({
  *
  * @param {object} input
  * @param {Array<{label:string, watts:number, qty:number, hours:number, surgeMultiplier:number, acRequired:boolean}>} input.selections
- * @param {number} [input.outageHours]       — default from catalogue.DEFAULT_DAILY_OUTAGE_HOURS
- * @param {number} [input.monthlyPowerSpend] — default from catalogue.DEFAULT_MONTHLY_POWER_SPEND
+ * @param {number} [input.outageHours]       - default from catalogue.DEFAULT_DAILY_OUTAGE_HOURS
+ * @param {number} [input.monthlyPowerSpend] - default from catalogue.DEFAULT_MONTHLY_POWER_SPEND
  *
- * @param {Array<object>} eligibleProducts   — products where calculatorEligible === true,
+ * @param {Array<object>} eligibleProducts   - products where calculatorEligible === true,
  *                                            already filtered to tier === "portable"
  *
  * @returns {RecommendResult}
  *
  * @typedef {object} RecommendResult
  * @property {'empty'|'fit'|'tight'|'near-miss'|'none'} state
- * @property {object|null} bestFit            — the recommended product
- * @property {object|null} roomToGrow         — next-larger product (tight state only)
- * @property {number}      usagePercent       — energyNeedWh / bestFit.usableWh * 100
+ * @property {object|null} bestFit            - the recommended product
+ * @property {object|null} roomToGrow         - next-larger product (tight state only)
+ * @property {number}      usagePercent       - energyNeedWh / bestFit.usableWh * 100
  * @property {{ months:number|null, label:string }|null} payback
  * @property {{ applianceLabel:string, reduceByHours:number }|null} nearMissTrim
  * @property {{ energyNeedWh:number, runningW:number, peakW:number, needsAC:boolean }} load
- * @property {string|null} noReason           — plain English reason when state === 'none'
- * @property {object|null} closestUnit        — closest unit in the none state
- * @property {number|null} closestUnitHours   — hours of the load the closest unit covers
+ * @property {string|null} noReason           - plain English reason when state === 'none'
+ * @property {object|null} closestUnit        - closest unit in the none state
+ * @property {number|null} closestUnitHours   - hours of the load the closest unit covers
  */
-export function recommend(input, eligibleProducts) {
+export function recommend(input = {}, eligibleProducts = portableProducts) {
+  // Budget is for the unit only. Unknown prices are never treated as free.
+  const budget = input.budget === '' || input.budget == null ? null : Number(input.budget);
+  if (budget !== null && Number.isFinite(budget) && budget >= 0) {
+    const withoutBudget = { ...input, budget: undefined };
+    const standard = recommend(withoutBudget, eligibleProducts);
+    const suitable = eligibleProducts.filter(p => p.available !== false && p.calculatorEligible && p.tier === 'portable' && checkProduct(p, standard.load).passes);
+    const unknownPriceFits = suitable.some(p => p.price === null);
+    const affordable = suitable.filter(p => p.available !== false && Number.isFinite(p.price) && p.price >= 0 && p.price <= budget);
+    if (!standard.bestFit) return { ...standard, budget: { amount: budget, status: standard.state, unknownPriceFits } };
+    if (affordable.length) {
+      return { ...recommend(withoutBudget, affordable), budget: { amount: budget, status: 'within', unknownPriceFits, shortfall: 0 } };
+    }
+    return { ...standard, budget: { amount: budget, status: standard.bestFit.price === null ? 'unconfirmed' : 'over', unknownPriceFits,
+      shortfall: standard.bestFit.price === null ? null : Math.max(0, standard.bestFit.price - budget) } };
+  }
   const {
     selections = [],
-    outageHours = 8,
-    monthlyPowerSpend = 0,
+    outageHours = DEFAULT_DAILY_OUTAGE_HOURS,
+    monthlyPowerSpend = DEFAULT_MONTHLY_POWER_SPEND,
   } = input;
 
   // ── Empty state ────────────────────────────────────────────────────────────
@@ -298,7 +316,7 @@ export function recommend(input, eligibleProducts) {
   // ── Check every eligible product ───────────────────────────────────────────
 
   // Sort candidates: smallest usableWh first, then smallest maxOutputW
-  const candidates = [...eligibleProducts].sort((a, b) => {
+  const candidates = eligibleProducts.filter(p => p.available !== false && p.calculatorEligible && p.tier === "portable").sort((a, b) => {
     if (a.usableWh !== b.usableWh) return a.usableWh - b.usableWh;
     return a.maxOutputW - b.maxOutputW;
   });
@@ -308,12 +326,19 @@ export function recommend(input, eligibleProducts) {
   // ── None state: nothing passes ────────────────────────────────────────────
 
   if (passing.length === 0) {
+    const unavailableFit = eligibleProducts.find(p => p.available === false && p.calculatorEligible && p.tier === 'portable' && checkProduct(p, load).passes);
+    if (!candidates.length || unavailableFit) {
+      return { state: 'none', availabilityLimited: true, bestFit: null, roomToGrow: null,
+        usagePercent: 0, payback: null, nearMissTrim: null, load,
+        noReason: 'Suitable units are unavailable to order. Ask us about availability.',
+        closestUnit: unavailableFit ?? null, closestUnitHours: null };
+    }
     // Find the closest unit for the "how many hours it covers" message
-    // "Closest" = passes checks 1–3 (AC, runningW, peakW) but not energy,
+    // "Closest" = passes checks 1 to 3 (AC, runningW, peakW) but not energy,
     //             with the largest usableWh
     const powerOk = candidates.filter(p => {
       const { failReasons } = checkProduct(p, load);
-      // Passes AC, output, and peak — fails only on energy (or nothing)
+      // Passes AC, output, and peak - fails only on energy (or nothing)
       return !failReasons.includes('no-ac') &&
              !failReasons.includes('output-too-low') &&
              !failReasons.includes('peak-too-low');
@@ -330,7 +355,7 @@ export function recommend(input, eligibleProducts) {
 
     // Explain the primary failure reason
     let noReason;
-    const { failReasons } = checkProduct(candidates[candidates.length - 1], load);
+    const { failReasons } = candidates.length ? checkProduct(candidates[candidates.length - 1], load) : { failReasons: [] };
     if (failReasons.includes('no-ac')) {
       noReason = 'Your appliances need an AC socket (mains plug), and no portable unit in our range can provide one with enough output for your selection.';
     } else if (failReasons.includes('output-too-low') || failReasons.includes('peak-too-low')) {
@@ -380,11 +405,10 @@ export function recommend(input, eligibleProducts) {
 
   // ── Near-miss check: is there a smaller unit that nearly passes? ───────────
 
-  // A near-miss unit: smaller than bestFit, passes checks 1–3 but fails energy
+  // A near-miss unit: smaller than bestFit, passes checks 1 to 3 but fails energy
   // by no more than NEAR_MISS_THRESHOLD (15 %)
   const nearMissCandidate = candidates
     .filter(p => p.usableWh < bestFit.usableWh)
-    .reverse()  // largest first among smaller ones
     .find(p => {
       const { failReasons } = checkProduct(p, load);
       if (failReasons.length !== 1 || !failReasons.includes('battery-too-small')) return false;

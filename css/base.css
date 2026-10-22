@@ -22,7 +22,7 @@ body {
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+
 }
 
 img, video, svg {
@@ -71,13 +71,6 @@ h4 { font-size: var(--text-xl); }
 h5 { font-size: var(--text-lg); }
 h6 { font-size: var(--text-base); font-weight: var(--weight-semibold); }
 
-/* Serif italic — used for one emphasised word per big heading */
-.serif-italic {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-}
 
 p {
   max-width: 65ch;
@@ -106,7 +99,7 @@ small { font-size: var(--text-sm); }
 }
 
 /* ── Scroll-reveal animation ────────────────────────────────────────────────── */
-.reveal {
+.reveal-pending {
   opacity: 0;
   transform: translateY(24px);
   transition:
@@ -149,3 +142,6 @@ small { font-size: var(--text-sm); }
   letter-spacing: 2px;
   font-size: var(--text-sm);
 }
+
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { .reveal-pending { opacity: 1; transform: none; transition: none; } }

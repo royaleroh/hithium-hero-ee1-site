@@ -3,46 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Let It Shine — Steady Power for Nigerian Homes and Businesses</title>
-  <meta name="description" content="The itel Power Tank gives you lights, a fan and Wi-Fi all night. More than a power bank. Far less than a generator bill. Calculate what you need." />
+  <title data-page-title="Steady power for your setup">Steady power for your setup | Site name</title>
+  <meta name="description" content="The itel Power Tank gives you lights, a fan and Wi-Fi all night. More than a power bank. Far less than a generator bill. Find my unit." />
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website" />
-  <meta property="og:title"       content="Let It Shine — Steady light isn't expensive." />
+  <meta property="og:title"       content="Steady light isn't expensive." />
   <meta property="og:description" content="Run your lights, fan and Wi-Fi all night on one charge. Calculate your setup and order today." />
   <meta property="og:image"       content="assets/images/og-image.webp" />
   <meta property="og:url"         content="https://letitshine.ng" />
 
-  <!-- Structured data — Product -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "itel Power Tank",
-    "description": "1,000 Wh portable power station for Nigerian homes and small businesses.",
-    "brand": { "@type": "Brand", "name": "itel Energy" },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "NGN",
-      "price": "285000",
-      "availability": "https://schema.org/InStock"
-    }
-  }
-  </script>
+  <!-- Structured data - Product -->
+  <script type="application/ld+json" id="product-structured-data"></script>
 
   <!-- Preload hero image -->
-  <link rel="preload" as="image" href="assets/images/hero-bg.webp" />
+  <link rel="preload" as="image" href="assets/images/itel-home-power.webp" />
 
-  <!-- Fonts: Inter (grotesk) + DM Serif Display italic (single emphasis word) -->
+  <!-- Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/stage-a.css">
+<link rel="stylesheet" href="css/stage-b.css">
+<link rel="stylesheet" href="css/plain.css">
+<link rel="stylesheet" href="css/product-results.css">
 </head>
 <body>
 
@@ -52,26 +42,25 @@
 <header id="site-nav" class="site-nav" role="banner">
   <div class="container">
     <nav class="nav-inner" aria-label="Main navigation">
-      <a href="/" class="nav-logo" aria-label="Let It Shine — home">
+      <a href="/" class="nav-logo" data-brand-label="home" aria-label="Home">
         <div class="nav-logo-icon" aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
             <circle cx="9" cy="9" r="4" fill="white"/>
             <path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.22 3.22l1.41 1.41M13.36 13.36l1.41 1.41M3.22 14.78l1.41-1.41M13.36 4.64l1.41-1.41" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
-        Let It Shine
+        <span data-site-name>Site name</span>
       </a>
 
       <ul class="nav-links" role="list">
-        <li><a href="#who">Who it's for</a></li>
-        <li><a href="#calculator">Calculator</a></li>
-        <li><a href="#compare">Compare</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#trust">The range</a></li>
+        <li><a href="#delivery-table">Delivery</a></li>
+        <li><a href="#faq">Questions</a></li>
       </ul>
 
       <div class="nav-actions">
         <a href="#calculator" class="btn btn--primary" id="nav-cta">
-          Get my estimate
+          Find my unit
           <span class="btn-arrow" aria-hidden="true">
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
@@ -92,11 +81,10 @@
 
 <!-- Mobile nav overlay -->
 <nav id="nav-mobile" class="nav-mobile" aria-label="Mobile navigation">
-  <a href="#who">Who it's for</a>
-  <a href="#calculator">Calculator</a>
-  <a href="#compare">Compare</a>
-  <a href="#faq">FAQ</a>
-  <a href="#calculator" class="btn btn--primary" style="margin-top:1rem;justify-content:center;">Get my estimate</a>
+  <a href="#trust">The range</a>
+  <a href="#delivery-table">Delivery</a>
+  <a href="#faq">Questions</a>
+  <a href="#calculator" class="btn btn--primary" style="margin-top:1rem;justify-content:center;">Find my unit</a>
 </nav>
 
 <div class="nav-spacer"></div>
@@ -108,72 +96,51 @@
      ══════════════════════════════════════════════════════════════════════ -->
 <section class="hero" aria-labelledby="hero-h1">
   <img
-    src="assets/images/hero-bg.webp"
-    alt="A well-lit Nigerian home at night powered by a portable power station"
+    src="assets/images/itel-home-power.webp"
+    alt="itel Power Tank 1000 in a home"
     class="hero-img"
     width="1600"
-    height="900"
+    height="1600"
     fetchpriority="high"
   />
   <div class="hero-bg" aria-hidden="true"></div>
 
   <div class="container">
     <div class="hero-content">
-      <p class="hero-eyebrow" aria-hidden="true">
-        <svg width="6" height="6" viewBox="0 0 6 6" fill="none" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>
-        Portable power stations
-      </p>
+<!-- Single-family heading emphasis -->
+      <h1 id="hero-h1">Steady light<br>isn't <span class="heading-accent">expensive.</span></h1>
 
-      <!-- Serif italic on one word per the design brief -->
-      <h1 id="hero-h1">Steady light<br>isn't <em class="serif-italic">expensive.</em></h1>
-
-      <p class="hero-sub">More than a power bank. Far less than a generator bill.</p>
+      <p class="hero-sub">A rechargeable power box for your home or shop. It keeps your lights, fan and Wi-Fi on when the power goes.</p>
 
       <div class="hero-actions">
         <a href="#calculator" class="btn btn--primary btn--lg" id="hero-cta">
-          Calculate what you need
+          Find my unit
           <span class="btn-arrow" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
-        <a href="#who" class="btn btn--ghost" style="color:rgba(255,255,255,0.75);">
-          See who it's for
+        <a href="#trust" class="btn btn--ghost" style="color:rgba(255,255,255,0.75);">
+          See the range
         </a>
       </div>
 
-      <!-- Two floating info cards (Windora-style) -->
-      <div class="hero-cards" role="list">
-        <div class="hero-card" role="listitem">
-          <div class="hero-card-num" aria-hidden="true">1kWh</div>
-          <div class="hero-card-text">
-            <span class="hero-card-label">Battery</span>
-            <span class="hero-card-value">Power Tank</span>
-          </div>
-        </div>
-        <div class="hero-card" role="listitem">
-          <div class="hero-card-num" aria-hidden="true">8h</div>
-          <div class="hero-card-text">
-            <span class="hero-card-label">Runtime</span>
-            <span class="hero-card-value">Lights + fan + Wi-Fi</span>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════════
      2. THE GAP
-     Horizontal price scale — power station as a lit marker.
+     Horizontal price scale - power station as a lit marker.
      No three equal cards. Numbers read from data file via JS.
      ══════════════════════════════════════════════════════════════════════ -->
 <section class="gap-section section" id="gap" aria-labelledby="gap-h2">
   <div class="container">
-    <p class="section-label">The gap most people miss</p>
+    <p class="section-label">Something in the middle</p>
     <h2 class="section-heading" id="gap-h2">There is a middle option.</h2>
+    <p>More than a power bank. Far less than a generator bill.</p>
     <p class="section-sub">
-      Most people jump from a power bank straight to an expensive inverter installation.
-      There is something in between that handles everything you actually need.
+      Most people think they have two choices. A power bank that charges a phone, or a big, costly system for the whole house.
+      There is a third choice. A power box you plug in. It runs your lights, fan, TV and Wi-Fi without the cost of a full system.
     </p>
 
     <!-- Built by main-sections.js from catalogue.powerSpectrum -->
@@ -185,160 +152,47 @@
 
 <!-- ══════════════════════════════════════════════════════════════════════════
      3. WHO IT'S FOR
-     Windora numbered rows — accordion. Unit computed by recommender in JS.
+     Windora numbered rows - accordion. Unit computed by recommender in JS.
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="who-section section" id="who" aria-labelledby="who-h2">
-  <div class="container">
-    <p class="section-label">Who it is for</p>
-    <h2 class="section-heading" id="who-h2">See yourself in<br><em class="serif-italic">your situation.</em></h2>
-    <p class="section-sub">
-      Pick the one that sounds like you and the calculator fills in automatically.
-    </p>
 
-    <!-- Built by main-sections.js from data/presets.js + recommender -->
-    <div id="who-rows" class="who-rows" aria-label="Use cases">
-      <!-- JS renders numbered accordion rows here -->
-    </div>
-  </div>
-</section>
 
 <!-- ══════════════════════════════════════════════════════════════════════════
      4. CALCULATOR
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="section calc-section" id="calculator" aria-labelledby="calc-h2">
-  <div class="container">
-    <p class="section-label">Your power calculator</p>
-    <h2 class="section-heading" id="calc-h2">Know exactly what you need.</h2>
-    <p class="section-sub" style="margin-bottom:var(--space-10);">
-      Tick what you want to run, set the hours, and see in real time which unit covers you.
-    </p>
-
-    <div class="calc-shell reveal">
-      <div class="calc-header">
-        <div>
-          <div class="calc-header-title">Appliance calculator</div>
-          <div class="calc-header-sub" id="calc-preset-label" hidden>No preset selected</div>
+<section class="section calculator-section" id="calculator" aria-labelledby="calc-h2">
+  <div class="calculator-panel" id="calculator-panel" data-step="1">
+    <header class="calculator-heading"><div><p class="calculator-kicker">Tell us what you run. We will tell you what you need.</p><h2 id="calc-h2">Find the right one for you.</h2></div><button type="button" id="reset-calc" class="calculator-clear">Clear all</button></header>
+    <nav class="calculator-progress" aria-label="Calculator steps">
+      <button type="button" data-step-to="1" aria-current="step"><span class="step-number">01</span><span class="step-text">Who is it for</span></button>
+      <button type="button" data-step-to="2"><span class="step-number">02</span><span class="step-text">What do you want to run?</span></button>
+      <button type="button" data-step-to="3"><span class="step-number">03</span><span class="step-text">Your unit</span></button>
+    </nav>
+    <div class="calculator-situations" id="calculator-situations">
+      <p class="zone-label">01 <span>Who is it for</span></p>
+      <div id="situation-pills" class="situation-pills" role="group" aria-label="Your situation"></div>
+      <div id="situation-preview" class="situation-preview"></div>
+      <button type="button" class="btn btn--primary mobile-only situation-next" data-step-to="2">Choose your appliances <span aria-hidden="true">→</span></button>
+    </div>
+    <div class="calculator-workspace">
+      <div class="calculator-appliances" id="calculator-appliances">
+        <div class="tiles-heading"><p class="zone-label">02 <span>Tap what you use</span></p></div>
+        <div id="appliance-list" class="appliance-tiles" aria-label="Appliances"></div>
+        <div class="calculator-fine-tune">
+          <div class="fine-outage"><span id="outage-label">Hours without light each day</span><div class="tile-stepper" role="group" aria-labelledby="outage-label"><button type="button" data-outage="-1" aria-label="Fewer hours without light">−</button><output id="daily-outage">8</output><button type="button" data-outage="1" aria-label="More hours without light">+</button></div></div>
+          <div class="fine-spend"><label for="monthly-spend">What you spend each month on petrol or generator <span>(optional)</span></label><input type="number" id="monthly-spend" min="0" inputmode="numeric" placeholder="e.g. ₦30,000"></div>
+          <div class="fine-spend fine-budget"><label for="unit-budget">Your budget for the unit <span>(optional, delivery extra)</span></label><input type="number" id="unit-budget" min="0" inputmode="numeric" placeholder="e.g. ₦300,000"></div>
         </div>
-        <button
-          type="button"
-          class="btn btn--outline"
-          id="reset-calc"
-          aria-label="Clear all appliances"
-          style="font-size:var(--text-sm);"
-        >
-          Clear all
-        </button>
+        <div class="calculator-live-bar"><p id="live-recommendation" aria-live="polite"></p><button type="button" class="btn btn--primary" data-step-to="3">Next <span aria-hidden="true">→</span></button></div>
       </div>
-
-      <div class="calc-body">
-        <!-- Inputs column -->
-        <div class="calc-inputs">
-          <h3>Tick the appliances you want to run</h3>
-          <div id="appliance-list" role="list" aria-label="Appliance list">
-            <!-- Built by calculator-ui.js -->
-          </div>
-
-          <div class="calc-extras">
-            <div class="form-group">
-              <label class="form-label" for="monthly-spend">
-                Monthly generator or petrol spend (&#8358;)
-                <span style="font-weight:400;color:var(--color-ink-faint);"> — optional</span>
-              </label>
-              <input
-                type="number"
-                id="monthly-spend"
-                class="form-input"
-                placeholder="e.g. 30000"
-                min="0"
-                inputmode="numeric"
-              />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="daily-outage">
-                Hours of outage per day
-                <span style="font-weight:400;color:var(--color-ink-faint);"> — optional</span>
-              </label>
-              <input
-                type="number"
-                id="daily-outage"
-                class="form-input"
-                placeholder="e.g. 8"
-                min="0"
-                max="24"
-                inputmode="numeric"
-              />
-            </div>
-          </div>
+      <aside class="calculator-result" id="calculator-result" aria-label="Calculator results" aria-live="polite" aria-atomic="true">
+        <button type="button" class="result-back mobile-only" data-step-to="2">← Back to appliances</button>
+        <p class="zone-label">03 <span>Your unit</span></p>
+        <div id="result-empty" hidden>Choose an appliance to see your unit.</div>
+        <div id="result-cards"><div id="result-content"></div>
+          <div id="calculator-technical"></div>
+          <div class="calculator-actions"><button type="button" id="btn-whatsapp" class="btn btn--primary">Ask for the price on WhatsApp</button><button type="button" id="btn-checkout" class="btn btn--outline" hidden>Checkout</button></div>
         </div>
-
-        <!-- Results column -->
-        <aside class="calc-results" aria-label="Calculator results" aria-live="polite">
-          <!-- Empty state -->
-          <div id="result-empty" class="calc-empty">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <rect x="8" y="14" width="24" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M14 14v-2a6 6 0 0 1 12 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M20 22v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="20" cy="21" r="1.5" fill="currentColor"/>
-            </svg>
-            <p>Tick at least one appliance<br>to see your estimate.</p>
-          </div>
-
-          <!-- Result cards (hidden until appliances are selected) -->
-          <div id="result-cards" hidden>
-            <div class="result-card reveal">
-              <div class="result-label">Recommended unit</div>
-              <div class="result-value" id="result-unit-name">—</div>
-              <div class="result-sub" id="result-unit-sub"></div>
-            </div>
-
-            <div class="result-card reveal reveal--delay-1">
-              <div class="result-label">Battery used</div>
-              <div class="result-value" id="result-runtime">—</div>
-              <div class="result-sub" id="result-fit-sub"></div>
-            </div>
-
-            <div class="result-card reveal reveal--delay-2">
-              <div class="result-label">Price</div>
-              <div class="result-value" id="result-cost">—</div>
-              <div class="result-sub" id="result-cost-sub"></div>
-            </div>
-
-            <details class="workings">
-              <summary>
-                How we worked this out
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </summary>
-              <div class="workings-body" id="workings-body"></div>
-            </details>
-
-            <div class="calc-cta-row">
-              <button
-                type="button"
-                id="btn-whatsapp"
-                class="btn btn--primary"
-                disabled
-                aria-label="Send my estimate on WhatsApp"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.124 1.533 5.856L0 24l6.335-1.508A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.172-1.418l-.371-.218-3.752.893.947-3.65-.242-.382A9.98 9.98 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                Send on WhatsApp
-              </button>
-              <button
-                type="button"
-                id="btn-checkout"
-                class="btn btn--outline"
-                disabled
-                style="background:rgba(255,255,255,0.06);color:var(--color-dark-ink);border-color:var(--color-dark-border);"
-              >
-                Checkout now
-                <span class="btn-arrow" aria-hidden="true" style="background:rgba(255,255,255,0.10);">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-              </button>
-            </div>
-          </div>
-        </aside>
-      </div>
+      </aside>
     </div>
   </div>
 </section>
@@ -346,47 +200,7 @@
 <!-- ══════════════════════════════════════════════════════════════════════════
      5. COST COMPARISON
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark" id="compare" aria-labelledby="compare-h2">
-  <div class="container">
-    <p class="section-label" style="color:var(--color-dark-muted);">Cost comparison</p>
-    <h2 class="section-heading" id="compare-h2">One price. Every month, you keep the savings.</h2>
-    <p style="color:var(--color-dark-muted);max-width:52ch;font-size:var(--text-lg);margin-bottom:var(--space-10);">
-      Generator petrol and charging costs add up. A power station is a one-time buy.
-    </p>
 
-    <div class="compare-grid">
-      <div class="compare-card reveal">
-        <div class="compare-card-label">Your current monthly spend</div>
-        <div class="compare-card-amount" id="compare-monthly">&#8358;30,000</div>
-        <div class="compare-card-note">
-          Estimated based on typical Nigerian generator and charging spend.
-          Use the calculator above to enter your own figure.
-        </div>
-      </div>
-
-      <div class="compare-card compare-card--accent reveal reveal--delay-1">
-        <div class="compare-card-label">One-time unit cost</div>
-        <div class="compare-card-amount" id="compare-unit-cost">&#8358;285,000</div>
-        <div class="compare-card-note">
-          No monthly fuel. No servicing. Just charge and use.
-        </div>
-      </div>
-
-      <div class="compare-card reveal reveal--delay-2">
-        <div class="compare-card-label">Estimated payback</div>
-        <div class="compare-card-amount" id="compare-payback" style="font-size:var(--text-3xl);">~10 months</div>
-        <div class="compare-card-note" id="compare-note">
-          After that, every month is money back in your pocket.
-        </div>
-      </div>
-    </div>
-
-    <p class="compare-disclaimer">
-      Figures are estimates based on typical usage patterns and your calculator inputs.
-      Actual savings depend on your specific appliance mix and local fuel prices.
-    </p>
-  </div>
-</section>
 
 <!-- ══════════════════════════════════════════════════════════════════════════
      6. THE PRODUCT / RANGE
@@ -400,10 +214,10 @@
       <!-- Image -->
       <div class="product-img-wrap reveal">
         <img
-          src="assets/products/itel-power-tank/hero.png"
-          alt="itel Power Tank — front view showing the unit standing upright"
-          width="660"
-          height="660"
+          src="assets/products/itel-power-tank/product.webp"
+          alt="Power Tank"
+          width="1600"
+          height="1718"
           loading="lazy"
         />
       </div>
@@ -415,36 +229,17 @@
         </p>
 
         <p class="product-intro">
-          One unit. No installation. Charge it at home, take it anywhere.
+          No installer needed. Plug it in and charge it.
         </p>
 
-        <h3 style="font-size:var(--text-base);font-weight:var(--weight-semibold);margin-bottom:var(--space-3);color:var(--color-ink-muted);text-transform:uppercase;letter-spacing:0.07em;">
-          Recharge options
-        </h3>
-        <ul class="recharge-list" id="recharge-list" aria-label="Recharge options">
-          <!-- Built from catalogue by main-sections.js -->
-        </ul>
-
-        <h3 style="font-size:var(--text-base);font-weight:var(--weight-semibold);margin-bottom:var(--space-3);color:var(--color-ink-muted);text-transform:uppercase;letter-spacing:0.07em;">
-          What is in the box
-        </h3>
-        <div class="in-box-list" id="in-box-list" role="list">
-          <!-- Built from catalogue by main-sections.js -->
-        </div>
-
-        <details style="margin-top:var(--space-6);">
-          <summary style="font-weight:var(--weight-semibold);cursor:pointer;padding-block:var(--space-3);list-style:none;display:flex;align-items:center;justify-content:space-between;">
-            Full technical specifications
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </summary>
-          <table class="spec-table" id="spec-table" aria-label="Technical specifications">
-            <!-- Built from catalogue by main-sections.js -->
-          </table>
-        </details>
+        <h3 class="recharge-heading">How to charge it</h3>
+        <ul class="recharge-list" id="recharge-list" aria-label="How to charge it"></ul>
+        <div id="product-plain"></div>
+        <div id="featured-technical"></div>
 
         <div style="margin-top:var(--space-8);">
           <a href="#calculator" class="btn btn--primary btn--lg">
-            Calculate my setup
+            Find my unit
             <span class="btn-arrow" aria-hidden="true">
               <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
@@ -462,14 +257,23 @@
      ══════════════════════════════════════════════════════════════════════ -->
 <section class="section section--dark" id="trust" aria-labelledby="trust-h2">
   <div class="container">
-    <p class="section-label" style="color:var(--color-dark-muted);">What the products offer</p>
-    <h2 class="section-heading" id="trust-h2">Built to last.</h2>
+    <p class="section-label" style="color:var(--color-dark-muted);">The range</p>
+    <h2 class="section-heading" id="trust-h2">Choose your power box.</h2>
     <p style="color:var(--color-dark-muted);max-width:52ch;font-size:var(--text-lg);margin-bottom:var(--space-4);">
-      Every specification below comes directly from the product data. Nothing is invented.
+      Compare what each one can run.
     </p>
 
-    <!-- Fact cards rendered from catalogue by main-sections.js -->
-    <div id="trust-facts" class="trust-facts">
+    <div class="range-controls" id="range-controls">
+      <p id="range-hint"><span class="range-hint-desktop">Scroll sideways to compare</span><span class="range-hint-mobile">Swipe to compare</span></p>
+      <div class="range-navigation">
+        <button type="button" id="range-prev" aria-label="Previous power box" aria-controls="trust-facts" disabled><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <output id="range-position" aria-live="polite" aria-atomic="true"></output>
+        <button type="button" id="range-next" aria-label="Next power box" aria-controls="trust-facts"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+
+    <!-- Product cards rendered from catalogue by main-sections.js -->
+    <div id="trust-facts" class="trust-facts" tabindex="0" role="region" aria-label="Power box options" aria-describedby="range-hint">
       <!-- JS populates this -->
     </div>
 
@@ -508,94 +312,15 @@
       </div>
 
       <div id="faq-list" role="list">
-        <details class="accordion-item">
-          <summary>
-            Can it run a fridge?
-            <span class="accordion-icon" aria-hidden="true">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-          </summary>
-          <div class="accordion-body">
-            A mini fridge (under 90 W) can run on the Power Tank, but the compressor surge draws three times the running watts at start-up. A full-size fridge draws too much. Use the calculator to check your specific setup.
-          </div>
-        </details>
-        <details class="accordion-item">
-          <summary>
-            How do I recharge it?
-            <span class="accordion-icon" aria-hidden="true">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-          </summary>
-          <div class="accordion-body">
-            Three ways: plug into any mains wall socket (about 2 hours), connect a solar panel up to 400 W (typically 2 to 4 hours in good sunlight), or combine both at once for the fastest refill of about 2 hours. Cables are included.
-          </div>
-        </details>
-        <details class="accordion-item">
-          <summary>
-            How long does the battery last before it wears out?
-            <span class="accordion-icon" aria-hidden="true">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-          </summary>
-          <div class="accordion-body">
-            The Power Tank uses LiFePO4 (lithium iron phosphate) chemistry, rated for 6,000+ charge cycles. Charged once a day, that is over 16 years of daily use before capacity noticeably degrades.
-          </div>
-        </details>
-        <details class="accordion-item">
-          <summary>
-            Is it safe to use indoors?
-            <span class="accordion-icon" aria-hidden="true">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-          </summary>
-          <div class="accordion-body">
-            Yes. Unlike a petrol generator, it produces no fumes and no carbon monoxide. It runs quietly — under 47 dB. You can use it in a bedroom or office. Keep it away from direct heat sources.
-          </div>
-        </details>
-        <details class="accordion-item">
-          <summary>
-            What does the warranty cover?
-            <span class="accordion-icon" aria-hidden="true">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-          </summary>
-          <div class="accordion-body">
-            12 months against manufacturing defects (pending supplier confirmation of extended terms). This does not cover physical damage or misuse. Contact us on WhatsApp to raise a warranty claim and we will guide you through the process.
-          </div>
-        </details>
-        <details class="accordion-item">
-          <summary>
-            Do you deliver to my state?
-            <span class="accordion-icon" aria-hidden="true">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-          </summary>
-          <div class="accordion-body">
-            We deliver across Nigeria. Fees vary by state and are shown in the trust section above. Lagos orders typically arrive in 1 to 2 business days; other states take 3 to 5 business days.
-          </div>
-        </details>
-        <details class="accordion-item">
-          <summary>
-            How is it different from a home inverter?
-            <span class="accordion-icon" aria-hidden="true">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-          </summary>
-          <div class="accordion-body">
-            A home inverter is fixed, needs installation, separate batteries and wiring. A power station is plug and play — charge it, move it, use it anywhere. No installation cost, no maintenance, lower upfront price.
-          </div>
-        </details>
-        <details class="accordion-item">
-          <summary>
-            What if my load is too big for a portable unit?
-            <span class="accordion-icon" aria-hidden="true">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2v6M2 5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-          </summary>
-          <div class="accordion-body">
-            If the calculator tells you that no portable unit covers your load, your situation calls for a home battery system (a larger battery, a separate inverter and an installer). We carry the Hithium ARKVOLT range for exactly this. Send us a message on WhatsApp and we will work through the options with you.
-          </div>
-        </details>
+        <details class="accordion-item"><summary>How long will it run my appliances?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-0"></div></details>
+<details class="accordion-item"><summary>Can it run a fridge?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-1"></div></details>
+<details class="accordion-item"><summary>How do I charge it?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-2"></div></details>
+<details class="accordion-item"><summary>How long might the battery last?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-3"></div></details>
+<details class="accordion-item"><summary>Is it safe indoors?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-4"></div></details>
+<details class="accordion-item"><summary>What does the warranty cover?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-5"></div></details>
+<details class="accordion-item"><summary>Do you deliver to my state?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-6"></div></details>
+<details class="accordion-item"><summary>How is it different from a home inverter?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-7"></div></details>
+<details class="accordion-item"><summary>What if I need more power?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-8"></div></details>
       </div>
     </div>
   </div>
@@ -609,10 +334,10 @@
     <p class="section-label">Ready to find out?</p>
     <h2 id="cta-h2">Know exactly what you need<br>before you spend a naira.</h2>
     <p style="color:var(--color-ink-muted);max-width:44ch;margin:0 auto var(--space-8);">
-      The calculator takes about a minute. You come away knowing if this is the right fit and which unit covers you.
+      Choose what you use. Find the one that covers your power cut.
     </p>
     <a href="#calculator" class="btn btn--primary btn--lg" id="cta-btn">
-      Calculate my setup
+      Find my unit
       <span class="btn-arrow" aria-hidden="true">
         <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
@@ -635,9 +360,9 @@
               <path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.22 3.22l1.41 1.41M13.36 13.36l1.41 1.41M3.22 14.78l1.41-1.41M13.36 4.64l1.41-1.41" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
-          Let It Shine
+          <span data-site-name>Site name</span>
         </div>
-        <p>Steady power for Nigerian homes and businesses. No fumes, no noise, no monthly fuel bill.</p>
+        <p>Power boxes for homes and shops. Find the one that runs what you need.</p>
         <a
           id="footer-whatsapp"
           href="#"
@@ -654,30 +379,24 @@
 
       <!-- Links -->
       <nav class="footer-links" aria-label="Site links">
-        <h4>Navigate</h4>
+        <h4>Explore</h4>
         <ul role="list">
-          <li><a href="#who">Who it's for</a></li>
-          <li><a href="#calculator">Calculator</a></li>
-          <li><a href="#compare">Cost comparison</a></li>
-          <li><a href="#product">The product</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#trust">The range</a></li>
+          <li><a href="#calculator">Find my unit</a></li>
         </ul>
       </nav>
-
-      <!-- Support -->
       <nav class="footer-links" aria-label="Support links">
-        <h4>Support</h4>
+        <h4>Help</h4>
         <ul role="list">
-          <li><a href="#faq">Frequently asked questions</a></li>
-          <li><a href="checkout.html">Order now</a></li>
-          <li><a id="footer-wa-support" href="#">WhatsApp support</a></li>
+          <li><a href="#delivery-table">Delivery fees</a></li>
+          <li><a href="#faq">Questions</a></li>
         </ul>
       </nav>
     </div>
 
     <div class="footer-bottom">
       <p class="footer-copy">
-        &copy; <span id="footer-year"></span> Let It Shine. All rights reserved.
+        &copy; <span id="footer-year"></span> <span data-site-name>Site name</span>. All rights reserved.
       </p>
       <div class="social-links" aria-label="Social media links">
         <a href="#" class="social-link" aria-label="Follow us on X (Twitter)">
@@ -698,17 +417,16 @@
      SCRIPTS (ES modules)
      ══════════════════════════════════════════════════════════════════════ -->
 <script type="module" src="js/main-sections.js"></script>
+<script type="module" src="js/range-scroll.js"></script>
 <script type="module" src="js/calculator-ui.js"></script>
 <script type="module" src="js/main.js"></script>
 <script type="module">
   // Footer year
   document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-  // Clear calculator button
-  document.getElementById('reset-calc')?.addEventListener('click', () => {
-    window.location.reload();
-  });
+
 </script>
 
+<script type="module" src="js/brand.js"></script>
 </body>
 </html>

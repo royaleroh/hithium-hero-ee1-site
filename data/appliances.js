@@ -3,14 +3,14 @@
 // Appliance list for the calculator.
 //
 // Fields:
-//   id              — unique string, used as key in presets and test fixtures
-//   label           — plain English name shown in the UI
-//   watts           — typical running wattage  // TODO: confirm all values
-//   surgeMultiplier — peak draw = watts * surgeMultiplier  // TODO: confirm
-//   acRequired      — true if the appliance needs an AC mains socket.
+//   id              - unique string, used as key in presets and test fixtures
+//   label           - plain English name shown in the UI
+//   watts           - typical running wattage  // TODO: confirm all values
+//   surgeMultiplier - peak draw = watts * surgeMultiplier  // TODO: confirm
+//   acRequired      - true if the appliance needs an AC mains socket.
 //                     The Power Go has no AC output, so acRequired:true appliances
 //                     rule it out.
-//   note            — optional guidance shown below the appliance label in the UI
+//   note            - optional guidance shown below the appliance label in the UI
 //
 // All wattage figures are estimates. Flag them with // TODO: confirm before publishing.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -22,7 +22,7 @@ export const appliances = [
     label: 'LED bulb',
     watts: 10,          // TODO: confirm
     surgeMultiplier: 1, // TODO: confirm
-    acRequired: true,   // DC bulbs exist but assume AC — TODO: confirm
+    acRequired: true,   // DC bulbs exist but assume AC - TODO: confirm
     note: null,
   },
 
@@ -65,7 +65,7 @@ export const appliances = [
   {
     id: 'laptop',
     label: 'Laptop',
-    watts: 65,          // TODO: confirm — charges over USB-C up to 65 W
+    watts: 65,          // TODO: confirm - charges over USB-C up to 65 W
     surgeMultiplier: 1, // TODO: confirm
     acRequired: false,  // Charges over USB-C up to 65 W
     note: null,
@@ -102,7 +102,7 @@ export const appliances = [
     id: 'mini-fridge',
     label: 'Mini fridge',
     watts: 90,          // TODO: confirm
-    surgeMultiplier: 3, // TODO: confirm — compressor start surge
+    surgeMultiplier: 3, // TODO: confirm - compressor start surge
     acRequired: true,
     note: null,
   },

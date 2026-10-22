@@ -24,6 +24,6 @@ export async function sendLead(payload) {
       keepalive: true,
     });
   } catch {
-    // Intentionally silent — never block the user.
+    // Intentionally silent - never block the user.
   }
 }

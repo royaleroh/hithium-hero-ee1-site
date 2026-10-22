@@ -16,63 +16,12 @@ import { recommend, deriveLoad, checkProduct, computePayback, runtimeLabel } fro
 // Using the exact values from data/catalogue.js so the tests are honest.
 // peakOutputW for Power Tank is 600 (confirmed lower figure from key_specs).
 
-const POWER_GO = {
-  id: 'itel-power-go-iess-320t',
-  slug: 'itel-power-go',
-  name: 'Power Go',
-  model: 'IESS-320T',
-  tier: 'portable',
-  calculatorEligible: true,
-  acOutput: false,
-  price: null,
-  usableWh: 320,
-  maxOutputW: 130,
-  peakOutputW: 260,
-};
-
-const POWER_GO_PRO = {
-  id: 'itel-power-go-pro-iess-320act',
-  slug: 'itel-power-go-pro',
-  name: 'Power Go Pro',
-  model: 'IESS-320ACT',
-  tier: 'portable',
-  calculatorEligible: true,
-  acOutput: true,
-  price: null,
-  usableWh: 320,
-  maxOutputW: 200,
-  peakOutputW: 200,
-};
-
-const POWER_TANK = {
-  id: 'itel-power-tank-iess-05k10n',
-  slug: 'itel-power-tank',
-  name: 'Power Tank',
-  model: 'IESS-05K10N',
-  tier: 'portable',
-  calculatorEligible: true,
-  acOutput: true,
-  price: 285000,
-  usableWh: 1000,
-  maxOutputW: 500,
-  peakOutputW: 600,  // from key_specs.surge_power — TODO: confirm with supplier
-};
-
-const POWER_TANK_1000 = {
-  id: 'itel-power-tank-1000-iess-1k20n',
-  slug: 'itel-power-tank-1000',
-  name: 'Power Tank 1000',
-  model: 'IESS-1K20N',
-  tier: 'portable',
-  calculatorEligible: true,
-  acOutput: true,
-  price: null,
-  usableWh: 2000,
-  maxOutputW: 1000,
-  peakOutputW: 1200,
-};
-
-const ALL_ELIGIBLE = [POWER_GO, POWER_GO_PRO, POWER_TANK, POWER_TANK_1000];
+import { catalogue, portableProducts } from '../data/catalogue.js';
+const POWER_GO = catalogue.products.find(p => p.slug === 'itel-power-go');
+const POWER_GO_PRO = catalogue.products.find(p => p.slug === 'itel-power-go-pro');
+const POWER_TANK = catalogue.products.find(p => p.slug === 'itel-power-tank');
+const POWER_TANK_1000 = catalogue.products.find(p => p.slug === 'itel-power-tank-1000');
+const ALL_ELIGIBLE = portableProducts;
 
 // ─── Helper: build a selection item ──────────────────────────────────────────
 
@@ -91,7 +40,7 @@ const LAPTOP        = (qty, hours) => sel({ id: 'laptop',        label: 'Laptop'
 const MINI_FRIDGE   = (qty, hours) => sel({ id: 'mini-fridge',   label: 'Mini fridge',        watts: 90,  qty, hours, surgeMultiplier: 3, acRequired: true });
 
 // =============================================================================
-// TEST 1 — Student, all DC-friendly
+// TEST 1 - Student, all DC-friendly
 // =============================================================================
 //
 // Laptop 65 W x1 for 2 h (min(2,8) = 2): 130 Wh
@@ -103,7 +52,7 @@ const MINI_FRIDGE   = (qty, hours) => sel({ id: 'mini-fridge',   label: 'Mini fr
 // needsAC: false
 // Best fit: Power Go (320 Wh, no AC needed). Usage = 237.6/320 = 74.25 %
 
-describe('Test 1 — Student, all DC-friendly', () => {
+describe('Test 1 - Student, all DC-friendly', () => {
   const selections = [
     LAPTOP(1, 2),
     PHONE_CHARGER(1, 2),
@@ -151,7 +100,7 @@ describe('Test 1 — Student, all DC-friendly', () => {
 });
 
 // =============================================================================
-// TEST 2 — Shop with a near miss
+// TEST 2 - Shop with a near miss
 // =============================================================================
 //
 // 4 LED bulbs x 8 h: 320 Wh
@@ -165,13 +114,13 @@ describe('Test 1 — Student, all DC-friendly', () => {
 //
 // Power Go: fails (no AC)
 // Power Go Pro: fails (energy 1,075.2 > 320)
-// Power Tank: fails (energy 1,075.2 > 1,000 — 7.5 % over, within 15 %)
+// Power Tank: fails (energy 1,075.2 > 1,000 - 7.5 % over, within 15 %)
 //   → near-miss candidate: trim fan by 2 h
 //     fan 6 h: 40*8 + 50*6 + 20*4 + 12*8 = 320+300+80+96 = 796 Wh x1.2 = 955.2 Wh ≤ 1000 ✓
 // Power Tank 1000: passes (energy 1,075.2 ≤ 2000)
 // Best fit: Power Tank 1000
 
-describe('Test 2 — Shop with a near miss', () => {
+describe('Test 2 - Shop with a near miss', () => {
   const selections = [
     LED_BULB(4, 8),
     FAN(1, 8),
@@ -249,7 +198,7 @@ describe('Test 2 — Shop with a near miss', () => {
 });
 
 // =============================================================================
-// TEST 3 — Surge excludes a unit
+// TEST 3 - Surge excludes a unit
 // =============================================================================
 //
 // Mini fridge x1 x 2 h:
@@ -263,7 +212,7 @@ describe('Test 2 — Shop with a near miss', () => {
 // Power Tank: passes (peak 270 <= 600, energy 216 <= 1000, running 90 <= 500, AC yes)
 // Best fit: Power Tank
 
-describe('Test 3 — Surge excludes Power Go Pro', () => {
+describe('Test 3 - Surge excludes Power Go Pro', () => {
   const selections = [MINI_FRIDGE(1, 2)];
   const input = { selections, outageHours: 8 };
 
@@ -312,7 +261,7 @@ describe('Test 3 — Surge excludes Power Go Pro', () => {
 });
 
 // =============================================================================
-// TEST 4 — Too big: whole home system
+// TEST 4 - Too big: whole home system
 // =============================================================================
 //
 // 2 mini fridges x 8 h: 90*2*8 = 1440 Wh
@@ -324,7 +273,7 @@ describe('Test 3 — Surge excludes Power Go Pro', () => {
 // needsAC: true
 // No unit passes (largest is 2000 Wh). State: none.
 
-describe('Test 4 — Too big, whole home system', () => {
+describe('Test 4 - Too big, whole home system', () => {
   const selections = [
     MINI_FRIDGE(2, 8),
     TV(1, 6),
@@ -356,15 +305,15 @@ describe('Test 4 — Too big, whole home system', () => {
 
   it('closestUnit is the largest portable unit', () => {
     const result = recommend(input, ALL_ELIGIBLE);
-    assert.equal(result.closestUnit.slug, 'itel-power-tank-1000');
+    assert.equal(result.closestUnit.slug, 'hithium-heroee-2');
   });
 });
 
 // =============================================================================
-// TEST 5 — Zero appliances
+// TEST 5 - Zero appliances
 // =============================================================================
 
-describe('Test 5 — Zero appliances', () => {
+describe('Test 5 - Zero appliances', () => {
   it('empty selections returns state empty', () => {
     const result = recommend({ selections: [] }, ALL_ELIGIBLE);
     assert.equal(result.state, 'empty');
@@ -397,10 +346,10 @@ describe('Test 5 — Zero appliances', () => {
 });
 
 // =============================================================================
-// TEST 6 — Null price product never produces payback or checkout
+// TEST 6 - Null price product never produces payback or checkout
 // =============================================================================
 
-describe('Test 6 — Null price never produces payback', () => {
+describe('Test 6 - Null price never produces payback', () => {
   it('computePayback with null price returns null months', () => {
     const { months } = computePayback(null, 30000);
     assert.equal(months, null);
@@ -436,7 +385,7 @@ describe('runtimeLabel helper', () => {
 // Extra: deriveLoad respects outageHours cap
 // =============================================================================
 
-describe('deriveLoad — outage hours cap', () => {
+describe('deriveLoad - outage hours cap', () => {
   it('caps hours at outageHours if appliance is used longer', () => {
     // Router used for 12 h, but outage is only 8 h → counts as 8 h
     const s = ROUTER(1, 12);

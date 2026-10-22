@@ -9,7 +9,7 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════
-   HERO — Full-bleed image, one big headline, two floating info cards
+   HERO - Full-bleed image, one big headline, two floating info cards
    Reference: Sunvora hero with Windora floating cards
    ══════════════════════════════════════════════════════════════════════════ */
 .hero {
@@ -31,17 +31,17 @@
   object-position: center 30%;
 }
 
-/* Gradient overlay — heavier at bottom for text legibility */
+/* Gradient overlay - heavier at bottom for text legibility */
 .hero-bg {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(
       to top,
-      rgba(17,18,23,0.90) 0%,
-      rgba(17,18,23,0.55) 45%,
-      rgba(17,18,23,0.20) 75%,
-      rgba(17,18,23,0.10) 100%
+      rgba(42,26,14,0.90) 0%,
+      rgba(42,26,14,0.55) 45%,
+      rgba(42,26,14,0.20) 75%,
+      rgba(42,26,14,0.10) 100%
     );
   z-index: 1;
 }
@@ -77,8 +77,8 @@
   max-width: 14ch;
 }
 
-/* The one serif italic word in the headline */
-.hero h1 .serif-italic {
+/* The emphasised word in the headline */
+.hero h1 .heading-accent {
   color: var(--color-accent);
 }
 
@@ -111,7 +111,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
-  background: rgba(17,18,23,0.60);
+  background: rgba(42,26,14,0.60);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255,255,255,0.14);
@@ -172,7 +172,7 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════
-   THE GAP — Horizontal price scale with power station as a lit marker
+   THE GAP - Horizontal price scale with power station as a lit marker
    ══════════════════════════════════════════════════════════════════════════ */
 .gap-section {
   padding-block: var(--section-gap);
@@ -326,7 +326,7 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════
-   WHO IT'S FOR — Windora numbered accordion rows
+   WHO IT'S FOR - Windora numbered accordion rows
    ══════════════════════════════════════════════════════════════════════════ */
 .who-section {
   padding-block: var(--section-gap);
