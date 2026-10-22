@@ -1,107 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-NG">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hithium Hero EE1 — Stay Online 24/7, No NEPA Needed</title>
-<meta name="description" content="A silent, portable power station built for Nigerian remote workers who can't afford to go offline. Chat with an energy expert on WhatsApp.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="assets/bareLogo.png">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-page-title="Steady power for your setup">Steady power for your setup | Site name</title>
+  <meta name="description" content="The itel Power Tank gives you lights, a fan and Wi-Fi all night. More than a power bank. Far less than a generator bill. Find my unit." />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Steady light isn't expensive." />
+  <meta property="og:description" content="Run your lights, fan and Wi-Fi all night on one charge. Calculate your setup and order today." />
+  <meta property="og:image"       content="assets/images/og-image.webp" />
+  <meta property="og:url"         content="https://letitshine.ng" />
+
+  <!-- Structured data - Product -->
+  <script type="application/ld+json" id="product-structured-data"></script>
+
+  <!-- Preload hero image -->
+  <link rel="preload" as="image" href="assets/images/itel-home-power.webp" />
+
+  <!-- Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/stage-a.css">
+<link rel="stylesheet" href="css/stage-b.css">
+<link rel="stylesheet" href="css/plain.css">
+<link rel="stylesheet" href="css/product-results.css">
 </head>
 <body>
 
-<header>
-  <div class="nav wrap">
-    <a href="#" class="logo"><img src="assets/logoWithWordings.png" alt="Let It Shine Energy Hub" style="height:90px; width:auto; display:block;"></a>
-    <a class="nav-cta" href="#solution-consult">💬 Get Consultation.</a>
+<!-- ══════════════════════════════════════════════════════════════════════════
+     NAVIGATION
+     ══════════════════════════════════════════════════════════════════════ -->
+<header id="site-nav" class="site-nav" role="banner">
+  <div class="container">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="/" class="nav-logo" data-brand-label="home" aria-label="Home">
+        <div class="nav-logo-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="4" fill="white"/>
+            <path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.22 3.22l1.41 1.41M13.36 13.36l1.41 1.41M3.22 14.78l1.41-1.41M13.36 4.64l1.41-1.41" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span data-site-name>Site name</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#trust">The range</a></li>
+        <li><a href="#delivery-table">Delivery</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#calculator" class="btn btn--primary" id="nav-cta">
+          Find my unit
+          <span class="btn-arrow" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <button
+          id="nav-burger"
+          class="nav-burger"
+          aria-expanded="false"
+          aria-controls="nav-mobile"
+          aria-label="Open navigation menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy" data-reveal>
-      <div class="eyebrow"><span class="power-bars lit"><span></span><span></span><span></span><span></span></span> LET IT SHINE ENERGY HUB</div>
-      <h1 class="h-display">HOW SMART REMOTE WORKERS IN NIGERIA STAY ONLINE 24/7</h1>
-      <p class="h-kicker">The next time NEPA takes the light, your income won't notice.</p>
-      <p class="lede">A silent, portable power station that keeps your laptop, router and monitor running through every blackout — so your clients, your deadlines, and your reputation stay exactly where they should be.</p>
-      <div class="btn-row">
-        <a class="btn btn-ghost" href="#story">See how it works ↓</a>
+<!-- Mobile nav overlay -->
+<nav id="nav-mobile" class="nav-mobile" aria-label="Mobile navigation">
+  <a href="#trust">The range</a>
+  <a href="#delivery-table">Delivery</a>
+  <a href="#faq">Questions</a>
+  <a href="#calculator" class="btn btn--primary" style="margin-top:1rem;justify-content:center;">Find my unit</a>
+</nav>
+
+<div class="nav-spacer"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     1. HERO
+     Full-bleed image, one big headline, two small floating info cards.
+     Reference: Sunvora hero layout, Windora floating cards.
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="hero" aria-labelledby="hero-h1">
+  <img
+    src="assets/images/itel-home-power.webp"
+    alt="itel Power Tank 1000 in a home"
+    class="hero-img"
+    width="1600"
+    height="1600"
+    fetchpriority="high"
+  />
+  <div class="hero-bg" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero-content">
+<!-- Single-family heading emphasis -->
+      <h1 id="hero-h1">Steady light<br>isn't <span class="heading-accent">expensive.</span></h1>
+
+      <p class="hero-sub">A rechargeable power box for your home or shop. It keeps your lights, fan and Wi-Fi on when the power goes.</p>
+
+      <div class="hero-actions">
+        <a href="#calculator" class="btn btn--primary btn--lg" id="hero-cta">
+          Find my unit
+          <span class="btn-arrow" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a href="#trust" class="btn btn--ghost" style="color:rgba(255,255,255,0.75);">
+          See the range
+        </a>
       </div>
-      <div class="trust-row">
-        <span>⭐️⭐️⭐️⭐️⭐️</span>
-        <span>Trusted by developers, editors &amp; VAs in Lagos, Abuja &amp; Port Harcourt</span>
-      </div>
-    </div>
-    <div class="hero-visual" data-reveal>
-      <div class="glow"></div>
-      <div class="frame">
-        <img src="images/hithium-ee1.jpg" alt="Hithium Hero EE1 portable power station with charging cables and power cord">
-      </div>
+
     </div>
   </div>
 </section>
 
-<!-- PATTERN INTERRUPT -->
-<section class="interrupt">
-  <div class="interrupt-inner">
-    <h2>Let's be honest — it was never a "light" problem. It's an income problem.</h2>
-    <p>KEEP READING. THIS ISN'T A GENERATOR PITCH.</p>
-  </div>
-</section>
+<!-- ══════════════════════════════════════════════════════════════════════════
+     2. THE GAP
+     Horizontal price scale - power station as a lit marker.
+     No three equal cards. Numbers read from data file via JS.
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="gap-section section" id="gap" aria-labelledby="gap-h2">
+  <div class="container">
+    <p class="section-label">Something in the middle</p>
+    <h2 class="section-heading" id="gap-h2">There is a middle option.</h2>
+    <p>More than a power bank. Far less than a generator bill.</p>
+    <p class="section-sub">
+      Most people think they have two choices. A power bank that charges a phone, or a big, costly system for the whole house.
+      There is a third choice. A power box you plug in. It runs your lights, fan, TV and Wi-Fi without the cost of a full system.
+    </p>
 
-<!-- STORY -->
-<section class="story" id="story">
-  <div class="wrap story-wrap">
-    <div class="eyebrow" data-reveal><span class="power-bars"><span></span><span></span><span></span><span></span></span> A SCENE YOU KNOW TOO WELL</div>
-    <h2 class="h-section" data-reveal style="margin-bottom:26px;">You're on an important call. Then the power goes.</h2>
-
-    <div class="story-body" data-reveal>
-      <p>You're a few minutes into a call with a client. It's going well — maybe well enough to lead to a bigger project.</p>
-      <p>Then the power cuts. Your Wi-Fi router goes first, then the call drops <b>mid-sentence.</b> You reconnect on mobile data, but your laptop battery is already at 20%.</p>
-      <p>By the time you're back online, the moment is gone. You send the message you've sent too many times this year: <i>"Sorry, we had a connection issue."</i></p>
-      <div class="story-turn">The client doesn't remember the excuse. They remember the <span>doubt</span> it created. It doesn't have to be this way.</div>
+    <!-- Built by main-sections.js from catalogue.powerSpectrum -->
+    <div id="price-scale-container" aria-label="Power solution price comparison">
+      <!-- JS renders the price scale here -->
     </div>
   </div>
 </section>
 
-<!-- PRODUCT INTRO / SOLUTION -->
-<section class="product" id="solution-consult">
-  <div class="wrap product-grid">
-    <div class="product-visual" data-reveal>
-      <div class="frame">
-        <img src="images/hithium-ee1.jpg" alt="Hithium Hero EE1 power station with accessory kit">
-      </div>
+<!-- ══════════════════════════════════════════════════════════════════════════
+     3. WHO IT'S FOR
+     Windora numbered rows - accordion. Unit computed by recommender in JS.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     4. CALCULATOR
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="section calculator-section" id="calculator" aria-labelledby="calc-h2">
+  <div class="calculator-panel" id="calculator-panel" data-step="1">
+    <header class="calculator-heading"><div><p class="calculator-kicker">Tell us what you run. We will tell you what you need.</p><h2 id="calc-h2">Find the right one for you.</h2></div><button type="button" id="reset-calc" class="calculator-clear">Clear all</button></header>
+    <nav class="calculator-progress" aria-label="Calculator steps">
+      <button type="button" data-step-to="1" aria-current="step"><span class="step-number">01</span><span class="step-text">Who is it for</span></button>
+      <button type="button" data-step-to="2"><span class="step-number">02</span><span class="step-text">What do you want to run?</span></button>
+      <button type="button" data-step-to="3"><span class="step-number">03</span><span class="step-text">Your unit</span></button>
+    </nav>
+    <div class="calculator-situations" id="calculator-situations">
+      <p class="zone-label">01 <span>Who is it for</span></p>
+      <div id="situation-pills" class="situation-pills" role="group" aria-label="Your situation"></div>
+      <div id="situation-preview" class="situation-preview"></div>
+      <button type="button" class="btn btn--primary mobile-only situation-next" data-step-to="2">Choose your appliances <span aria-hidden="true">→</span></button>
     </div>
-    <div data-reveal>
-      <div class="eyebrow"><span class="power-bars lit"><span></span><span></span><span></span><span></span></span> THE SOLUTION</div>
-      <h2 class="h-section" style="margin-bottom:14px;">Meet the Hithium Hero EE1.</h2>
-      <p class="lede" style="margin-bottom:0;">A dedicated power station for people whose income depends on staying connected. It charges itself quietly, then takes over the instant NEPA fails — before your client even notices the light went.</p>
-      <div class="chip-row">
-        <span class="chip">🔇 SILENT</span>
-        <span class="chip">🎒 PORTABLE</span>
-        <span class="chip">☀️ SOLAR-READY</span>
-        <span class="chip">⛽ ZERO FUEL</span>
-      </div>
-
-      <div class="lead-card" data-lead-card>
-        <span class="form-eyebrow">FREE POWER CONSULTATION</span>
-        <h3>Ready to Protect Your Work From the Next Blackout?</h3>
-        <p class="sub">Whether you're still comparing options or you're ready to buy, we'll help you take the next step. Choose the option that fits you best.</p>
-
-        <div class="field" data-field="name">
-          <label>Full name</label>
-          <input type="text" data-input="name" placeholder="e.g. Chisom Okafor" autocomplete="name">
-          <span class="field-error">Please enter your name.</span>
+    <div class="calculator-workspace">
+      <div class="calculator-appliances" id="calculator-appliances">
+        <div class="tiles-heading"><p class="zone-label">02 <span>Tap what you use</span></p></div>
+        <div id="appliance-list" class="appliance-tiles" aria-label="Appliances"></div>
+        <div class="calculator-fine-tune">
+          <div class="fine-outage"><span id="outage-label">Hours without light each day</span><div class="tile-stepper" role="group" aria-labelledby="outage-label"><button type="button" data-outage="-1" aria-label="Fewer hours without light">−</button><output id="daily-outage">8</output><button type="button" data-outage="1" aria-label="More hours without light">+</button></div></div>
+          <div class="fine-spend"><label for="monthly-spend">What you spend each month on petrol or generator <span>(optional)</span></label><input type="number" id="monthly-spend" min="0" inputmode="numeric" placeholder="e.g. ₦30,000"></div>
+          <div class="fine-spend fine-budget"><label for="unit-budget">Your budget for the unit <span>(optional, delivery extra)</span></label><input type="number" id="unit-budget" min="0" inputmode="numeric" placeholder="e.g. ₦300,000"></div>
         </div>
-
-        <div class="field" data-field="email">
-          <label>Email address</label>
-          <input type="email" data-input="email" placeholder="you@example.com" autocomplete="email">
-          <span class="field-error">Please enter a valid email address.</span>
+        <div class="calculator-live-bar"><p id="live-recommendation" aria-live="polite"></p><button type="button" class="btn btn--primary" data-step-to="3">Next <span aria-hidden="true">→</span></button></div>
+      </div>
+      <aside class="calculator-result" id="calculator-result" aria-label="Calculator results" aria-live="polite" aria-atomic="true">
+        <button type="button" class="result-back mobile-only" data-step-to="2">← Back to appliances</button>
+        <p class="zone-label">03 <span>Your unit</span></p>
+        <div id="result-empty" hidden>Choose an appliance to see your unit.</div>
+        <div id="result-cards"><div id="result-content"></div>
+          <div id="calculator-technical"></div>
+          <div class="calculator-actions"><button type="button" id="btn-whatsapp" class="btn btn--primary">Ask for the price on WhatsApp</button><button type="button" id="btn-checkout" class="btn btn--outline" hidden>Checkout</button></div>
         </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     5. COST COMPARISON
+     ══════════════════════════════════════════════════════════════════════ -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     6. THE PRODUCT / RANGE
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="section" id="product" aria-labelledby="product-h2">
+  <div class="container">
+    <p class="section-label">The product</p>
+    <h2 class="section-heading" id="product-h2">The itel Power Tank.</h2>
 
         <div class="dual-cta dual-cta-final" data-lead-fields>
           <div class="cta-option cta-option-primary">
@@ -114,154 +221,126 @@
           </div>
         </div>
 
-        <div class="consult-trust-row">
-          <span>🚚 Nationwide Delivery</span>
-          <span>🛡️ 2-Year Warranty</span>
-          <span>🔒 Secure Checkout</span>
-          <span>💬 Real WhatsApp Support</span>
+      <!-- Details -->
+      <div class="reveal reveal--delay-1">
+        <p class="product-headline" id="product-capacity">
+          <!-- Filled by main-sections.js from catalogue -->
+        </p>
+
+        <p class="product-intro">
+          No installer needed. Plug it in and charge it.
+        </p>
+
+        <h3 class="recharge-heading">How to charge it</h3>
+        <ul class="recharge-list" id="recharge-list" aria-label="How to charge it"></ul>
+        <div id="product-plain"></div>
+        <div id="featured-technical"></div>
+
+        <div style="margin-top:var(--space-8);">
+          <a href="#calculator" class="btn btn--primary btn--lg">
+            Find my unit
+            <span class="btn-arrow" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
         </div>
-        <p class="consult-reassurance">We respect your privacy. No spam. No pressure. Just honest advice and reliable backup power.</p>
-
-        <div class="lead-success" data-lead-success>
-          <div class="tick">✓</div>
-          <h3 data-success-title>You're all set!</h3>
-          <p data-success-text>Click below to continue on WhatsApp — we've pre-filled it with your details.</p>
-          <a class="btn btn-whatsapp" data-whatsapp-link href="#" target="_blank" rel="noopener" style="width:100%; justify-content:center;">💬 Open WhatsApp Chat</a>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURE CARDS -->
-<section class="section alt">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <div class="eyebrow"><span class="power-bars lit"><span></span><span></span><span></span><span></span></span> WHAT CHANGES FOR YOU</div>
-      <h2 class="h-section">What you get to stop worrying about.</h2>
+<!-- ══════════════════════════════════════════════════════════════════════════
+     7. TRUST
+     Only facts from the data file. SHOW_TRUST_STATS and SHOW_TESTIMONIALS
+     flags in config.js control invented stats and testimonials (both false).
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="section section--dark" id="trust" aria-labelledby="trust-h2">
+  <div class="container">
+    <p class="section-label" style="color:var(--color-dark-muted);">The range</p>
+    <h2 class="section-heading" id="trust-h2">Choose your power box.</h2>
+    <p style="color:var(--color-dark-muted);max-width:52ch;font-size:var(--text-lg);margin-bottom:var(--space-4);">
+      Compare what each one can run.
+    </p>
+
+    <div class="range-controls" id="range-controls">
+      <p id="range-hint"><span class="range-hint-desktop">Scroll sideways to compare</span><span class="range-hint-mobile">Swipe to compare</span></p>
+      <div class="range-navigation">
+        <button type="button" id="range-prev" aria-label="Previous power box" aria-controls="trust-facts" disabled><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <output id="range-position" aria-live="polite" aria-atomic="true"></output>
+        <button type="button" id="range-next" aria-label="Next power box" aria-controls="trust-facts"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
     </div>
-    <div class="feature-grid">
-      <div class="feature-card" data-reveal>
-        <div class="feature-icon">🤝</div>
-        <h3>No more excuses to clients</h3>
-        <p>The switchover happens instantly. Your call doesn't drop, and neither does your credibility.</p>
+
+    <!-- Product cards rendered from catalogue by main-sections.js -->
+    <div id="trust-facts" class="trust-facts" tabindex="0" role="region" aria-label="Power box options" aria-describedby="range-hint">
+      <!-- JS populates this -->
+    </div>
+
+    <!-- Delivery fees table rendered from catalogue.deliveryFeeByState -->
+    <h3 style="font-size:var(--text-lg);font-weight:var(--weight-semibold);color:var(--color-dark-muted);margin-top:var(--space-12);margin-bottom:var(--space-4);">
+      Delivery fees by state
+    </h3>
+    <table class="delivery-table" id="delivery-table" aria-label="Delivery fees by state">
+      <thead>
+        <tr>
+          <th scope="col">State</th>
+          <th scope="col">Delivery fee</th>
+        </tr>
+      </thead>
+      <tbody id="delivery-table-body">
+        <!-- Built from catalogue.deliveryFeeByState by main-sections.js -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     8. FAQ
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="section" id="faq" aria-labelledby="faq-h2">
+  <div class="container">
+    <div class="faq-layout">
+      <div>
+        <p class="section-label">Questions</p>
+        <h2 class="section-heading" id="faq-h2">Things people usually ask.</h2>
+        <p style="color:var(--color-ink-muted);margin-top:var(--space-4);">
+          Still not sure? Chat with us on
+          <a id="faq-whatsapp" href="#" style="color:var(--color-accent);text-decoration:underline;">WhatsApp</a>
+          and we will answer in plain language.
+        </p>
       </div>
-      <div class="feature-card" data-reveal>
-        <div class="feature-icon">🔕</div>
-        <h3>Total silence</h3>
-        <p>No generator noise on your calls. No fumes. No apologising to neighbours at night.</p>
-      </div>
-      <div class="feature-card" data-reveal>
-        <div class="feature-icon">⛽</div>
-        <h3>Zero fuel costs</h3>
-        <p>No filling station queues. Charges from a wall socket — or the sun.</p>
-      </div>
-      <div class="feature-card" data-reveal>
-        <div class="feature-icon">🛡️</div>
-        <h3>Built to last years</h3>
-        <p>Tesla-grade lithium cells rated for 3,000+ charge cycles — a decade of daily use.</p>
+
+      <div id="faq-list" role="list">
+        <details class="accordion-item"><summary>How long will it run my appliances?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-0"></div></details>
+<details class="accordion-item"><summary>Can it run a fridge?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-1"></div></details>
+<details class="accordion-item"><summary>How do I charge it?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-2"></div></details>
+<details class="accordion-item"><summary>How long might the battery last?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-3"></div></details>
+<details class="accordion-item"><summary>Is it safe indoors?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-4"></div></details>
+<details class="accordion-item"><summary>What does the warranty cover?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-5"></div></details>
+<details class="accordion-item"><summary>Do you deliver to my state?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-6"></div></details>
+<details class="accordion-item"><summary>How is it different from a home inverter?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-7"></div></details>
+<details class="accordion-item"><summary>What if I need more power?<span class="accordion-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary><div class="accordion-body" id="faq-answer-8"></div></details>
       </div>
     </div>
   </div>
 </section>
 
-<!-- COMPARISON -->
-<section class="section">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <div class="eyebrow"><span class="power-bars"><span></span><span></span><span></span><span></span></span> THE REAL COMPARISON</div>
-      <h2 class="h-section">Generator. Power bank. Or the Hero EE1.</h2>
-    </div>
-    <div class="table-scroll" data-reveal>
-      <table class="compare-table">
-        <thead>
-          <tr><th>&nbsp;</th><th>Generator</th><th>Power Bank</th><th class="hero-col">Hero EE1</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Noise while working</td><td class="no">Loud</td><td class="yes">Silent</td><td class="hero-col">Silent</td></tr>
-          <tr><td>Monthly fuel cost</td><td class="no">₦25K–40K</td><td class="yes">₦0</td><td class="hero-col">₦0</td></tr>
-          <tr><td>Powers a router + laptop</td><td class="yes">Yes</td><td class="no">No</td><td class="hero-col">Yes</td></tr>
-          <tr><td>Switches on instantly</td><td class="no">No</td><td class="mid">N/A</td><td class="hero-col">Instant</td></tr>
-          <tr><td>Typical lifespan</td><td class="mid">3–5 yrs</td><td class="mid">1–2 yrs</td><td class="hero-col">10+ yrs</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT CAN IT POWER -->
-<section class="section alt">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <div class="eyebrow"><span class="power-bars lit"><span></span><span></span><span></span><span></span></span> YOUR ENTIRE WORK SETUP</div>
-      <h2 class="h-section">What can it power?</h2>
-    </div>
-    <div class="power-grid">
-      <div class="power-item" data-reveal><div class="ico">💻</div><h4>Laptop</h4><span>12–24 hrs</span></div>
-      <div class="power-item" data-reveal><div class="ico">📶</div><h4>Router</h4><span>24–48 hrs</span></div>
-      <div class="power-item" data-reveal><div class="ico">🖥️</div><h4>Monitor</h4><span>18–36 hrs</span></div>
-      <div class="power-item" data-reveal><div class="ico">📱</div><h4>Phones</h4><span>48+ hrs</span></div>
-      <div class="power-item" data-reveal><div class="ico">💡</div><h4>LED Lights</h4><span>24–48 hrs</span></div>
-      <div class="power-item" data-reveal><div class="ico">🌀</div><h4>Fan</h4><span>15–30 hrs</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="section">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <div class="eyebrow"><span class="power-bars"><span></span><span></span><span></span><span></span></span> REAL PEOPLE, REAL DEADLINES</div>
-      <h2 class="h-section">What it's like on the other side of a blackout.</h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card" data-reveal>
-        <div class="stars">★★★★★</div>
-        <p>"I used to lose hours of work daily to power cuts. Now I trust my own uptime enough to take on more clients."</p>
-        <div class="testi-person">
-          <div class="avatar">CO</div>
-          <div><b>Chisom O.</b><span>Software Developer, Lagos</span></div>
-        </div>
-        <span class="placeholder-tag">[Testimonial placeholder — replace with verified story]</span>
-      </div>
-      <div class="testi-card" data-reveal>
-        <div class="stars">★★★★★</div>
-        <p>"Downtime used to cost me client budget. Since switching, I've had zero missed monitoring windows."</p>
-        <div class="testi-person">
-          <div class="avatar">NA</div>
-          <div><b>Ngozi A.</b><span>Digital Marketer, Abuja</span></div>
-        </div>
-        <span class="placeholder-tag">[Testimonial placeholder — replace with verified story]</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section alt">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <div class="eyebrow"><span class="power-bars lit"><span></span><span></span><span></span><span></span></span> BEFORE YOU CHAT WITH US</div>
-      <h2 class="h-section">Questions people ask before they message us.</h2>
-    </div>
-    <div class="faq-list" data-reveal>
-      <div class="faq-item">
-        <button class="faq-q">How long does it run my equipment? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Most remote workers power a laptop, router, monitor and lighting for 8–12 hours on one charge. Tell us your devices on WhatsApp for an exact estimate.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What warranty comes with it? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Every unit comes with a 2-year manufacturer warranty, plus support directly on WhatsApp.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">How does it charge? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Plug into any wall socket — a full charge takes 4–6 hours. It can also pair with solar panels for off-grid charging.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Do you deliver, and is installation hard? <span class="plus">+</span></button>
-        <div class="faq-a"><p>We deliver across Nigeria. No installation needed — plug in, connect your devices, press one button. Most people are set up in under 10 minutes.</p></div>
-      </div>
-    </div>
+<!-- ══════════════════════════════════════════════════════════════════════════
+     9. CLOSING CTA
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="cta-section" id="cta" aria-labelledby="cta-h2">
+  <div class="container">
+    <p class="section-label">Ready to find out?</p>
+    <h2 id="cta-h2">Know exactly what you need<br>before you spend a naira.</h2>
+    <p style="color:var(--color-ink-muted);max-width:44ch;margin:0 auto var(--space-8);">
+      Choose what you use. Find the one that covers your power cut.
+    </p>
+    <a href="#calculator" class="btn btn--primary btn--lg" id="cta-btn">
+      Find my unit
+      <span class="btn-arrow" aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
   </div>
 </section>
 
@@ -292,35 +371,57 @@
         <button type="button" class="btn btn-primary btn-cta-secondary" data-action="order">Secure Yours <span class="btn-prices"><span class="price-old">₦350,000</span><span class="price-new">₦300,000</span></span></button>
         <p class="cta-helper"><b>Already decided?</b> View the current price and continue securely to checkout.</p>
       </div>
+
+      <!-- Links -->
+      <nav class="footer-links" aria-label="Site links">
+        <h4>Explore</h4>
+        <ul role="list">
+          <li><a href="#trust">The range</a></li>
+          <li><a href="#calculator">Find my unit</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-links" aria-label="Support links">
+        <h4>Help</h4>
+        <ul role="list">
+          <li><a href="#delivery-table">Delivery fees</a></li>
+          <li><a href="#faq">Questions</a></li>
+        </ul>
+      </nav>
     </div>
 
-    <div class="consult-trust-row">
-      <span>🚚 Nationwide Delivery</span>
-      <span>🛡️ 2-Year Warranty</span>
-      <span>🔒 Secure Checkout</span>
-      <span>💬 Real WhatsApp Support</span>
-    </div>
-    <p class="consult-reassurance">We respect your privacy. No spam. No pressure. Just honest advice and reliable backup power.</p>
-
-    <div class="lead-success" data-lead-success>
-      <div class="tick">✓</div>
-      <h3 data-success-title>You're all set!</h3>
-      <p data-success-text>Click below to continue on WhatsApp — we've pre-filled it with your details.</p>
-      <a class="btn btn-whatsapp" data-whatsapp-link href="#" target="_blank" rel="noopener" style="width:100%; justify-content:center;">💬 Open WhatsApp Chat</a>
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; <span id="footer-year"></span> <span data-site-name>Site name</span>. All rights reserved.
+      </p>
+      <div class="social-links" aria-label="Social media links">
+        <a href="#" class="social-link" aria-label="Follow us on X (Twitter)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.736l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Follow us on Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Follow us on Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        </a>
+      </div>
     </div>
   </div>
-</section>
-
-<footer>
-  <p>Hithium Hero EE1 is designed for electronics and light home-office equipment — not heavy appliances such as air conditioners or washing machines.</p>
-  <p>© 2026 Let It Shine Energy Hub.</p>
 </footer>
 
-<div class="sticky-cta" id="stickyCta">
-  <a class="btn btn-whatsapp" href="#solution-consult" data-sticky-link>💬 Get Free Consultation</a>
-</div>
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SCRIPTS (ES modules)
+     ══════════════════════════════════════════════════════════════════════ -->
+<script type="module" src="js/main-sections.js"></script>
+<script type="module" src="js/range-scroll.js"></script>
+<script type="module" src="js/calculator-ui.js"></script>
+<script type="module" src="js/main.js"></script>
+<script type="module">
+  // Footer year
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-<script src="script.js"></script>
 
+</script>
+
+<script type="module" src="js/brand.js"></script>
 </body>
 </html>

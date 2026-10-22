@@ -1,0 +1,18 @@
+{
+  "itel-power-go": { "name": "Power Go", "price": null, "available": true },
+  "itel-power-go-pro": { "name": "Power Go Pro", "price": null, "available": true },
+  "itel-power-tank": { "name": "Power Tank", "price": 285000, "available": true },
+  "itel-power-tank-1000": { "name": "Power Tank 1000", "price": null, "available": true },
+  "hithium-heroee-1": { "name": "Hithium HeroEE 1", "price": 270000, "available": true },
+  "hithium-heroee-light-1": { "name": "Hithium HeroEE LIGHT 1", "price": 310000, "available": true },
+  "hithium-heroee-2": { "name": "Hithium HeroEE 2", "price": 670000, "available": true },
+  "hithium-arkvolt-l16": { "name": "ARKVOLT L16", "price": null, "available": true },
+  "hithium-arkvolt-l16s": { "name": "ARKVOLT L16S", "price": null, "available": true },
+  "hithium-arkvolt-f8s": { "name": "ARKVOLT F8S", "price": null, "available": true },
+  "hithium-arkvolt-r30": { "name": "ARKVOLT R30", "price": null, "available": true },
+  "hithium-cell-314ah": { "name": "ESS Cell 314Ah", "price": null, "available": false },
+  "hithium-cell-587ah": { "name": "Infinity Cell 587Ah", "price": null, "available": false },
+  "hithium-cell-1175ah": { "name": "Infinity Cell 1175Ah", "price": null, "available": false },
+  "hithium-cell-1300ah": { "name": "Infinity Cell 1300Ah", "price": null, "available": false },
+  "hithium-cell-n162ah": { "name": "Infinity Cell N162Ah", "price": null, "available": false }
+}
