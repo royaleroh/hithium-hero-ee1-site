@@ -1,6 +1,30 @@
-# Portable power station site
+# Independent power solutions site
 
 Plain HTML, CSS and vanilla JavaScript ES modules. No framework, bundler, site dependencies or build step. The folder can be deployed as static files to Vercel.
+
+## Solution guide
+
+The homepage is organised around phones, laptops, daily essentials, fitted backup
+and solar. Public recommendations show a solution type and multiple suitable
+choices. The quotation or checkout identifies the actual manufacturer and model
+before payment. Manufacturer records in static JavaScript are public, not secret.
+
+`js/solutions.js` adds verified USB-bank checks and preliminary installed-system
+sizing around the existing portable engine. Only confirmed energy/output/port
+ratings enter USB recommendations. Existing equipment and editable sun-hour
+assumptions are included in installed quotations. The calculator does not certify
+component compatibility or offer an unverified fitted bundle for checkout.
+
+`data/solution-products.js` adds 30 power-bank sourcing records, ten inverter
+records and ten panel records. `SOLUTIONS_RESEARCH.md` lists sources and gaps.
+Two checked USB-bank records start enabled for enquiries with null prices;
+other new records are disabled pending specification/supply checks. An owner's
+availability change cannot make an incomplete bank eligible. Edit the technical
+record only when its missing specifications have been verified.
+
+The five generic AI illustrations are in `assets/solutions/`. Their prompt set
+and provenance are in `assets/solutions/README.md`. They are visibly labelled
+illustrations; they do not depict a specific product offered for sale.
 
 ## Run locally
 
@@ -32,16 +56,17 @@ three editable fields, for example:
 ```
 
 Use a positive number in naira without commas or a currency symbol. Use `null`
-for a price on request. Use `false` to stop recommending and selling a unit;
-its range card stays visible with an unavailable label. Keep the slug keys and
+for a price on request. Use `false` to stop recommending and selling a model.
+The category guide stays visible independently of model stock. Keep the slug keys and
 JSON punctuation. Names can change without breaking saved product selections.
 The example above is one entry inside the file's outer object.
 
-The resolved catalogue applies these values to the range, calculator, budget,
+The resolved catalogue applies these values to model choices, the calculator, budget,
 WhatsApp, payback and checkout. Missing or invalid entries become unavailable
 and unpriced, with a visitor notice and console diagnostics. Unknown slug keys
 are reported. Commercial controls cannot change technical ratings, tiers or
-calculator eligibility. Cells remain hidden even if their availability is true.
+calculator eligibility. `name` is the actual model name shown at checkout; solution
+headlines are generic. Cells remain hidden even if their availability is true.
 
 Refresh the page after saving locally; deploy the updated file for a hosted site.
 This is public static configuration, so do not put secrets or private costs in it.
@@ -53,13 +78,14 @@ tests read the same file. No framework or build tool is needed.
 To add a product, add a technical object to `baseCatalogue.products` in
 `data/catalogue.js`, or the Hithium records in `data/hithium.js`, preserving the
 existing fields. Also add its stable slug to root `products.json`. Only available
-portable products with `calculatorEligible: true` reach the calculator. Cells
-are never rendered. The range now includes four itel and three Hithium stations.
+portable products with `calculatorEligible: true` reach the portable engine. The
+solution layer separately admits verified power banks. Cells are never rendered.
+The technical catalogue retains four itel and three Hithium portable stations.
 
 To set a price, edit the matching root `products.json` entry. Technical-record
 prices are not the selling-price controller. Null prices use WhatsApp, have no
-payback and cannot enter checkout. The power scale uses available, priced units;
-unconfirmed outer ranges stay hidden while their `confirmed` flag is false.
+payback and cannot enter checkout. The former price scale is now a simple guide
+to choosing by need; model prices are shown with suitable calculator choices.
 
 `HITHIUM_RESEARCH.md` records specifications, Nigerian starter-price sources and
 supplier conflicts. Unknown Hithium surge ratings use rated-output limits in
@@ -96,15 +122,22 @@ Appliance wattages, surge assumptions, delivery fees and supplier details still 
 The final consultation form validates the visitor's name and email before opening
 WhatsApp with those details. It uses `WHATSAPP_NUMBER` and sends an optional lead
 through the shared `sendLead()` function. Set a real number before using it with
-customers. The adjacent Power Tank order button uses the resolved catalogue's
-name, price and availability; it never uses a separate promotional price.
-Unpriced or unavailable products cannot enter checkout from this section.
+customers. The adjacent action opens the calculator rather than silently ordering
+a featured manufacturer's unit. Only a suitable, available and priced model
+selected in the calculator can enter checkout.
 
-Situation presets and the live calculator both call `estimateSetup()` in `js/estimate.js`, which calls `recommend()` in `js/recommend.js`.
+The live UI calls `recommendSolutions()` in `js/solutions.js` for all situations.
+The existing `estimateSetup()` and `recommend()` remain the pure portable engine
+and its regression interface. Bank checks and installed sizing are layered around it.
 
 Energy is `1.2 * sum(watts * qty * min(hours, outageHours))`. Candidates must pass AC socket, running output, peak output and capacity checks. Runtime at simultaneous full load includes the same loss allowance. This is an estimate, not a promised appliance schedule.
 
-The UI renders empty, fit, tight, near-miss and none states. WhatsApp uses `buildWhatsAppMessage()`. Checkout saves the selected slug, selections, outage hours and load figures in session storage. Checkout refuses missing, unknown, unavailable or unpriced products. `computeOrderTotal()` uses the shared delivery table and falls back to 'Other states'.
+The UI renders empty, fit, tight, near-miss and installed-quote states. WhatsApp
+uses `solutionEnquiry()` to include the devices, hours, budget, selected model
+reference or preliminary system requirements. Checkout saves the selected slug,
+selections, outage hours and load figures in session storage. Checkout refuses
+missing, unknown, unavailable or unpriced products. `computeOrderTotal()` uses
+the shared delivery table and falls back to 'Other states'.
 
 `sendLead()` POSTs JSON with a timestamp when configured. Network errors do not block actions. WhatsApp and checkout-start records include selections and outage/load figures. Checkout-pay includes contact and delivery details. Configure an endpoint with appropriate CORS support; no lead service is currently connected.
 

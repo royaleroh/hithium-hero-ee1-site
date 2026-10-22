@@ -142,7 +142,7 @@ test('homepage renders products, delivery and a complete footer without script e
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(`http://127.0.0.1:${server.address().port}`);
   await page.locator('#trust-facts article').first().waitFor();
-  assert.equal(await page.locator('#trust-facts article').count(),portableProducts.length);
+  assert.equal(await page.locator('#trust-facts article').count(),5);
   assert.ok(await page.locator('#delivery-table-body tr').count()>0);
   assert.equal(await page.locator('footer.site-footer .footer-bottom').count(),1);
   assert.equal(await page.locator('.product-img-wrap img').count(),1);
@@ -150,7 +150,7 @@ test('homepage renders products, delivery and a complete footer without script e
   // An optional photograph frame must never prevent unrelated sections rendering.
   await page.route('**/index.html',async route=>{
     const html=await readFile(path.join(root,'index.html'),'utf8');
-    await route.fulfill({contentType:'text/html',body:html.replace('class="product-img-wrap reveal"','class="missing-photo-frame"')});
+    await route.fulfill({contentType:'text/html',body:html.replace('id="product"','id="optional-product-removed"')});
   });
   await page.goto(`http://127.0.0.1:${server.address().port}/index.html`);
   await page.locator('#trust-facts article').first().waitFor();
@@ -158,7 +158,7 @@ test('homepage renders products, delivery and a complete footer without script e
   assert.deepEqual(errors,[]);await page.close();
 });
 
-test('consultation validates details, builds WhatsApp and uses catalogue checkout pricing', async()=>{
+test('consultation validates details and sends ordering visitors to the solution calculator', async()=>{
   const page=await browser.newPage();
   await page.goto(`http://127.0.0.1:${server.address().port}`);
   await page.locator('#consultation-checkout').waitFor();
@@ -175,8 +175,10 @@ test('consultation validates details, builds WhatsApp and uses catalogue checkou
   assert.equal(urls.length,1);
   assert.match(new URL(urls[0]).searchParams.get('text'),/Test Visitor.*free power consultation/s);
   assert.match(new URL(urls[0]).searchParams.get('text'),/visitor@example.com/);
-  assert.equal(await page.locator('#consultation-product-price').innerText(),`₦${new Intl.NumberFormat('en-NG').format(tank.price)}`);
-  await page.locator('#consultation-checkout').click();await page.waitForURL('**/checkout.html');
+  assert.equal(await page.locator('#consultation-product-price').innerText(),'Compare what fits');
+  await page.locator('#consultation-checkout').click();await page.waitForURL('**/#calculator');
+  await page.locator('[data-preset="shops"]').click();
+  await page.locator('#btn-checkout').click();await page.waitForURL('**/checkout.html');
   await page.locator('#order-summary h2').waitFor();
   assert.equal(await page.locator('#order-summary h2').innerText(),tank.name);
   await page.locator('#delivery-state').selectOption('Lagos');

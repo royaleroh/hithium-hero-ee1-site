@@ -75,7 +75,7 @@ test('all unavailable is a stock enquiry, not a whole-home recommendation', () =
 });
 
 test('cells and home batteries stay ineligible even when commercial availability is enabled', () => {
-  const products=catalogue.products.filter(p=>p.tier!=='portable').map(p=>({...p,available:true,price:1}));
+  const products=catalogue.products.filter(p=>['home-battery','cell'].includes(p.tier)).map(p=>({...p,available:true,price:1}));
   assert.equal(recommend({selections:load},products).bestFit,null);
   assert.ok(products.every(p=>!canCheckout(p)));
 });

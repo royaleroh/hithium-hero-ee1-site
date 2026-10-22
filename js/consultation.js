@@ -1,7 +1,4 @@
-import { catalogue, DEFAULT_DAILY_OUTAGE_HOURS } from '../data/catalogue.js';
 import { WHATSAPP_NUMBER } from '../config.js';
-import { canCheckout } from './order.js';
-import { formatNaira } from './format.js';
 import { sendLead } from './leads.js';
 
 const form = document.getElementById('consultation-form');
@@ -20,18 +17,11 @@ if (form) {
   });
 }
 
-const product = catalogue.products.find(p => p.slug === 'itel-power-tank');
 const checkout = document.getElementById('consultation-checkout');
-if (product && checkout) {
-  document.getElementById('consultation-product-name').textContent = product.name;
-  document.getElementById('consultation-product-price').textContent = !product.available
-    ? 'Not available to order' : product.price === null ? 'Price on request' : formatNaira(product.price);
-  checkout.hidden = !canCheckout(product);
-  checkout.textContent = `Order ${product.name}`;
-  checkout.addEventListener('click', () => {
-    if (!canCheckout(product)) return;
-    sessionStorage.setItem('estimate', JSON.stringify({ product: product.slug, selections: [], outageHours: DEFAULT_DAILY_OUTAGE_HOURS }));
-    sendLead({ source: 'featured-checkout', product: product.slug, price: product.price });
-    window.location.href = 'checkout.html';
-  });
+if (checkout) {
+ document.getElementById('consultation-product-name').textContent='Find a solution for your setup';
+ document.getElementById('consultation-product-price').textContent='Compare what fits';
+ checkout.hidden=false;
+ checkout.textContent='Find my solution';
+ checkout.addEventListener('click',()=>{window.location.hash='calculator';});
 }

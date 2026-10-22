@@ -21,8 +21,11 @@ export function createCalculatorState() {
 }
 
 export function reduceCalculator(state, action) {
+  if (action.type === 'goal') return { ...state, goal: ['auto','portable','installed','solar'].includes(action.value) ? action.value : 'auto' };
+  if (action.type === 'existing') return { ...state, existing: ['none','inverter','panels','both'].includes(action.value) ? action.value : 'none' };
+  if (action.type === 'sun') return { ...state, sunHours: Math.min(8,Math.max(1,Number(action.value)||4)) };
   if (action.type === 'preset') return loadPreset(state, action.id);
-  if (action.type === 'clear') return { ...loadPreset(state, 'custom'), budget: '' };
+  if (action.type === 'clear') return { ...loadPreset(state, 'custom'), budget: '', goal:'auto', existing:'none', sunHours:4 };
   if (action.type === 'step') return { ...state, step: Math.min(3, Math.max(1, Number(action.step) || 1)) };
   if (action.type === 'spend') return { ...state, spend: action.value };
   if (action.type === 'budget') return { ...state, budget: action.value === '' ? '' : String(Math.max(0, Number(action.value) || 0)) };

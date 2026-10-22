@@ -1,18 +1,332 @@
 {
-  "itel-power-go": { "name": "Power Go", "price": null, "available": true },
-  "itel-power-go-pro": { "name": "Power Go Pro", "price": null, "available": true },
-  "itel-power-tank": { "name": "Power Tank", "price": 285000, "available": true },
-  "itel-power-tank-1000": { "name": "Power Tank 1000", "price": null, "available": true },
-  "hithium-heroee-1": { "name": "Hithium HeroEE 1", "price": 270000, "available": true },
-  "hithium-heroee-light-1": { "name": "Hithium HeroEE LIGHT 1", "price": 310000, "available": true },
-  "hithium-heroee-2": { "name": "Hithium HeroEE 2", "price": 670000, "available": true },
-  "hithium-arkvolt-l16": { "name": "ARKVOLT L16", "price": null, "available": true },
-  "hithium-arkvolt-l16s": { "name": "ARKVOLT L16S", "price": null, "available": true },
-  "hithium-arkvolt-f8s": { "name": "ARKVOLT F8S", "price": null, "available": true },
-  "hithium-arkvolt-r30": { "name": "ARKVOLT R30", "price": null, "available": true },
-  "hithium-cell-314ah": { "name": "ESS Cell 314Ah", "price": null, "available": false },
-  "hithium-cell-587ah": { "name": "Infinity Cell 587Ah", "price": null, "available": false },
-  "hithium-cell-1175ah": { "name": "Infinity Cell 1175Ah", "price": null, "available": false },
-  "hithium-cell-1300ah": { "name": "Infinity Cell 1300Ah", "price": null, "available": false },
-  "hithium-cell-n162ah": { "name": "Infinity Cell N162Ah", "price": null, "available": false }
+  "itel-power-go": {
+    "name": "Power Go",
+    "price": null,
+    "available": true
+  },
+  "itel-power-go-pro": {
+    "name": "Power Go Pro",
+    "price": null,
+    "available": true
+  },
+  "itel-power-tank": {
+    "name": "Power Tank",
+    "price": 285000,
+    "available": true
+  },
+  "itel-power-tank-1000": {
+    "name": "Power Tank 1000",
+    "price": null,
+    "available": true
+  },
+  "hithium-heroee-1": {
+    "name": "Hithium HeroEE 1",
+    "price": 270000,
+    "available": true
+  },
+  "hithium-heroee-light-1": {
+    "name": "Hithium HeroEE LIGHT 1",
+    "price": 310000,
+    "available": true
+  },
+  "hithium-heroee-2": {
+    "name": "Hithium HeroEE 2",
+    "price": 670000,
+    "available": true
+  },
+  "hithium-arkvolt-l16": {
+    "name": "ARKVOLT L16",
+    "price": null,
+    "available": true
+  },
+  "hithium-arkvolt-l16s": {
+    "name": "ARKVOLT L16S",
+    "price": null,
+    "available": true
+  },
+  "hithium-arkvolt-f8s": {
+    "name": "ARKVOLT F8S",
+    "price": null,
+    "available": true
+  },
+  "hithium-arkvolt-r30": {
+    "name": "ARKVOLT R30",
+    "price": null,
+    "available": true
+  },
+  "hithium-cell-314ah": {
+    "name": "ESS Cell 314Ah",
+    "price": null,
+    "available": false
+  },
+  "hithium-cell-587ah": {
+    "name": "Infinity Cell 587Ah",
+    "price": null,
+    "available": false
+  },
+  "hithium-cell-1175ah": {
+    "name": "Infinity Cell 1175Ah",
+    "price": null,
+    "available": false
+  },
+  "hithium-cell-1300ah": {
+    "name": "Infinity Cell 1300Ah",
+    "price": null,
+    "available": false
+  },
+  "hithium-cell-n162ah": {
+    "name": "Infinity Cell N162Ah",
+    "price": null,
+    "available": false
+  },
+  "oraimo-opb-7100q": {
+    "name": "oraimo Toast 22.5 Byte",
+    "price": null,
+    "available": true
+  },
+  "oraimo-opb-727sq": {
+    "name": "oraimo PowerJet 130",
+    "price": null,
+    "available": true
+  },
+  "oraimo-opb-p600q-u97s": {
+    "name": "oraimo PowerBox 600",
+    "price": null,
+    "available": false
+  },
+  "oraimo-opb-7200q": {
+    "name": "oraimo PowerNova Q21",
+    "price": null,
+    "available": false
+  },
+  "oraimo-opb-7203c": {
+    "name": "oraimo PowerNova L21",
+    "price": null,
+    "available": false
+  },
+  "oraimo-opb-7300q": {
+    "name": "oraimo PowerNova Q31",
+    "price": null,
+    "available": false
+  },
+  "oraimo-opb-7401q": {
+    "name": "oraimo PowerNova Q41",
+    "price": null,
+    "available": false
+  },
+  "oraimo-opb-7103c": {
+    "name": "oraimo PowerNova L11",
+    "price": null,
+    "available": false
+  },
+  "oraimo-opb-1201p": {
+    "name": "oraimo Traveler 15",
+    "price": null,
+    "available": false
+  },
+  "oraimo-opb-1301": {
+    "name": "oraimo PowerBox 300 Lite",
+    "price": null,
+    "available": false
+  },
+  "itel-star-200": {
+    "name": "itel Star 200",
+    "price": null,
+    "available": false
+  },
+  "itel-a1481": {
+    "name": "itel PowerPulse",
+    "price": null,
+    "available": false
+  },
+  "itel-a1990": {
+    "name": "itel PowerPulse Turbo",
+    "price": null,
+    "available": false
+  },
+  "itel-a1820": {
+    "name": "itel PowerEasy",
+    "price": null,
+    "available": false
+  },
+  "itel-a1111": {
+    "name": "itel PowerEasy 1",
+    "price": null,
+    "available": false
+  },
+  "itel-a1420": {
+    "name": "itel PowerPulse",
+    "price": null,
+    "available": false
+  },
+  "itel-a1110": {
+    "name": "itel PowerEasy 1",
+    "price": null,
+    "available": false
+  },
+  "itel-a1980": {
+    "name": "itel PowerPulse Turbo",
+    "price": null,
+    "available": false
+  },
+  "itel-a1123": {
+    "name": "itel PowerEasy 1",
+    "price": null,
+    "available": false
+  },
+  "itel-a1421": {
+    "name": "itel PowerEasy Nano",
+    "price": null,
+    "available": false
+  },
+  "new-age-turbo-ultra-3": {
+    "name": "New Age Turbo Ultra 3",
+    "price": null,
+    "available": false
+  },
+  "new-age-turbo-ultra-4": {
+    "name": "New Age Turbo Ultra 4",
+    "price": null,
+    "available": false
+  },
+  "new-age-turbo-ultra-5": {
+    "name": "New Age Turbo Ultra 5",
+    "price": null,
+    "available": false
+  },
+  "new-age-turbo-ultra-8": {
+    "name": "New Age Turbo Ultra 8",
+    "price": null,
+    "available": false
+  },
+  "new-age-turbo-ultra-11": {
+    "name": "New Age Turbo Ultra 11",
+    "price": null,
+    "available": false
+  },
+  "new-age-y107-pro": {
+    "name": "New Age Y107 Pro",
+    "price": null,
+    "available": false
+  },
+  "new-age-j208": {
+    "name": "New Age J208",
+    "price": null,
+    "available": false
+  },
+  "new-age-j159-20ks": {
+    "name": "New Age J159-20KS",
+    "price": null,
+    "available": false
+  },
+  "new-age-turbo-prime-3": {
+    "name": "New Age Turbo Prime 3",
+    "price": null,
+    "available": false
+  },
+  "new-age-fc50p": {
+    "name": "New Age FC50P",
+    "price": null,
+    "available": false
+  },
+  "deye-sun-3k-sg03lp1-eu-p": {
+    "name": "Deye SUN-3K-SG03LP1-EU-P",
+    "price": null,
+    "available": false
+  },
+  "deye-sun-3-6k-sg03lp1-eu-p": {
+    "name": "Deye SUN-3.6K-SG03LP1-EU-P",
+    "price": null,
+    "available": false
+  },
+  "deye-sun-5k-sg03lp1-eu-p": {
+    "name": "Deye SUN-5K-SG03LP1-EU-P",
+    "price": null,
+    "available": false
+  },
+  "deye-sun-6k-sg03lp1-eu-p": {
+    "name": "Deye SUN-6K-SG03LP1-EU-P",
+    "price": null,
+    "available": false
+  },
+  "deye-sun-3k-sg06lp1-eu-bm1-bm2": {
+    "name": "Deye SUN-3K-SG06LP1-EU-BM1/BM2",
+    "price": null,
+    "available": false
+  },
+  "deye-sun-4k-sg06lp1-eu-bm1-bm2": {
+    "name": "Deye SUN-4K-SG06LP1-EU-BM1/BM2",
+    "price": null,
+    "available": false
+  },
+  "deye-sun-5k-sg06lp1-eu-bm1-bm2": {
+    "name": "Deye SUN-5K-SG06LP1-EU-BM1/BM2",
+    "price": null,
+    "available": false
+  },
+  "deye-sun-6k-sg06lp1-eu-bm1-bm2": {
+    "name": "Deye SUN-6K-SG06LP1-EU-BM1/BM2",
+    "price": null,
+    "available": false
+  },
+  "growatt-spf-6000-es-plus": {
+    "name": "Growatt SPF 6000 ES Plus",
+    "price": null,
+    "available": false
+  },
+  "growatt-spf-5000-es": {
+    "name": "Growatt SPF 5000 ES",
+    "price": null,
+    "available": false
+  },
+  "jinko-tiger-neo-54-hl4-410w": {
+    "name": "Jinko Tiger Neo 410 W",
+    "price": null,
+    "available": false
+  },
+  "jinko-tiger-neo-54-hl4-420w": {
+    "name": "Jinko Tiger Neo 420 W",
+    "price": null,
+    "available": false
+  },
+  "jinko-tiger-neo-54-hl4-430w": {
+    "name": "Jinko Tiger Neo 430 W",
+    "price": null,
+    "available": false
+  },
+  "jinko-tiger-neo-60-hl4-460w": {
+    "name": "Jinko Tiger Neo 460 W",
+    "price": null,
+    "available": false
+  },
+  "jinko-tiger-neo-60-hl4-480w": {
+    "name": "Jinko Tiger Neo 480 W",
+    "price": null,
+    "available": false
+  },
+  "trina-tsm-430neg9r-28": {
+    "name": "Trina Vertex S+ 430 W",
+    "price": null,
+    "available": false
+  },
+  "trina-tsm-435neg9r-28": {
+    "name": "Trina Vertex S+ 435 W",
+    "price": null,
+    "available": false
+  },
+  "trina-tsm-440neg9r-28": {
+    "name": "Trina Vertex S+ 440 W",
+    "price": null,
+    "available": false
+  },
+  "trina-tsm-445neg9r-28": {
+    "name": "Trina Vertex S+ 445 W",
+    "price": null,
+    "available": false
+  },
+  "trina-tsm-450neg9r-28": {
+    "name": "Trina Vertex S+ 450 W",
+    "price": null,
+    "available": false
+  }
 }
