@@ -4,7 +4,9 @@ import { DEFAULT_DAILY_OUTAGE_HOURS } from '../data/catalogue.js';
 import { estimateSetup } from './estimate.js';
 
 export const clampHours = value => Math.min(24, Math.max(1, Number(value) || 1));
-const blankItems = () => appliances.map(a => ({ applianceId: a.id, qty: 1, hours: 4, enabled: false }));
+const defaultHours = { 'water-heater': 0.5, microwave: 0.5, iron: 0.5, 'water-pump': 1, 'pressure-pump': 1, washer: 1 };
+const blankItems = () => appliances.map(a => ({ applianceId: a.id, qty: 1, hours: defaultHours[a.id] ?? 4, enabled: false }));
+const limits = { qty: [1, 20], hours: [0.1, 24], watts: [1, 50000], surgeMultiplier: [1, 10] };
 
 export function loadPreset(state, id) {
   const preset = presets.find(p => p.id === id);
@@ -21,6 +23,30 @@ export function createCalculatorState() {
 }
 
 export function reduceCalculator(state, action) {
+  if (action.type === 'add-custom') {
+    const nextCustom = (state.nextCustom ?? 0) + 1;
+    return { ...state, nextCustom, preset: 'custom', items: [...state.items, {
+      applianceId: `custom-${nextCustom}`, label: '', qty: 1, hours: 1, watts: null,
+      surgeMultiplier: 1, enabled: true,
+    }] };
+  }
+  if (action.type === 'remove') return { ...state, preset: 'custom', items: state.items
+    .filter(item => item.applianceId !== action.id || !action.id.startsWith('custom-'))
+    .map(item => item.applianceId === action.id ? { ...item, enabled: false, qty: 1 } : item) };
+  if (action.type === 'field') {
+    const range = limits[action.field];
+    if (!range && action.field !== 'label') return state;
+    const value = range
+      ? (action.value === '' || !Number.isFinite(Number(action.value)) ? null : Math.min(range[1], Math.max(range[0], Number(action.value))))
+      : action.value.trim().slice(0, 80);
+    return { ...state, preset: 'custom', items: state.items.map(item =>
+      item.applianceId === action.id ? { ...item, [action.field]: value } : item) };
+  }
+  if (action.type === 'add' || action.type === 'subtract') return { ...state, preset: 'custom', items: state.items.map(item => {
+    if (item.applianceId !== action.id) return item;
+    if (action.type === 'add') return { ...item, enabled: true, qty: item.enabled ? Math.min(20, (item.qty ?? 1) + 1) : 1 };
+    return item.qty > 1 ? { ...item, qty: item.qty - 1 } : { ...item, enabled: false, qty: 1 };
+  }) };
   if (action.type === 'goal') return { ...state, goal: ['auto','portable','installed','solar'].includes(action.value) ? action.value : 'auto' };
   if (action.type === 'existing') return { ...state, existing: ['none','inverter','panels','both'].includes(action.value) ? action.value : 'none' };
   if (action.type === 'sun') return { ...state, sunHours: Math.min(8,Math.max(1,Number(action.value)||4)) };

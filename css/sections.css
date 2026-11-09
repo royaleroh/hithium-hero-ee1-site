@@ -854,36 +854,6 @@
   line-height: var(--line-normal);
 }
 
-.delivery-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: var(--space-10);
-  font-size: var(--text-sm);
-}
-
-.delivery-table th,
-.delivery-table td {
-  padding: var(--space-3) var(--space-4);
-  text-align: left;
-  border-bottom: 1px solid var(--color-dark-border);
-}
-
-.delivery-table th {
-  font-weight: var(--weight-semibold);
-  color: var(--color-dark-muted);
-  font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.delivery-table td {
-  color: var(--color-dark-ink);
-}
-
-.delivery-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
 /* Legacy stat-card kept for backward compat if needed */
 .stat-card {
   padding: var(--space-8);

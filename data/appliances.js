@@ -107,4 +107,15 @@ export const appliances = [
     note: null,
   },
 
+  // Editable examples only. Use the appliance rating or manual for an actual quote.
+  { id: 'water-heater', label: 'Water heater', watts: 2000, surgeMultiplier: 1, acRequired: true },
+  { id: 'refrigerator', label: 'Refrigerator', watts: 150, surgeMultiplier: 3, acRequired: true },
+  { id: 'washer', label: 'Washing machine', watts: 500, surgeMultiplier: 2, acRequired: true },
+  { id: 'air-conditioner', label: 'Air conditioner', watts: 1200, surgeMultiplier: 3, acRequired: true },
+  { id: 'iron', label: 'Pressing iron', watts: 1200, surgeMultiplier: 1, acRequired: true },
+  { id: 'pressure-pump', label: 'Pressure pump', watts: 750, surgeMultiplier: 3, acRequired: true },
+  { id: 'microwave', label: 'Microwave', watts: 1200, surgeMultiplier: 1, acRequired: true },
+  { id: 'water-pump', label: 'Water pump', watts: 750, surgeMultiplier: 3, acRequired: true },
+  { id: 'freezer', label: 'Freezer', watts: 150, surgeMultiplier: 3, acRequired: true },
+
 ];

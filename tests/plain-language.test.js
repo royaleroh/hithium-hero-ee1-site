@@ -39,7 +39,7 @@ test('goodFor checks each full preset with the real recommender',()=>{
   }
   assert.deepEqual(goodFor(go),[]);
 });
-test('wontRun includes every Power Go wall-socket appliance and nothing for Tank 1000',()=>{
+test('wontRun covers the familiar Power Go examples and shows nothing for Tank 1000',()=>{
   assert.equal(wontRun(go),'Will not run: lights, fan, TV, monitor, decoder, speaker, fridge. They need a normal wall socket, and this one does not have one.');
   assert.equal(wontRun(portableProducts.at(-1)),'');
   assert.match(wontRun(portableProducts[1]),/fridge/);
@@ -104,7 +104,7 @@ before(async()=>{
     try{
       const target=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname.replace(/\/$/,'/index.html'));
       if(!target.startsWith(root)){res.writeHead(403).end();return;}
-      res.setHeader('Content-Type',({'.html':'text/html','.js':'text/javascript','.css':'text/css','.webp':'image/webp'})[path.extname(target)]??'application/octet-stream');
+      res.setHeader('Content-Type',({'.html':'text/html','.js':'text/javascript','.css':'text/css','.webp':'image/webp','.svg':'image/svg+xml'})[path.extname(target)]??'application/octet-stream');
       res.end(await readFile(target));
     }catch{res.writeHead(404).end();}
   });
@@ -116,34 +116,42 @@ before(async()=>{
   const collect=async(source)=>{
     const html=await page.locator('body').innerHTML();copy.push(...plainStrings(html).map(text=>({source,text})));
   };
-  await page.goto(base);await page.locator('#result-unit-name').waitFor();
+  await page.goto(base);await page.locator('#tile-laptop').waitFor();
   await collect('rendered home');
-  for(const preset of presets){await page.locator(`[data-preset="${preset.id}"]`).click();await collect(`rendered preset ${preset.id}`);}
+  await page.locator('.load-presets summary').click();
+  const calculate=()=>page.locator('#calculate-load').click();
+  for(const preset of presets.filter(p=>p.id!=='custom')){
+    await page.locator(`[data-preset="${preset.id}"]`).click();await calculate();await collect(`rendered preset ${preset.id}`);
+  }
   // Tight and near-miss states, reached through the real controls.
-  await page.locator('#tile-laptop .tile-toggle').click();await collect('rendered tight');
+  await page.locator('#reset-calc').click();
+  await page.locator('#tile-laptop .tile-toggle').click();await calculate();await collect('rendered tight');
   await page.locator('[data-preset="shops"]').click();
-  await page.locator('#tile-fan [data-action="hours"][data-delta="1"]').click({clickCount:2});await collect('rendered near miss');
-  await page.locator('[data-preset="custom"]').click();
+  await page.locator('#load-fan-hours').fill('8');await calculate();await collect('rendered near miss');
+  await page.locator('#reset-calc').click();
   await page.locator('#tile-mini-fridge .tile-toggle').click();
-  for(let i=0;i<19;i++)await page.locator('#tile-mini-fridge [data-action="qty"][data-delta="1"]').click();await collect('rendered none');
+  await page.locator('#load-mini-fridge-qty').fill('20');await calculate();await collect('rendered none');
   await page.locator('[data-preset="shops"]').click();
-  for (const amount of ['200000','300000','']) { await page.locator('#unit-budget').fill(amount); await collect(`rendered budget ${amount}`); }
-  await page.locator('#monthly-spend').fill('30000');await collect('rendered payback');
-  await page.locator('#btn-checkout').click();await page.waitForURL('**/checkout.html');await page.locator('#order-summary h2').waitFor();await collect('rendered checkout');
+  for (const amount of ['200000','300000','']) { await page.locator('#unit-budget').fill(amount); await calculate(); await collect(`rendered budget ${amount}`); }
+  await page.locator('#monthly-spend').fill('30000');await calculate();await collect('rendered payback');
+  // Simulate a confirmed order separately. The public calculator only opens WhatsApp.
+  await page.evaluate(product=>sessionStorage.setItem('estimate',JSON.stringify({product,selections:[]})),tank.slug);
+  await page.goto(`${base}/checkout.html`);await page.locator('#order-summary h2').waitFor();await collect('rendered checkout');
   await page.locator('#delivery-state').selectOption('Lagos');
+  assert.equal(await page.locator('#order-total').innerText(),`₦${new Intl.NumberFormat('en-NG').format(tank.price+3000)}`);
   await page.locator('#buyer-name').fill('Test Buyer');await page.locator('#buyer-phone').fill('08012345678');await page.locator('#buyer-address').fill('Test street');
   await page.locator('#pay-btn').click();await page.waitForURL('**/thank-you.html');await page.locator('#order-detail').waitFor();await collect('rendered thank you');
   assert.deepEqual(errors,[]);
 }, {timeout:60000});
 after(async()=>{await browser?.close();await new Promise(resolve=>server?server.close(resolve):resolve());});
 
-test('homepage renders products, delivery and a complete footer without script errors', async()=>{
+test('homepage renders products and a complete footer without a delivery section', async()=>{
   const page=await browser.newPage();
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(`http://127.0.0.1:${server.address().port}`);
   await page.locator('#trust-facts article').first().waitFor();
   assert.equal(await page.locator('#trust-facts article').count(),5);
-  assert.ok(await page.locator('#delivery-table-body tr').count()>0);
+  assert.equal(await page.locator('#delivery-table, a[href="#delivery-table"]').count(),0);
   assert.equal(await page.locator('footer.site-footer .footer-bottom').count(),1);
   assert.equal(await page.locator('.product-img-wrap img').count(),1);
   assert.equal(await page.locator('.field-error').count(),0);
@@ -154,7 +162,7 @@ test('homepage renders products, delivery and a complete footer without script e
   });
   await page.goto(`http://127.0.0.1:${server.address().port}/index.html`);
   await page.locator('#trust-facts article').first().waitFor();
-  assert.ok(await page.locator('#delivery-table-body tr').count()>0);
+  assert.equal(await page.locator('#delivery-table, a[href="#delivery-table"]').count(),0);
   assert.deepEqual(errors,[]);await page.close();
 });
 
@@ -177,13 +185,70 @@ test('consultation validates details and sends ordering visitors to the solution
   assert.match(new URL(urls[0]).searchParams.get('text'),/visitor@example.com/);
   assert.equal(await page.locator('#consultation-product-price').innerText(),'Compare what fits');
   await page.locator('#consultation-checkout').click();await page.waitForURL('**/#calculator');
+  await page.locator('.load-presets summary').click();
   await page.locator('[data-preset="shops"]').click();
-  await page.locator('#btn-checkout').click();await page.waitForURL('**/checkout.html');
-  await page.locator('#order-summary h2').waitFor();
-  assert.equal(await page.locator('#order-summary h2').innerText(),tank.name);
-  await page.locator('#delivery-state').selectOption('Lagos');
-  assert.equal(await page.locator('#order-total').innerText(),`₦${new Intl.NumberFormat('en-NG').format(tank.price+3000)}`);
+  await page.locator('#calculate-load').click();
+  assert.equal(await page.locator('#btn-checkout').count(),0);
+  await page.locator('#btn-whatsapp').click();
+  const estimateMessage=new URL((await page.evaluate(()=>window.openedUrls)).at(-1)).searchParams.get('text');
+  assert.match(estimateMessage,/Everyday power station.*285000/);
+  assert.doesNotMatch(estimateMessage,/Power Tank|IESS-|itel/i);
   await page.close();
+});
+test('mobile load calculator uses edited quantities, wattages and custom appliances', async()=>{
+  const page=await browser.newPage({viewport:{width:390,height:850},reducedMotion:'reduce'});
+  try {
+    await page.goto(`http://127.0.0.1:${server.address().port}/#calculator`);
+    await page.locator('#tile-fan .tile-toggle').click({clickCount:2});
+    assert.equal(await page.locator('#load-fan-qty').inputValue(),'2');
+    await page.locator('#tile-fan .load-minus').click();
+    assert.equal(await page.locator('#load-fan-qty').inputValue(),'1');
+    await page.locator('#load-fan-watts').fill('70');
+    await page.locator('#load-fan-hours').fill('10');
+    await page.locator('#add-custom-appliance').click();
+    await page.locator('#load-custom-1-label').fill('Sewing machine <test>');
+    await page.locator('#load-custom-1-watts').fill('200');
+    await page.locator('#load-custom-1-hours').fill('0.5');
+    await page.locator('#load-custom-1-surgeMultiplier').fill('2');
+    await page.locator('#solution-goal').selectOption('solar');
+    await page.locator('#calculate-load').click();
+    assert.equal(await page.locator('.load-metric strong').nth(0).innerText(),'540.0 W');
+    assert.equal(await page.locator('.load-metric strong').nth(1).innerText(),'800.0 Wh');
+    assert.equal(await page.locator('.load-component').count(),3);
+    assert.equal(await page.locator('#result-unit-name').innerText(),'Solar and battery setup');
+    assert.deepEqual(await page.locator('.component-quantity').allTextContents(),['Qty: 1','Qty: 2','Qty: 1']);
+    assert.match(await page.locator('.load-component').nth(0).innerText(),/Inverter/);
+    assert.match(await page.locator('.load-component').nth(1).innerText(),/Battery storage/);
+    assert.match(await page.locator('.load-component').nth(2).innerText(),/Solar panels/);
+    assert.doesNotMatch(await page.locator('#result-cards').innerHTML(),/itel|IPV-1K512U|IPB-12100|ODA410|supplier listing/i);
+    assert.equal(await page.locator('#btn-checkout').count(),0);
+    await page.evaluate(()=>{window.open=url=>{window.bundleQuoteUrl=url;return null;};});
+    await page.locator('#btn-whatsapp').click();
+    const quote=await page.evaluate(()=>new URL(window.bundleQuoteUrl).searchParams.get('text'));
+    assert.match(quote,/2 x Battery storage/);
+    assert.doesNotMatch(quote,/itel|IPB-12100|ODA410|IPV-1K512U/i);
+    assert.equal(await page.locator('#calculator-technical test').count(),0);
+    await page.waitForFunction(()=>document.querySelector('#tile-fan svg use')?.getBBox().width>0);
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+    await page.locator('#load-fan-watts').fill('90');
+    assert.equal(await page.locator('#result-cards').isVisible(),false);
+    assert.match(await page.locator('#result-empty').innerText(),/changed/);
+    await page.locator('[data-remove="custom-1"]').click();
+    assert.equal(await page.locator('[data-row="custom-1"]').count(),0);
+    await page.locator('#reset-calc').click();
+    assert.equal(await page.locator('#calculate-load').isEnabled(),false);
+    await page.locator('.load-presets summary').click();
+    await page.locator('[data-preset="shops"]').click();
+    await page.locator('#calculate-load').click();
+    assert.equal(await page.locator('#result-unit-name').innerText(),'Everyday power station');
+    const alternative = page.locator('[data-solution-option]').filter({hasText:'310,000'});
+    assert.match(await alternative.innerText(),/Option \d+: Everyday power station/);
+    await alternative.click();
+    assert.equal(await page.locator('#result-unit-name').innerText(),'Everyday power station');
+    assert.match(await page.locator('#result-cost').innerText(),/310,000/);
+    await page.locator('#calculator-technical summary').click();
+    assert.doesNotMatch(await page.locator('#result-cards').innerHTML(),/Power Tank|HeroEE|Hithium|itel|IESS-/i);
+  } finally { await page.close(); }
 });
 test('jargon lint: HTML and rendered plain-copy strings exclude every banned term',()=>{
   const failures=copy.flatMap(({source,text})=>jargon(text).map(m=>`${source}: ${m[0]} in ${text}`));

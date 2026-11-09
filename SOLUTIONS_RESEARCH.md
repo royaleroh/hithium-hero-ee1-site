@@ -89,8 +89,9 @@ is not assumed to work through a USB-to-12-V adapter.
 The smallest suitable category is considered first, with priced options in budget
 preferred within that category. An unknown bank price does not cause a phone-only
 visitor to be sent to a much larger priced station. Unknown prices are never free.
-All choices shown pass the electrical requirements; changing a choice carries its
-stable slug to checkout. Names, prices and availability use the same controller.
+Single-unit choices pass the electrical requirements and appear as numbered
+options. The visitor can ask about the selected option on WhatsApp. Model names
+and codes remain in the catalogue and are confirmed in the conversation.
 
 Installed/solar results are preliminary requirements, not pre-approved bundles:
 energy with the existing 1.2 allowance; nominal battery energy divided by an
@@ -100,10 +101,39 @@ system yield by default; visitors can change the sun-hour assumption. These are
 not location forecasts or guaranteed solar generation.
 
 Existing inverter/panel selections are carried into WhatsApp, together with the
-load, outage window, budget and draft sizing. No component combination is sold
+load, outage window, budget, draft sizing and kit quantities. The prefilled
+message omits manufacturer names and model codes.
+Inverter candidates are screened for load and startup output, battery candidates
+for nominal capacity and the inverter's battery voltage window, and panel candidates
+for module current limits. This is not a string design or a battery pairing approval.
+No component combination is sold
 automatically without voltage, BMS, discharge-current, MPPT, cold Voc, wiring,
 protection and installer checks. Installed quotes include equipment and fitting;
 no fabricated complete-system price or compatibility claim is shown.
+
+### Supplier-published configurations
+
+The two entries in `data/system-bundles.js` are quote references, not locally
+approved or stocked bundles:
+
+- **PowerCore 3K backup:** The [supplier listing](https://itelsolar.com/product/itel-powercore-3k-unit-3kw-24v-ip54-smart-inverter-2-56kwh-lithium-battery-without-panels/)
+  identifies one IPV-3K24UPRO and one IPW-25100. The
+  [battery manual](https://www.itel-life.com/fileadmin/assets/img/ESS/User_Manual/2.56kWh__ESS_LV_Battery-IPW-25100.pdf)
+  gives a 20 V discharge cutoff and 100 A maximum continuous discharge. The
+  1,800 W match limit assumes 90% conversion and no extra surge allowance.
+- **Starter solar:** The [supplier configurator](https://itelsolar.com/product/itel-1500w-complete-off-grid-solar-system-setup-customizable-12v-starter-kit-1-5kva/)
+  offers an IPV-1K512U, two IPB-12100 batteries and a single 410 W module.
+  The [panel listing](https://itelsolar.com/product/itel-410w-solar-panel-20-97-module-efficiency-with-108-n-mono-cells-182-by-91mm/)
+  identifies that module as ODA410-27V-MHP. The
+  [inverter manual](https://itelsolar.com/wp-content/uploads/2025/07/IP54_IPV-1K512U_IPV-3K24U_User_Manual.pdf)
+  limits PV input to 650 W, so the two-panel choice was left out. The
+  [battery specification](https://itelsolar.com/product/itel-1280wh-12v-lithium-battery-lifepo%E2%82%84-smart-solar-storage-solution-ipb-12100/)
+  gives 11.2 V minimum and 50 A recommended discharge per battery. The
+  1,000 W match limit rounds down at an assumed 90% conversion.
+
+The PowerCore 3K Pro solar listing was excluded: it states both three 620 W
+panels and a 1,770 W total. No local stock or supplier price is assumed for the
+included configurations.
 
 This remains a static website. Catalogue data and manufacturer identities can be
 read in downloaded JavaScript. A neutral presentation does not make model data

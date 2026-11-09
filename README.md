@@ -5,15 +5,36 @@ Plain HTML, CSS and vanilla JavaScript ES modules. No framework, bundler, site d
 ## Solution guide
 
 The homepage is organised around phones, laptops, daily essentials, fitted backup
-and solar. Public recommendations show a solution type and multiple suitable
-choices. The quotation or checkout identifies the actual manufacturer and model
-before payment. Manufacturer records in static JavaScript are public, not secret.
+and solar. The calculator compares numbered options by equipment type, ratings,
+price and estimated backup. Fitted estimates show component types and kit
+quantities. Staff confirm the exact models on WhatsApp. The static catalogue is
+still downloaded by the browser and is not a private database.
 
 `js/solutions.js` adds verified USB-bank checks and preliminary installed-system
 sizing around the existing portable engine. Only confirmed energy/output/port
 ratings enter USB recommendations. Existing equipment and editable sun-hour
-assumptions are included in installed quotations. The calculator does not certify
-component compatibility or offer an unverified fitted bundle for checkout.
+assumptions are included in installed quotations. `js/system-products.js` screens
+component ratings for the quote and flags unconfirmed stock. The installer
+confirms compatibility and panel count; fitted bundles do not go to checkout.
+
+## Fitted kit catalogue
+
+`data/system-bundles.js` lists exact model slugs, quantities and conservative
+sizing limits. Supplier-published configurations are labelled as such and only
+offered for a quote. No live supplier API, prices or stock are imported.
+`products.json` still controls our own stock and prices. If every item is
+available and priced, the calculator shows the equipment subtotal only.
+
+To add a kit, add its parts to the catalogue and product controls, then enter the
+exact quantities and supported continuous, starting, battery and solar limits
+for the complete setup. A `published` kit needs a public supplier listing.
+Use `approved` only after an installer signs off on that exact configuration,
+with `approval.reference` (a public-safe record ID) and `approval.date`
+(YYYY-MM-DD). Changing a model or quantity requires another review.
+
+A kit must meet the calculated load and use case. When no kit fits, or the
+customer already owns an inverter or panels, the calculator shows individual
+requirements for a custom quote and does not guess quantities.
 
 `data/solution-products.js` adds 30 power-bank sourcing records, ten inverter
 records and ten panel records. `SOLUTIONS_RESEARCH.md` lists sources and gaps.
@@ -22,7 +43,7 @@ other new records are disabled pending specification/supply checks. An owner's
 availability change cannot make an incomplete bank eligible. Edit the technical
 record only when its missing specifications have been verified.
 
-The five generic AI illustrations are in `assets/solutions/`. Their prompt set
+The generic AI illustrations are in `assets/solutions/`. Their prompt set
 and provenance are in `assets/solutions/README.md`. They are visibly labelled
 illustrations; they do not depict a specific product offered for sale.
 
@@ -56,7 +77,8 @@ three editable fields, for example:
 ```
 
 Use a positive number in naira without commas or a currency symbol. Use `null`
-for a price on request. Use `false` to stop recommending and selling a model.
+for a price on request. Use `false` to disable sale and single-unit recommendation.
+Verified research models may still appear in fitted quotes with stock to confirm.
 The category guide stays visible independently of model stock. Keep the slug keys and
 JSON punctuation. Names can change without breaking saved product selections.
 The example above is one entry inside the file's outer object.
@@ -65,8 +87,8 @@ The resolved catalogue applies these values to model choices, the calculator, bu
 WhatsApp, payback and checkout. Missing or invalid entries become unavailable
 and unpriced, with a visitor notice and console diagnostics. Unknown slug keys
 are reported. Commercial controls cannot change technical ratings, tiers or
-calculator eligibility. `name` is the actual model name shown at checkout; solution
-headlines are generic. Cells remain hidden even if their availability is true.
+calculator eligibility. The calculator uses generic option labels instead of
+`name`. Cells remain hidden even if their availability is true.
 
 Refresh the page after saving locally; deploy the updated file for a hosted site.
 This is public static configuration, so do not put secrets or private costs in it.
@@ -123,8 +145,8 @@ The final consultation form validates the visitor's name and email before openin
 WhatsApp with those details. It uses `WHATSAPP_NUMBER` and sends an optional lead
 through the shared `sendLead()` function. Set a real number before using it with
 customers. The adjacent action opens the calculator rather than silently ordering
-a featured manufacturer's unit. Only a suitable, available and priced model
-selected in the calculator can enter checkout.
+a featured manufacturer's unit. The calculator routes all estimates to WhatsApp
+for model confirmation, with no direct checkout link.
 
 The live UI calls `recommendSolutions()` in `js/solutions.js` for all situations.
 The existing `estimateSetup()` and `recommend()` remain the pure portable engine
@@ -133,13 +155,14 @@ and its regression interface. Bank checks and installed sizing are layered aroun
 Energy is `1.2 * sum(watts * qty * min(hours, outageHours))`. Candidates must pass AC socket, running output, peak output and capacity checks. Runtime at simultaneous full load includes the same loss allowance. This is an estimate, not a promised appliance schedule.
 
 The UI renders empty, fit, tight, near-miss and installed-quote states. WhatsApp
-uses `solutionEnquiry()` to include the devices, hours, budget, selected model
-reference or preliminary system requirements. Checkout saves the selected slug,
-selections, outage hours and load figures in session storage. Checkout refuses
+uses `solutionEnquiry()` to include the devices, hours, budget, generic option
+details or preliminary system requirements and kit quantities. The message does
+not include model names or codes. The separate checkout reads an order from
+session storage and refuses
 missing, unknown, unavailable or unpriced products. `computeOrderTotal()` uses
 the shared delivery table and falls back to 'Other states'.
 
-`sendLead()` POSTs JSON with a timestamp when configured. Network errors do not block actions. WhatsApp and checkout-start records include selections and outage/load figures. Checkout-pay includes contact and delivery details. Configure an endpoint with appropriate CORS support; no lead service is currently connected.
+`sendLead()` POSTs JSON with a timestamp when configured. Network errors do not block actions. WhatsApp lead records include selections, outage/load figures and internal catalogue references for staff. Checkout-pay includes contact and delivery details. Configure an endpoint with appropriate CORS support; no lead service is currently connected.
 
 ## Stage A scope
 

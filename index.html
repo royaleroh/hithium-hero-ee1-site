@@ -36,6 +36,7 @@
 <link rel="stylesheet" href="css/consultation.css">
 <link rel="stylesheet" href="css/brand.css">
 <link rel="stylesheet" href="css/solutions.css">
+<link rel="stylesheet" href="css/load-calculator.css">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/brand/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon.png">
@@ -55,7 +56,6 @@
 
       <ul class="nav-links" role="list">
         <li><a href="#trust">The range</a></li>
-        <li><a href="#delivery-table">Delivery</a></li>
         <li><a href="#faq">Questions</a></li>
       </ul>
 
@@ -83,7 +83,6 @@
 <!-- Mobile nav overlay -->
 <nav id="nav-mobile" class="nav-mobile" aria-label="Mobile navigation">
   <a href="#trust">The range</a>
-  <a href="#delivery-table">Delivery</a>
   <a href="#faq">Questions</a>
   <a href="#calculator" class="btn btn--primary" style="margin-top:1rem;justify-content:center;">Find my solution</a>
 </nav>
@@ -104,7 +103,7 @@
     height="1024"
     fetchpriority="high"
   />
-  <div class="hero-bg" aria-hidden="true"></div><p class="hero-illustration">Illustration. Actual models confirmed with your order.</p>
+  <div class="hero-bg" aria-hidden="true"></div><p class="hero-illustration">Illustration. Ask us for exact models on WhatsApp.</p>
 
   <div class="container">
     <div class="hero-content">
@@ -158,47 +157,47 @@
      4. CALCULATOR
      ══════════════════════════════════════════════════════════════════════ -->
 <section class="section calculator-section" id="calculator" aria-labelledby="calc-h2">
-  <div class="calculator-panel" id="calculator-panel" data-step="1">
-    <header class="calculator-heading"><div><p class="calculator-kicker">Tell us what you run. We will tell you what you need.</p><h2 id="calc-h2">Find the right power for you.</h2></div><button type="button" id="reset-calc" class="calculator-clear">Clear all</button></header>
-    <nav class="calculator-progress" aria-label="Calculator steps">
-      <button type="button" data-step-to="1" aria-current="step"><span class="step-number">01</span><span class="step-text">Who is it for</span></button>
-      <button type="button" data-step-to="2"><span class="step-number">02</span><span class="step-text">What do you want to run?</span></button>
-      <button type="button" data-step-to="3"><span class="step-number">03</span><span class="step-text">Your solution</span></button>
-    </nav>
-    <div class="calculator-situations" id="calculator-situations">
-      <p class="zone-label">01 <span>Who is it for</span></p>
-      <div id="situation-pills" class="situation-pills" role="group" aria-label="Your situation"></div>
-      <div id="situation-preview" class="situation-preview"></div>
-      <button type="button" class="btn btn--primary mobile-only situation-next" data-step-to="2">Choose your appliances <span aria-hidden="true">→</span></button>
-    </div>
-    <div class="calculator-workspace">
-      <div class="calculator-appliances" id="calculator-appliances">
-        <div class="tiles-heading"><p class="zone-label">02 <span>Tap what you use</span></p></div>
-        <div id="appliance-list" class="appliance-tiles" aria-label="Appliances"></div>
-        <div class="calculator-fine-tune">
-          <div class="fine-outage"><span id="outage-label">Hours without light each day</span><div class="tile-stepper" role="group" aria-labelledby="outage-label"><button type="button" data-outage="-1" aria-label="Fewer hours without light">−</button><output id="daily-outage">8</output><button type="button" data-outage="1" aria-label="More hours without light">+</button></div></div>
-          <div class="fine-spend"><label for="monthly-spend">What you spend each month on petrol or generator <span>(optional)</span></label><input type="number" id="monthly-spend" min="0" inputmode="numeric" placeholder="e.g. ₦30,000"></div>
-          <div class="fine-spend fine-budget"><label for="unit-budget">Your budget for the solution <span>(optional, delivery extra)</span></label><input type="number" id="unit-budget" min="0" inputmode="numeric" placeholder="e.g. ₦300,000"></div>
+  <div class="calculator-panel" id="calculator-panel">
+    <header class="load-heading"><p class="section-label">Power calculator</p><h2 id="calc-h2">Find the right power for you.</h2><p>Choose your appliances and see what it takes to keep them running.</p></header>
+    <form id="load-form">
+      <section class="load-step" aria-labelledby="pick-load">
+        <header class="load-step-heading"><span aria-hidden="true">01</span><div><h3 id="pick-load">Pick your appliances</h3><p>Tap an appliance to add one. Use the minus button to remove one.</p></div></header>
+        <details class="load-presets"><summary>Start with a typical setup</summary><div id="situation-pills" class="situation-pills" role="group" aria-label="Typical setups"></div></details>
+        <div id="appliance-list" class="load-picker" aria-label="Appliances"></div>
+        <div class="load-toolbar"><button type="button" class="btn btn--outline" id="add-custom-appliance">+ Add another appliance</button><button type="button" id="reset-calc" class="btn btn--outline">Clear all</button></div>
+      </section>
+      <section class="load-step" aria-labelledby="review-load">
+        <header class="load-step-heading"><span aria-hidden="true">02</span><div><h3 id="review-load">Check your power needs</h3><p>These wattages are examples. Check the rating on each appliance.</p></div></header>
+        <p id="load-empty" class="load-empty">Your selected appliances will appear here.</p>
+        <div class="load-table" id="load-table" role="group" aria-label="Selected appliances" hidden>
+          <div class="load-table-header" aria-hidden="true"><span>Appliance</span><span>Quantity</span><span data-level="technical">Watts each</span><span>Hours a day</span><span></span></div>
+          <div id="load-rows"></div>
         </div>
-<details class="solution-settings" id="solution-settings"><summary>Solar, existing equipment and other options</summary>
-<div class="solution-preferences">
-  <div><label for="solution-goal">What would you prefer?</label><select id="solution-goal"><option value="auto">Help me choose</option><option value="portable">A portable power station</option><option value="installed">An installed backup system</option><option value="solar">A setup with solar charging</option></select></div>
-  <div><label for="existing-equipment">Do you already have equipment?</label><select id="existing-equipment"><option value="none">Starting from scratch</option><option value="inverter">I have an inverter</option><option value="panels">I have solar panels</option><option value="both">I have an inverter and panels</option></select></div>
-  <div id="solar-hours-field" hidden><label for="solar-hours">Hours of strong sun to plan around</label><input id="solar-hours" type="number" min="1" max="8" step="0.5" value="4"><small>Planning assumption. We check your location before quoting.</small></div>
-</div>
-</details>
-        <div class="calculator-live-bar"><p id="live-recommendation" aria-live="polite"></p><button type="button" class="btn btn--primary" data-step-to="3">Next <span aria-hidden="true">→</span></button></div>
+        <div class="load-settings">
+          <div><label for="solution-goal">What would you prefer?</label><select id="solution-goal"><option value="auto">Help me choose</option><option value="portable">A portable power station</option><option value="installed">An installed backup system</option><option value="solar">A setup with solar charging</option></select></div>
+          <div><label for="daily-outage">Hours of backup needed</label><input type="number" id="daily-outage" min="1" max="24" step="any" required value="8"></div>
+          <div><label for="monthly-spend">Monthly generator spend (₦, optional)</label><input type="number" id="monthly-spend" min="0" step="any" inputmode="decimal" placeholder="e.g. 30000"></div>
+          <div><label for="unit-budget">Budget (₦, optional)</label><input type="number" id="unit-budget" min="0" step="any" inputmode="decimal" placeholder="e.g. 300000"></div>
+        </div>
+        <details class="solution-settings" id="solution-settings"><summary>Existing equipment and solar settings</summary>
+          <div class="solution-preferences">
+            <div><label for="existing-equipment">Do you already have equipment?</label><select id="existing-equipment"><option value="none">Starting from scratch</option><option value="inverter">I have an inverter</option><option value="panels">I have solar panels</option><option value="both">I have an inverter and panels</option></select></div>
+            <div id="solar-hours-field" hidden><label for="solar-hours">Hours of strong sun to plan around</label><input id="solar-hours" type="number" min="1" max="8" step="any" value="4"><small>Planning assumption. We check your location before quoting.</small></div>
+          </div>
+        </details>
+        <button type="submit" id="calculate-load" class="btn btn--primary load-submit" disabled>Calculate system requirements <span aria-hidden="true">→</span></button>
+      </section>
+    </form>
+    <section class="load-step load-result" id="calculator-result" aria-labelledby="load-result-heading">
+      <header class="load-step-heading"><span aria-hidden="true">03</span><div><h3 id="load-result-heading" tabindex="-1">Review your estimate</h3><p id="result-empty" role="status">Calculate your requirements to see your options.</p></div></header>
+      <div id="result-cards" hidden>
+        <div id="load-metrics" class="load-metrics"></div>
+        <div id="result-content"></div>
+        <div id="calculator-technical"></div>
+        <p class="solution-confirmation">We’ll confirm the exact model and final price on WhatsApp.</p>
+        <div class="calculator-actions"><button type="button" id="btn-whatsapp" class="btn btn--primary">Confirm on WhatsApp</button></div>
       </div>
-      <aside class="calculator-result" id="calculator-result" aria-label="Calculator results" aria-live="polite" aria-atomic="true">
-        <button type="button" class="result-back mobile-only" data-step-to="2">← Back to appliances</button>
-        <p class="zone-label">03 <span>Your solution</span></p>
-        <div id="result-empty" hidden>Choose an appliance to see your options.</div>
-        <div id="result-cards"><div id="result-content"></div>
-          <div id="calculator-technical"></div>
-          <div class="calculator-actions"><button type="button" id="btn-whatsapp" class="btn btn--primary">Ask for the price on WhatsApp</button><button type="button" id="btn-checkout" class="btn btn--outline" hidden>Checkout</button></div>
-        </div>
-      </aside>
-    </div>
+    </section>
   </div>
 </section>
 
@@ -241,21 +240,6 @@
       <!-- JS populates this -->
     </div>
 
-    <!-- Delivery fees table rendered from catalogue.deliveryFeeByState -->
-    <h3 style="font-size:var(--text-lg);font-weight:var(--weight-semibold);color:var(--color-dark-muted);margin-top:var(--space-12);margin-bottom:var(--space-4);">
-      Delivery fees by state
-    </h3>
-    <table class="delivery-table" id="delivery-table" aria-label="Delivery fees by state">
-      <thead>
-        <tr>
-          <th scope="col">State</th>
-          <th scope="col">Delivery fee</th>
-        </tr>
-      </thead>
-      <tbody id="delivery-table-body">
-        <!-- Built from catalogue.deliveryFeeByState by main-sections.js -->
-      </tbody>
-    </table>
   </div>
 </section>
 
@@ -334,7 +318,7 @@
       <div class="consultation-card consultation-order">
         <p class="section-label">Already chosen?</p>
         <h3 id="consultation-product-name">Your power box</h3>
-        <p>Use the calculator to compare suitable choices, then review the actual model before ordering.</p>
+        <p>Compare suitable choices in the calculator, then ask us for the exact model on WhatsApp.</p>
         <p id="consultation-product-price" class="consultation-price"></p>
         <button type="button" id="consultation-checkout" class="btn btn--outline" hidden>Checkout</button>
         <a href="#calculator" class="consultation-calculator">Check what I need</a>
@@ -375,7 +359,6 @@
       <nav class="footer-links" aria-label="Support links">
         <h4>Help</h4>
         <ul role="list">
-          <li><a href="#delivery-table">Delivery fees</a></li>
           <li><a href="#faq">Questions</a></li>
         </ul>
       </nav>

@@ -21,7 +21,7 @@ test('tight and none states never promise room to spare or a portable fit',()=>{
 test('near-miss wording names the actual appliance, cut and smaller unit',()=>{
  const items=presets.find(p=>p.id==='shops').items.map(i=>i.applianceId==='fan'?{...i,hours:8}:i);
  const v=resultPresentation(estimateSetup(items),selectionsFromItems(items),8);
- assert.equal(v.trim,'Cut the fan by 2 hours and Power Tank fits.');
+ assert.equal(v.trim,'Cut the fan by 2 hours and a smaller power station fits.');
 });
 test('budget and price display retain the recommender facts',()=>{
  const items=presets.find(p=>p.id==='shops').items;

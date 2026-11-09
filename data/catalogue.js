@@ -16,6 +16,7 @@
 
 import { hithiumProducts } from './hithium.js';
 import { solutionProducts } from './solution-products.js';
+import { bundleProducts } from './system-bundles.js';
 import { applyProductControls, loadProductControls } from './product-controls.js';
 
 const baseCatalogue = {
@@ -332,6 +333,9 @@ const baseCatalogue = {
       available: true,
       price: null,
       usableWh: 16076,
+      nominalBatteryWh: 16076.8,
+      batteryOperatingV: [44.8, 57.6],
+      maxBatteryDischargeA: 200,
       maxOutputW: null,
       peakOutputW: null,
       warranty: '10 years / 8,000 cycles',
@@ -385,6 +389,9 @@ const baseCatalogue = {
       available: true,
       price: null,
       usableWh: 16070,
+      nominalBatteryWh: 16070,
+      batteryOperatingV: [44.8, 57.6],
+      maxBatteryDischargeA: 200,
       maxOutputW: null,
       peakOutputW: null,
       warranty: '10 years / 8,000 cycles',
@@ -801,7 +808,7 @@ const baseCatalogue = {
 };
 
 const loaded = await loadProductControls();
-const resolved = applyProductControls([...baseCatalogue.products, ...hithiumProducts, ...solutionProducts], loaded.controls);
+const resolved = applyProductControls([...baseCatalogue.products, ...hithiumProducts, ...solutionProducts, ...bundleProducts], loaded.controls);
 export const productControlErrors = [...(loaded.error ? [loaded.error] : []), ...resolved.errors];
 export const catalogue = { ...baseCatalogue, products: resolved.products };
 

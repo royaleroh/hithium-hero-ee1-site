@@ -45,7 +45,7 @@ export function goodFor(product) {
 
 export function wontRun(product) {
   if (!product?.calculatorEligible) return '';
-  const blocked = appliances.filter(a => !canRunAppliance(product, a));
+  const blocked = appliances.filter(a => applianceNames[a.id] && !canRunAppliance(product, a));
   if (!blocked.length) return '';
   const sockets = blocked.filter(a => a.acRequired && !product.acOutput);
   const output = blocked.filter(a => !sockets.includes(a));

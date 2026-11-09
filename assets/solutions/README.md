@@ -4,9 +4,9 @@ Generated with the built-in image_gen tool on 22 October 2026, using the imagege
 skill. WebP copies are stored here; the originals remain in the Codex generated
 images folder. Format conversion and resizing only were applied afterwards.
 
-All five images are generic category illustrations. They depict no specific
+These images are generic category illustrations. They depict no specific
 manufacturer or purchasable model. The hero and category images carry visible
-illustration labels. Actual models are identified at quotation or checkout.
+illustration labels. Exact models are confirmed on WhatsApp.
 
 Final prompt set:
 
@@ -24,3 +24,9 @@ Final prompt set:
 Shared constraints for all category prompts: fully visible objects, generous
 margins, accurate proportions, realistic materials, no text, branding, numbers,
 people or unrelated props; do not copy recognisable manufacturer products.
+
+`laptop-bank.webp` was generated with the built-in image_gen tool on 9 November
+2026, using `bank.webp` as a style reference. Only resizing and WebP conversion
+were applied. Final prompt:
+
+> Use case: product-mockup. Asset type: square website range-card illustration for USB-C laptop charging. Use the reference only for its warm ivory studio backdrop, soft daylight, realistic materials and understated catalogue photography. Create a new composition: a visibly open, generic slim laptop with a plain muted dark screen and keyboard, beside a compact matte graphite power bank. One short black USB-C cable visibly plugs into the side of the laptop and into the power bank; both ends are connected and the cable makes one simple loose curve on the surface. Three-quarter front view, centred composition, both objects fully visible with generous margins. The laptop must be immediately recognisable at card size and the battery visibly separate. Warm neutral palette, soft natural shadows. No branding, text, digits, readable interfaces, people, extra props or watermarks.

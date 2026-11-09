@@ -18,7 +18,7 @@ export function resultPresentation(result, selections, outageHours) {
     applianceLine,
     budgetLine,
     price: unit ? unit.price === null ? "Ask for today's price" : formatNaira(unit.price) : '',
-    trim: result.nearMissTrim ? `Cut the ${applianceNames[selections.find(s => s.label === result.nearMissTrim.applianceLabel)?.id] ?? result.nearMissTrim.applianceLabel.toLowerCase()} by ${result.nearMissTrim.reduceByHours} hours and ${result.closestUnit.name} fits.` : '',
+    trim: result.nearMissTrim ? `Cut the ${applianceNames[selections.find(s => s.label === result.nearMissTrim.applianceLabel)?.id] ?? result.nearMissTrim.applianceLabel.toLowerCase()} by ${result.nearMissTrim.reduceByHours} hours and a smaller power station fits.` : '',
   };
 }
 

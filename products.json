@@ -1,4 +1,9 @@
 {
+  "itel-ipv-3k24upro": { "name": "itel 3 kW hybrid inverter", "price": null, "available": false },
+  "itel-ipw-25100": { "name": "itel 2.56 kWh lithium battery", "price": null, "available": false },
+  "itel-ipv-1k512u": { "name": "itel 1.5 kW off-grid inverter", "price": null, "available": false },
+  "itel-ipb-12100": { "name": "itel 1.28 kWh lithium battery", "price": null, "available": false },
+  "itel-oda410-27v-mhp": { "name": "itel 410 W solar panel", "price": null, "available": false },
   "itel-power-go": {
     "name": "Power Go",
     "price": null,

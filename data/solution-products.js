@@ -85,6 +85,8 @@ const inverterRows = [
 export const researchedInverters = inverterRows.map(([brand,model,watts,source])=>({
   ...base(brand,model,model,'inverter',source), maxOutputW:watts,
   peakOutputW:watts ? watts*2 : null, batteryVoltageRange:watts ? [40,60] : null,
+  maxPvInputW:({3000:3900,3600:4680,5000:6500,6000:7800})[watts] ?? null,
+  maxPvStringA:watts ? 13 : null, maxPvStringShortCircuitA:watts ? 27 : null,
   specStatus:watts?'verified':'partial', requiresInstaller:true,
 }));
 const jinkoSource='https://jinkosolar.com.au/products-new/';
